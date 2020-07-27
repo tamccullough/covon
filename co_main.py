@@ -60,9 +60,9 @@ def utc_convert_batch(string):
 def utc_count(dataframe):
     count_16 = dataframe['utc'].values
     a = []
-    for date in dataframe['utc'].unique():
-        count = int((count_16 == date).sum())
-        a.append([date,count])
+    for date_ in dataframe['utc'].unique():
+        count = int((count_16 == date_).sum())
+        a.append([date_,count])
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
     db['days'] = (db['days'] -16)*-1
@@ -73,9 +73,9 @@ def utc_count(dataframe):
 def case_age_gender(age,gender,on_db):
     results = on_db[(on_db['Client_Gender'] == gender) & (on_db['Age_Group'] == age)]['Case_Reported_Date'].values
     a = []
-    for date in on_db['Accurate_Episode_Date'].unique():
-        count = int((results == date).sum())
-        a.append([date,count])
+    for date_ in on_db['Accurate_Episode_Date'].unique():
+        count = int((results == date_).sum())
+        a.append([date_,count])
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
     #db = db[db['count'] != 0]
@@ -85,9 +85,9 @@ def case_age_gender(age,gender,on_db):
 def all_cases_count(on_db):
     results = on_db['Accurate_Episode_Date'].values
     a = []
-    for date in on_db['Accurate_Episode_Date'].unique():
-        count = int((results == date).sum())
-        a.append([date,count])
+    for date_ in on_db['Accurate_Episode_Date'].unique():
+        count = int((results == date_).sum())
+        a.append([date_,count])
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
     #db = db[db['count'] != 0]
@@ -392,9 +392,9 @@ def update_files(utc_today):
 
     recent_count = recent_cases['utc'].values
     a = []
-    for date in recent_cases['utc'].unique():
-        count = int((recent_count == date).sum())
-        a.append([date,count])
+    for utc_date in recent_cases['utc'].unique():
+        count = int((recent_count == utc_date).sum())
+        a.append([utc_date,count])
     recent_cases_count = pd.DataFrame(a,columns=['date','count'])
     recent_cases_count['days'] = range(recent_cases_count.shape[0])
     recent_cases_count['days'] = (recent_cases_count['days'] -16)*-1
@@ -421,18 +421,18 @@ def update_files(utc_today):
     transgender_16_count = utc_count(transgender_16)
 
     a,b,c,d = [],[],[],[]
-    for date in recent_cases_count['date'].unique():
-        actual = on_db[on_db['utc'] == date]['Case_Reported_Date'].values[0]
+    for date_ in recent_cases_count['date'].unique():
+        actual = on_db[on_db['utc'] == date_]['Case_Reported_Date'].values[0]
         try:
-            m = male_16_count[male_16_count['date'] == date]['count'].values[0]
+            m = male_16_count[male_16_count['date'] == date_]['count'].values[0]
         except:
             m = 0
         try:
-            f = female_16_count[female_16_count['date'] == date]['count'].values[0]
+            f = female_16_count[female_16_count['date'] == date_]['count'].values[0]
         except:
             f = 0
         try:
-            t = transgender_16_count[transgender_16_count['date'] == date]['count'].values[0]
+            t = transgender_16_count[transgender_16_count['date'] == date_]['count'].values[0]
         except:
             t = 0
         a.append(m)

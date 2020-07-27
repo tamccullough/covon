@@ -1,4 +1,4 @@
-![Ontario](https://data.ontario.ca/logo-ontario@2x.png)
+![Ontario Logo](https://data.ontario.ca/logo-ontario@2x.png)
 
 [Covid 19 Ontario Visualization Heroku App LINK](https://canples.herokuapp.com/index)
 

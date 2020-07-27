@@ -1,0 +1,210 @@
+.beige-theme-l5 {color:#000 !important; background-color:#fffefc !important}
+.beige-theme-l4 {color:#000 !important; background-color:#fefaf5 !important}
+.beige-theme-l3 {color:#000 !important; background-color:#fef5ec !important}
+.beige-theme-l2 {color:#000 !important; background-color:#fdf0e2 !important}
+.beige-theme-l1 {color:#000 !important; background-color:#fdebd8 !important}
+.beige-theme-d1 {color:#000 !important; background-color:#fad0a3 !important}
+.beige-theme-d2 {color:#000 !important; background-color:#f7ba78 !important}
+.beige-theme-d3 {color:#000 !important; background-color:#f5a34d !important}
+.beige-theme-d4 {color:#fff !important; background-color:#f28d21 !important}
+.beige-theme-d5 {color:#fff !important; background-color:#d9760d !important}
+
+.beige-theme-light {color:#000 !important; background-color:#fffefc !important}
+.beige-theme-dark {color:#fff !important; background-color:#d9760d !important}
+.beige-theme-action {color:#fff !important; background-color:#d9760d !important}
+
+.beige-theme {color:#000 !important; background-color:#fce5cd !important}
+.beige-text-theme {color:#000 !important}
+.beige-text-title {color:#073763 !important;}
+.beige-text-blue {color:#6d9eeb !important;}
+.beige-text-red {color:#cc4125 !important;}
+.beige-text-poster{font-size:250px!important}
+.beige-border-theme {border-color:#fce5cd !important}
+
+.beige-hover-theme:hover {color:#000 !important; background-color:#fce5cd !important}
+.beige-hover-text-theme:hover {color:#fce5cd !important}
+.beige-hover-border-theme:hover {border-color:#fce5cd !important}
+
+.amber-theme-l5 {color:#000 !important; background-color:#fffbf0 !important}
+.amber-theme-l4 {color:#000 !important; background-color:#fff3cd !important}
+.amber-theme-l3 {color:#000 !important; background-color:#ffe69b !important}
+.amber-theme-l2 {color:#000 !important; background-color:#ffda69 !important}
+.amber-theme-l1 {color:#000 !important; background-color:#ffcd37 !important}
+.amber-theme-d1 {color:#000 !important; background-color:#eab000 !important}
+.amber-theme-d2 {color:#fff !important; background-color:#d09c00 !important}
+.amber-theme-d3 {color:#fff !important; background-color:#b68900 !important}
+.amber-theme-d4 {color:#fff !important; background-color:#9c7500 !important}
+.amber-theme-d5 {color:#fff !important; background-color:#826200 !important}
+
+.amber-theme-light {color:#000 !important; background-color:#fffbf0 !important}
+.amber-theme-dark {color:#fff !important; background-color:#826200 !important}
+.amber-theme-action {color:#fff !important; background-color:#826200 !important}
+
+.amber-theme {color:#000 !important; background-color:#ffc107 !important}
+.amber-text-theme {color:#ffc107 !important}
+.amber-border-theme {border-color:#ffc107 !important}
+
+.amber-hover-theme:hover {color:#000 !important; background-color:#ffc107 !important}
+.amber-hover-text-theme:hover {color:#ffc107 !important}
+.amber-hover-border-theme:hover {border-color:#ffc107 !important}
+
+.black-theme-l5 {color:#000 !important; background-color:#f0f0f0 !important}
+.black-theme-l4 {color:#000 !important; background-color:#cccccc !important}
+.black-theme-l3 {color:#fff !important; background-color:#999999 !important}
+.black-theme-l2 {color:#fff !important; background-color:#666666 !important}
+.black-theme-l1 {color:#fff !important; background-color:#333333 !important}
+.black-theme-d1 {color:#fff !important; background-color:#000000 !important}
+.black-theme-d2 {color:#fff !important; background-color:#000000 !important}
+.black-theme-d3 {color:#fff !important; background-color:#000000 !important}
+.black-theme-d4 {color:#fff !important; background-color:#000000 !important}
+.black-theme-d5 {color:#fff !important; background-color:#000000 !important}
+
+.black-theme-light {color:#000 !important; background-color:#f0f0f0 !important}
+.black-theme-dark {color:#fff !important; background-color:#000000 !important}
+.black-theme-action {color:#fff !important; background-color:#000000 !important}
+
+.black-theme {color:#fff !important; background-color:#000000 !important}
+.black-text-theme {color:#000000 !important}
+.black-border-theme {border-color:#000000 !important}
+
+.black-hover-theme:hover {color:#fff !important; background-color:#000000 !important}
+.black-hover-text-theme:hover {color:#000000 !important}
+.black-hover-border-theme:hover {border-color:#000000 !important}
+
+.blue-theme-l5 {color:#000 !important; background-color:#eaf5ff !important}
+.blue-theme-l4 {color:#000 !important; background-color:#b9deff !important}
+.blue-theme-l3 {color:#000 !important; background-color:#72bdff !important}
+.blue-theme-l2 {color:#fff !important; background-color:#2c9cff !important}
+.blue-theme-l1 {color:#fff !important; background-color:#007ae4 !important}
+.blue-theme-d1 {color:#fff !important; background-color:#004c8e !important}
+.blue-theme-d2 {color:#fff !important; background-color:#00437e !important}
+.blue-theme-d3 {color:#fff !important; background-color:#003b6f !important}
+.blue-theme-d4 {color:#fff !important; background-color:#00335f !important}
+.blue-theme-d5 {color:#fff !important; background-color:#002a4f !important}
+
+.blue-theme-light {color:#000 !important; background-color:#eaf5ff !important}
+.blue-theme-dark {color:#fff !important; background-color:#002a4f !important}
+.blue-theme-action {color:#fff !important; background-color:#002a4f !important}
+
+.blue-theme {color:#fff !important; background-color:#00539c !important}
+.blue-text-theme {color:#00539c !important}
+.blue-border-theme {border-color:#00539c !important}
+
+.blue-hover-theme:hover {color:#fff !important; background-color:#00539c !important}
+.blue-hover-text-theme:hover {color:#00539c !important}
+.blue-hover-border-theme:hover {border-color:#00539c !important}
+
+.eclipse-theme-l5 {color:#000 !important; background-color:#f2f1f6 !important}
+.eclipse-theme-l4 {color:#000 !important; background-color:#d3d1e0 !important}
+.eclipse-theme-l3 {color:#000 !important; background-color:#a7a3c0 !important}
+.eclipse-theme-l2 {color:#fff !important; background-color:#7b75a1 !important}
+.eclipse-theme-l1 {color:#fff !important; background-color:#565177 !important}
+.eclipse-theme-d1 {color:#fff !important; background-color:#2f2d42 !important}
+.eclipse-theme-d2 {color:#fff !important; background-color:#2a283a !important}
+.eclipse-theme-d3 {color:#fff !important; background-color:#252333 !important}
+.eclipse-theme-d4 {color:#fff !important; background-color:#201e2c !important}
+.eclipse-theme-d5 {color:#fff !important; background-color:#1a1924 !important}
+
+.eclipse-theme-light {color:#000 !important; background-color:#f2f1f6 !important}
+.eclipse-theme-dark {color:#fff !important; background-color:#1a1924 !important}
+.eclipse-theme-action {color:#fff !important; background-color:#1a1924 !important}
+
+.eclipse-theme {color:#fff !important; background-color:#343148 !important}
+.eclipse-text-theme {color:#343148 !important}
+.eclipse-border-theme {border-color:#343148 !important}
+
+.eclipse-hover-theme:hover {color:#fff !important; background-color:#343148 !important}
+.eclipse-hover-text-theme:hover {color:#343148 !important}
+.eclipse-hover-border-theme:hover {border-color:#343148 !important}
+
+.green-theme-l5 {color:#000 !important; background-color:#f4faf4 !important}
+.green-theme-l4 {color:#000 !important; background-color:#dbefdc !important}
+.green-theme-l3 {color:#000 !important; background-color:#b7dfb8 !important}
+.green-theme-l2 {color:#000 !important; background-color:#93cf95 !important}
+.green-theme-l1 {color:#fff !important; background-color:#6ec071 !important}
+.green-theme-d1 {color:#fff !important; background-color:#459c48 !important}
+.green-theme-d2 {color:#fff !important; background-color:#3d8b40 !important}
+.green-theme-d3 {color:#fff !important; background-color:#357a38 !important}
+.green-theme-d4 {color:#fff !important; background-color:#2e6830 !important}
+.green-theme-d5 {color:#fff !important; background-color:#265728 !important}
+
+.green-theme-light {color:#000 !important; background-color:#f4faf4 !important}
+.green-theme-dark {color:#fff !important; background-color:#265728 !important}
+.green-theme-action {color:#fff !important; background-color:#265728 !important}
+
+.green-theme {color:#fff !important; background-color:#4caf50 !important}
+.green-text-theme {color:#4caf50 !important}
+.green-border-theme {border-color:#4caf50 !important}
+
+.green-hover-theme:hover {color:#fff !important; background-color:#4caf50 !important}
+.green-hover-text-theme:hover {color:#4caf50 !important}
+.green-hover-border-theme:hover {border-color:#4caf50 !important}
+
+.purple-theme-l5 {color:#000 !important; background-color:#faf0fc !important}
+.purple-theme-l4 {color:#000 !important; background-color:#efcef4 !important}
+.purple-theme-l3 {color:#000 !important; background-color:#de9eea !important}
+.purple-theme-l2 {color:#fff !important; background-color:#ce6ddf !important}
+.purple-theme-l1 {color:#fff !important; background-color:#be3dd4 !important}
+.purple-theme-d1 {color:#fff !important; background-color:#8c239e !important}
+.purple-theme-d2 {color:#fff !important; background-color:#7c1f8d !important}
+.purple-theme-d3 {color:#fff !important; background-color:#6d1b7b !important}
+.purple-theme-d4 {color:#fff !important; background-color:#5d1769 !important}
+.purple-theme-d5 {color:#fff !important; background-color:#4e1358 !important}
+
+.purple-theme-light {color:#000 !important; background-color:#faf0fc !important}
+.purple-theme-dark {color:#fff !important; background-color:#4e1358 !important}
+.purple-theme-action {color:#fff !important; background-color:#4e1358 !important}
+
+.purple-theme {color:#fff !important; background-color:#9c27b0 !important}
+.purple-text-theme {color:#9c27b0 !important}
+.purple-border-theme {border-color:#9c27b0 !important}
+
+.purple-hover-theme:hover {color:#fff !important; background-color:#9c27b0 !important}
+.purple-hover-text-theme:hover {color:#9c27b0 !important}
+.purple-hover-border-theme:hover {border-color:#9c27b0 !important}
+
+.teal-theme-l5 {color:#000 !important; background-color:#e9fffd !important}
+.teal-theme-l4 {color:#000 !important; background-color:#b7fff8 !important}
+.teal-theme-l3 {color:#000 !important; background-color:#6efff1 !important}
+.teal-theme-l2 {color:#000 !important; background-color:#26ffe9 !important}
+.teal-theme-l1 {color:#fff !important; background-color:#00dcc6 !important}
+.teal-theme-d1 {color:#fff !important; background-color:#008578 !important}
+.teal-theme-d2 {color:#fff !important; background-color:#00766a !important}
+.teal-theme-d3 {color:#fff !important; background-color:#00685d !important}
+.teal-theme-d4 {color:#fff !important; background-color:#005950 !important}
+.teal-theme-d5 {color:#fff !important; background-color:#004a43 !important}
+
+.teal-theme-light {color:#000 !important; background-color:#e9fffd !important}
+.teal-theme-dark {color:#fff !important; background-color:#004a43 !important}
+.teal-theme-action {color:#fff !important; background-color:#004a43 !important}
+
+.teal-theme {color:#fff !important; background-color:#009688 !important}
+.teal-text-theme {color:#009688 !important}
+.teal-border-theme {border-color:#009688 !important}
+
+.teal-hover-theme:hover {color:#fff !important; background-color:#009688 !important}
+.teal-hover-text-theme:hover {color:#009688 !important}
+.teal-hover-border-theme:hover {border-color:#009688 !important}
+
+.turmeric-theme-l5 {color:#000 !important; background-color:#fff8f1 !important}
+.turmeric-theme-l4 {color:#000 !important; background-color:#ffe7cf !important}
+.turmeric-theme-l3 {color:#000 !important; background-color:#ffcfa0 !important}
+.turmeric-theme-l2 {color:#000 !important; background-color:#feb770 !important}
+.turmeric-theme-l1 {color:#000 !important; background-color:#fe9f40 !important}
+.turmeric-theme-d1 {color:#fff !important; background-color:#f27a01 !important}
+.turmeric-theme-d2 {color:#fff !important; background-color:#d76c01 !important}
+.turmeric-theme-d3 {color:#fff !important; background-color:#bc5f01 !important}
+.turmeric-theme-d4 {color:#fff !important; background-color:#a15101 !important}
+.turmeric-theme-d5 {color:#fff !important; background-color:#864401 !important}
+
+.turmeric-theme-light {color:#000 !important; background-color:#fff8f1 !important}
+.turmeric-theme-dark {color:#fff !important; background-color:#864401 !important}
+.turmeric-theme-action {color:#fff !important; background-color:#864401 !important}
+
+.turmeric-theme {color:#fff !important; background-color:#fe840e !important}
+.turmeric-text-theme {color:#fe840e !important}
+.turmeric-border-theme {border-color:#fe840e !important}
+
+.turmeric-hover-theme:hover {color:#fff !important; background-color:#fe840e !important}
+.turmeric-hover-text-theme:hover {color:#fe840e !important}
+.turmeric-hover-border-theme:hover {border-color:#fe840e !important}

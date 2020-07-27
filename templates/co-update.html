@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<meta http-equiv="refresh" content="5;URL={{ url_for('index') }}">
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="height: 90%;">
+
+<!-- Header -->
+<header class="w3-container {{ theme }}-text-title">
+  <h5><b> Dashboard - Daily Compiled Charts</b></h5>
+</header>
+
+<!-- charts and graphs -->
+<div class="w3-container w3-center">
+  <div class="w3-padding {{ theme }}-theme" style="min-height:250px;"></div>
+  <div class="w3-padding {{ theme }}-theme" style="min-height:350px;">
+    <h4 class="{{ theme }}-text-title"> Updating Content - Please Wait</h4>
+  </div>
+</div>
+{% endblock %}

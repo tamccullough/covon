@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="height: 90%;">
+
+<!-- Header -->
+<header class="w3-container {{ theme }}-text-title">
+  <h5><b> Daily Compiled Charts - {{ total_cases }} Total Cases as of - {{ month }} {{ yesterday }}</b></h5>
+</header>
+
+<!-- charts and graphs -->
+<h3 class="w3-center {{ theme }}-text-title">Overall Total, Cumulative and Gender Percentage</h3>
+<div class="w3-container w3-center">
+  <div class="w3-third w3-padding {{ theme }}-theme">
+    <h4 class="{{ theme }}-text-title">Total Daily Cases</h4>
+    <img src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px">
+  </div>
+  <div class="w3-third w3-padding {{ theme }}-theme">
+    <h4 class="{{ theme }}-text-title">Cumulative Total</h4>
+    <img src="static/images/graph/ontario-daily_cases-total_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px">
+  </div>
+  <div class="w3-third w3-padding {{ theme }}-theme">
+    <div>
+    <h4 class="{{ theme }}-text-title">Gender Case Percentage</h4>
+    <a class="{{ theme }}-text-title">Percentage of infected by gender</a>
+    </div>
+    <div class="w3-half">
+      <br>
+      <br>
+      <br>
+      <br>
+          <h4>{{ gender_groups.at[0,'pop%']*100 }}%</h4>
+          <a><i class="beige-text-poster fa fa-female beige-text-red w3-jumbo"></i></a>
+    </div>
+    <div class="w3-half">
+      <br>
+      <br>
+      <br>
+      <br>
+          <h4>{{ gender_groups.at[1,'pop%']*100 }}%</h4>
+          <a><i class="beige-text-poster fa fa-male beige-text-blue w3-jumbo"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- graphs -->
+<!-- graph 1 -->
+<h3 class="w3-center {{ theme }}-text-title"> Age Group Related Data</h3>
+<div class="w3-container w3-center">
+  <div class="w3-half">
+    <div class="w3-half w3-padding {{ theme }}-theme">
+      <h6 class="{{ theme }}-text-title">Daily Cases Age: Under 20</h6>
+        <div><img src="static/images/graph/<20-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+      </div>
+      <div class="w3-half w3-padding {{ theme }}-theme">
+        <h6 class="{{ theme }}-text-title">Daily Cases Age: Under 20 Gender Groups</h6>
+        <div><img src="static/images/graph/<20-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+        <div><img src="static/images/graph/<20-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+        <div><img src="static/images/graph/<20-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-half w3-padding {{ theme }}-theme">
+        <h6 class="{{ theme }}-text-title">Daily Cases Age: 20-29</h6>
+          <div><img src="static/images/graph/20s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+        </div>
+        <div class="w3-half w3-padding {{ theme }}-theme">
+          <h6 class="{{ theme }}-text-title">Daily Cases Age: 20-29 Gender Groups</h6>
+          <div><img src="static/images/graph/20s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+          <div><img src="static/images/graph/20s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+          <div><img src="static/images/graph/20s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+        </div>
+      </div>
+  </div>
+  <div class="w3-container w3-center">
+    <div class="w3-half">
+      <div class="w3-half w3-padding {{ theme }}-theme">
+        <h6 class="{{ theme }}-text-title">Daily Cases Age: 30-39</h6>
+          <div><img src="static/images/graph/30s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+        </div>
+        <div class="w3-half w3-padding {{ theme }}-theme">
+          <h6 class="{{ theme }}-text-title">Daily Cases Age: 30-39 Gender Groups</h6>
+          <div><img src="static/images/graph/30s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+          <div><img src="static/images/graph/30s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+          <div><img src="static/images/graph/30s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+        </div>
+      </div>
+      <div class="w3-half">
+        <div class="w3-half w3-padding {{ theme }}-theme">
+          <h6 class="{{ theme }}-text-title">Daily Cases Age: 40-49</h6>
+            <div><img src="static/images/graph/40s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+          <div class="w3-half w3-padding {{ theme }}-theme">
+            <h6 class="{{ theme }}-text-title">Daily Cases Age: 40-49 Gender Groups</h6>
+            <div><img src="static/images/graph/40s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/40s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/40s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+        </div>
+    </div>
+    <div class="w3-container w3-center">
+      <div class="w3-half">
+        <div class="w3-half w3-padding {{ theme }}-theme">
+          <h6 class="{{ theme }}-text-title">Daily Cases Age: 50-59</h6>
+            <div><img src="static/images/graph/50s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+          <div class="w3-half w3-padding {{ theme }}-theme">
+            <h6 class="{{ theme }}-text-title">Daily Cases Age: 50-59 Gender Groups</h6>
+            <div><img src="static/images/graph/50s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/50s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/50s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+        </div>
+        <div class="w3-half">
+          <div class="w3-half w3-padding {{ theme }}-theme">
+            <h6 class="{{ theme }}-text-title">Daily Cases Age: 60-69</h6>
+              <div><img src="static/images/graph/60s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+            </div>
+            <div class="w3-half w3-padding {{ theme }}-theme">
+              <h6 class="{{ theme }}-text-title">Daily Cases Age: 60-69 Gender Groups</h6>
+              <div><img src="static/images/graph/60s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+              <div><img src="static/images/graph/60s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+              <div><img src="static/images/graph/60s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+            </div>
+          </div>
+      </div>
+      <div class="w3-container w3-center">
+        <div class="w3-half">
+          <div class="w3-half w3-padding {{ theme }}-theme">
+            <h6 class="{{ theme }}-text-title">Daily Cases Age: 70-79</h6>
+              <div><img src="static/images/graph/70s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+            </div>
+            <div class="w3-half w3-padding {{ theme }}-theme">
+              <h6 class="{{ theme }}-text-title">Daily Cases Age: 70-79 Gender Groups</h6>
+              <div><img src="static/images/graph/70s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+              <div><img src="static/images/graph/70s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+              <div><img src="static/images/graph/70s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+            </div>
+          </div>
+          <div class="w3-half">
+            <div class="w3-half w3-padding {{ theme }}-theme">
+              <h6 class="{{ theme }}-text-title">Daily Cases Age: 80-89</h6>
+                <div><img src="static/images/graph/80s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+              </div>
+              <div class="w3-half w3-padding {{ theme }}-theme">
+                <h6 class="{{ theme }}-text-title">Daily Cases Age: 80-89 Gender Groups</h6>
+                <div><img src="static/images/graph/80s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+                <div><img src="static/images/graph/80s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+                <div><img src="static/images/graph/80s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+              </div>
+            </div>
+      </div>
+      <div class="w3-container w3-center">
+      <div class="w3-half">
+        <div class="w3-half w3-padding {{ theme }}-theme">
+          <h6 class="{{ theme }}-text-title">Daily Cases Age: 90-99</h6>
+            <div><img src="static/images/graph/90s-total_count.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+          <div class="w3-half w3-padding {{ theme }}-theme">
+            <h6 class="{{ theme }}-text-title">Daily Cases Age: 90-99 Gender Groups</h6>
+            <div><img src="static/images/graph/90s-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/90s-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <div><img src="static/images/graph/90s-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+          </div>
+        </div>
+      <!-- icon charts -->
+      <div class="w3-half">
+        <div class="w3-container w3-center {{ theme }}-theme">
+          <h4 class="{{ theme }}-text-title">Total Outcomes</h4>
+          <a class="{{ theme }}-text-title">{{ resolved }}% Resolved, {{ active }}% Not Resolved and {{ fatal }}% Fatal</a>
+          <div class="w3-center">
+            <table class="w3-table">
+              {%for i in range(0,infected.shape[0])%}
+              <tr>
+                  <td><i class="{{ infected.iloc[i][0] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][1] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][2] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][3] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][4] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][5] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][6] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][7] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][8] }} w3-xlarge"></i></td>
+                  <td><i class="{{ infected.iloc[i][9] }} w3-xlarge"></i></td>
+              </tr>
+              {%endfor%}
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+</div>
+<h3 class="w3-center {{ theme }}-text-title"> Pie Charts</h3>
+<!-- pie charts -->
+<div class="w3-container w3-center">
+<!-- pie 1 -->
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Ontario Demographics</h4>
+      <a class="{{ theme }}-text-title">Percentage of age groups in Ontario</a>
+      <div><img src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
+    </div>
+  </div>
+  <!-- pie 2 -->
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Total Cases by Age Group</h4>
+      <a class="{{ theme }}-text-title">Percentage of age groups infected with Covid-19 in Ontario</a>
+      <div><img src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
+    </div>
+  </div>
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Cases past 16 days</h4>
+      <a class="{{ theme }}-text-title">Representation of Age Groups testing positive with Covid 19 in the last 16 days</a>
+      <div><img src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
+    </div>
+  </div>
+
+</div>
+<h3 class="w3-center {{ theme }}-text-title"> Last 16 Days</h3>
+<div class="w3-container w3-center">
+<!-- pie 1 -->
+<div class="w3-third">
+  <div class="w3-container {{ theme }}-theme">
+    <h4 class="{{ theme }}-text-title">Cases past 16 days</h4>
+    <a class="{{ theme }}-text-title">Representation of Age Groups testing positive with Covid 19 in the last 16 days</a>
+    <div><img src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
+  </div>
+</div>
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Total Daily Cases (Last 16 Days)</h4>
+      <a class="{{ theme }}-text-title">Past 16 days of cases total daily count</a>
+      <div><img src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
+    </div>
+  </div>
+  <!-- pie 2 -->
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+    <h4 class="{{ theme }}-text-title">Daily Cases (Last 16 Days) Gender Split</h4>
+    <br>
+    <div><img src="static/images/graph/16-days-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+    <div><img src="static/images/graph/16-days-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+    <div><img src="static/images/graph/16-days-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+  </div>
+  </div>
+</div>
+
+
+<!-- bar charts -->
+<div class="w3-container w3-center">
+<!-- pie 1 -->
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Top 10 Areas of Infection</h4>
+      <a class="{{ theme }}-text-title">PHUs with Largest Covid 19 Caseload</a>
+      <div><img src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+    </div>
+  </div>
+
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Top 10 Areas of Infection - Last 16 Days</h4>
+      <a class="{{ theme }}-text-title">PHUs with cuurent Covid 19 spikes</a>
+      <div><img src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+    </div>
+  </div>
+
+
+  <!-- pie 2 -->
+  <div class="w3-third">
+    <div class="w3-container {{ theme }}-theme">
+      <h4 class="{{ theme }}-text-title">Fatalities by Age Group and Gender</h4>
+      <a class="{{ theme }}-text-title">Fatalities broken up to gender and age categories</a>
+      <div><img src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+    </div>
+  </div>
+
+</div>
+</div>
+{% endblock %}

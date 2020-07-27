@@ -24,10 +24,10 @@ on_age = pd.read_csv('datasets/2020/age_groups_ontario.csv')
 
 total_cases = on_db['Accurate_Episode_Date'].count()
 
-co = Flask(__name__, instance_relative_config=True)
-co.config.from_mapping(
+covon = Flask(__name__, instance_relative_config=True)
+covon.config.from_mapping(
         SECRET_KEY='dev', # change to a random value later when deploying
-        DATABASE=os.path.join(co.instance_path, 'main.sqlite'),
+        DATABASE=os.path.join(covon.instance_path, 'main.sqlite'),
     )
 
 def get_value(connect,userid,string):
@@ -45,7 +45,7 @@ def insert_query(connect,userid,query,column):
         connect.execute(query)
         connect.commit()
 
-@co.route('/index')
+@covon.route('/index')
 def index():
 
     today = date.today().strftime('%Y-%m-%d')
@@ -55,7 +55,7 @@ def index():
     utc_today = co_main.utc_convert(today)
 
     if today != check:
-        
+
         # get the current file if it hasn't been updated today
         co_main.update_files(utc_today)
 
@@ -79,7 +79,7 @@ def index():
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
     theme = theme)
 
-@co.route('/update')
+@covon.route('/update')
 def update():
 
     connect = db.get_db()
@@ -89,7 +89,7 @@ def update():
     day = day, weekday = weekday, month = month,
     theme = theme)
 
-db.init_app(co)
+db.init_app(covon)
 
 if __name__ == "__main__":
-    co.run()
+    covon.run()

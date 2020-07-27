@@ -2,9 +2,6 @@
 
 [Covid 19 Ontario Visualization Heroku App LINK](https://covid-on-viz.herokuapp.com/index)
 
-CURRENTLY MAINTENANCE MOD IS ON
-
-
 ## Visualization for Covid 19 cases in Ontario
 The intent is to develop a system that will update once a day and dynamically generate all the charts that are presented through the web app.
 

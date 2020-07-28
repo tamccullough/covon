@@ -15,12 +15,9 @@ from scipy.ndimage.filters import gaussian_filter1d
 
 today = date.today().strftime('%Y-%m-%d')
 
-COLOUR = '#073763'
 FACE, EDGE = '#fce5cd', '#073763'
-D1, D2 = '#fad0a3','#f7ba78'
-colours1 = ['#980000','#ff0000','#ff9900','#ffff00','#00ff00','#00ffff','#4a86e8','#0000ff','#9900ff','#ff00ff']
-colours2 = ['#e6b8af','#f4cccc','#fce5cd','#fff2cc','#d9ead3','#d0e0e3','#c9daf8','#cfe2f3','#d9d2e9','#ead1dc']
-colours3 = ['#cc4125','#e06666','#f6b26b','#ffd966','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0']
+MALE,FEMALE,TRANSGENDER = '#f6b26b','#6d9eeb','#93c47d'
+colours3 = ['#cc4125','#f6b26b','#ffd966','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0','#e06666']
 
 def get_weekday():
     weekDays = ('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')
@@ -97,73 +94,21 @@ def all_cases_count(on_db):
 def f(x,y,z):
     return sum([x,y,z],1)/3
 
-def graph_query_frame(x_1,y_1,x_2,y_2,x_3,y_3,query,on_cases):
-    total_count = int(on_cases[on_cases['age_group'] == query]['total'])
-    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax1 = plt.subplot()
-    ax1.set_facecolor(FACE)
-    rolling = y_1.rolling(window=7).mean()+y_2.rolling(window=7).mean()+y_3.rolling(window=7).mean()
-    total = y_1+y_2+y_3
-    ax1.plot(x_3,total,'.-',lw=2,color=colours3[8],alpha=0.5,label=f'{query} total')
-    ax1.plot(x_3,rolling,'.-',lw=2,color=colours3[0],label='rolling average')
-    ax1.set_xlabel('days',color=EDGE)
-    ax1.set_ylabel('count',color=EDGE)
-    ax1.set_title('',color=EDGE)
-    ax1.legend(loc='upper left',framealpha=0)
-    filename = f'static/images/graph/{query}-total_count.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
-    total_count = int(on_cases[on_cases['age_group'] == query]['total'])
-    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax2 = plt.subplot()
-    ax2.set_facecolor(FACE)
-    ax2.plot(x_1,y_1,'.-',lw=2,color=colours3[2],alpha=0.9,label='male')
-    ax2.set_xlabel('days',color=EDGE)
-    ax2.set_ylabel('count',color=EDGE)
-    ax2.set_title('',color=EDGE)
-    ax2.legend(loc='upper left',framealpha=0)
-    filename = f'static/images/graph/{query}-total_count-male.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
-    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax3 = plt.subplot()
-    ax3.set_facecolor(FACE)
-    ax3.plot(x_2,y_2,'.-',lw=2,color=colours3[6],alpha=0.9,label='female')
-    ax3.set_xlabel('days',color=EDGE)
-    ax3.set_ylabel('count',color=EDGE)
-    ax3.set_title('',color=EDGE)
-    ax3.legend(loc='upper left',framealpha=0)
-    filename = f'static/images/graph/{query}-total_count-female.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
-    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax4 = plt.subplot()
-    ax4.set_facecolor(FACE)
-    ax4.plot(x_3,y_3,'.-',lw=2,color=colours3[4],alpha=0.9,label='transgender')
-    ax4.set_xlabel('days',color=EDGE)
-    ax4.set_ylabel('count',color=EDGE)
-    ax4  .set_title('',color=EDGE)
-    ax4.legend(loc='upper left',framealpha=0)
-    filename = f'static/images/graph/{query}-total_count-transgender.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+def find_explode(lst,data):
+    a=[]
+    for i in lst:
+        if i == data:
+            a.append(0.1)
+        else:
+            a.append(0)
+    return a
 
-def graph_frame(x,y):
-    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax1 = plt.subplot()
-    ax1.set_facecolor(FACE)
-    ax1.plot(x,y,'.-',lw=2,alpha=0.5,color=colours3[8],label='count')
-    ax1.plot(x,y.rolling(window=7).mean(),'.-',lw=2,color=colours3[0],label='rolling average')
-    ax1.set_title('')
-    filename = f'static/images/graph/ontario-daily_cases_count.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
-    ## total cumulative
-    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
-    ax2 = plt.subplot()
-    ax2.set_facecolor(FACE)
-    ax2.plot(x,y.cumsum(),'-',lw=2,color=colours3[0])
-    ax2.fill_between(x, y.cumsum(),facecolor=colours3[0],alpha=0.35,label='cumulative')
-    ax2.set_xlabel('days',color=EDGE)
-    ax2.set_ylabel('count',color=EDGE)
-    ax2.set_title('')
-    filename = f'static/images/graph/ontario-daily_cases-total_count.png'
-    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+def get_bar(dataframe,string,total_cases,title):
+    query = string
+    results = get_category_count(dataframe,query,total_cases)
+    query = re.sub('\d+','',query.lower())
+    graph_bar(results,query,title)
+    return results
 
 def get_category_count(dataframe,column,total_cases):
     a=[]
@@ -182,14 +127,12 @@ def get_category_count(dataframe,column,total_cases):
     data = data.dropna()
     return data
 
-def find_explode(lst,data):
-    a=[]
-    for i in lst:
-        if i == data:
-            a.append(0.1)
-        else:
-            a.append(0)
-    return a
+def get_pie(dataframe,string,total_cases,title):
+    query = string
+    results = get_category_count(dataframe,query,total_cases)
+    query = re.sub('\d+','',query.lower())
+    graph_pie(results,query,title)
+    return results
 
 def graph_bar(dataframe,column,title):
     total_count = int(on_cases[on_cases['age_group'] == query]['total'])
@@ -209,6 +152,28 @@ def graph_bar(dataframe,column,title):
     filename = f'static/images/graph/{query}-total_count.png'
     plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
 
+def graph_frame(x,y):
+    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax1 = plt.subplot()
+    ax1.set_facecolor(FACE)
+    ax1.plot(x,y,'.-',lw=2,alpha=0.5,color=colours3[1],label='count')
+    ax1.plot(x,y.rolling(window=7).mean(),'.-',lw=2,color=colours3[0],label='rolling average')
+    ax1.set_title('')
+    filename = f'static/images/graph/ontario-daily_cases_count.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+    ## total cumulative
+    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax2 = plt.subplot()
+    ax2.set_facecolor(FACE)
+    ax2.plot(x,y.cumsum(),'-',lw=2,color=colours3[0])
+    ax2.fill_between(x, y.cumsum(),facecolor=colours3[0],alpha=0.35,label='cumulative')
+
+    ax2.set_xlabel('days',color=EDGE)
+    ax2.set_ylabel('count',color=EDGE)
+    ax2.set_title('')
+    filename = f'static/images/graph/ontario-daily_cases-total_count.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+
 def graph_pie(dataframe,column,title):
     plt.figure()
     plt.rcParams['text.color'] = EDGE
@@ -226,20 +191,52 @@ def graph_pie(dataframe,column,title):
     filename = f'static/images/pie/{title}.png'
     plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
 
-
-def get_pie(dataframe,string,total_cases,title):
-    query = string
-    results = get_category_count(dataframe,query,total_cases)
-    query = re.sub('\d+','',query.lower())
-    graph_pie(results,query,title)
-    return results
-
-def get_bar(dataframe,string,total_cases,title):
-    query = string
-    results = get_category_count(dataframe,query,total_cases)
-    query = re.sub('\d+','',query.lower())
-    graph_bar(results,query,title)
-    return results
+def graph_query_frame(x_1,y_1,x_2,y_2,x_3,y_3,query,on_cases):
+    total_count = int(on_cases[on_cases['age_group'] == query]['total'])
+    plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax1 = plt.subplot()
+    ax1.set_facecolor(FACE)
+    rolling = y_1.rolling(window=7).mean()+y_2.rolling(window=7).mean()+y_3.rolling(window=7).mean()
+    total = y_1+y_2+y_3
+    ax1.plot(x_3,total,'.-',lw=2,color=colours3[1],alpha=0.5,label=f'{query} total')
+    ax1.plot(x_3,rolling,'.-',lw=2,color=colours3[0],label='rolling average')
+    ax1.set_xlabel('days',color=EDGE)
+    ax1.set_ylabel('count',color=EDGE)
+    ax1.set_title('',color=EDGE)
+    ax1.legend(loc='upper left',framealpha=0)
+    filename = f'static/images/graph/{query}-total_count.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+    total_count = int(on_cases[on_cases['age_group'] == query]['total'])
+    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax2 = plt.subplot()
+    ax2.set_facecolor(FACE)
+    ax2.plot(x_1,y_1,'.-',lw=2,color=MALE,alpha=0.9,label='male')
+    ax2.set_xlabel('days',color=EDGE)
+    ax2.set_ylabel('count',color=EDGE)
+    ax2.set_title('',color=EDGE)
+    ax2.legend(loc='upper left',framealpha=0)
+    filename = f'static/images/graph/{query}-total_count-male.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax3 = plt.subplot()
+    ax3.set_facecolor(FACE)
+    ax3.plot(x_2,y_2,'.-',lw=2,color=FEMALE,alpha=0.9,label='female')
+    ax3.set_xlabel('days',color=EDGE)
+    ax3.set_ylabel('count',color=EDGE)
+    ax3.set_title('',color=EDGE)
+    ax3.legend(loc='upper left',framealpha=0)
+    filename = f'static/images/graph/{query}-total_count-female.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
+    plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax4 = plt.subplot()
+    ax4.set_facecolor(FACE)
+    ax4.plot(x_3,y_3,'.-',lw=2,color=TRANSGENDER,alpha=0.9,label='transgender')
+    ax4.set_xlabel('days',color=EDGE)
+    ax4.set_ylabel('count',color=EDGE)
+    ax4  .set_title('',color=EDGE)
+    ax4.legend(loc='upper left',framealpha=0)
+    filename = f'static/images/graph/{query}-total_count-transgender.png'
+    plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
 
 
 ## download the ontario open data file and then update all associated database files and image files
@@ -406,7 +403,7 @@ def update_files(utc_today):
     plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
     ax1 = plt.subplot()
     ax1.set_facecolor(FACE)
-    ax1.plot(recent_cases_count['days'],recent_cases_count['count'],'.-',lw=2,alpha=0.5,color=colours3[8],label='count')
+    ax1.plot(recent_cases_count['days'],recent_cases_count['count'],'.-',lw=2,alpha=0.5,color=MALE,label='count')
     ax1.plot(recent_cases_count['days'],recent_cases_count['count'].rolling(window=4).mean(),'.-',lw=2,color=colours3[0],label='rolling average')
     ax1.set_title('')
     ax1.legend(loc='upper left',framealpha=0)
@@ -449,7 +446,7 @@ def update_files(utc_today):
     ax2 = plt.subplot()
     ax2.set_facecolor(FACE)
     #rolling = recent_cases_count['m_count'].rolling(window=4).mean()
-    ax2.plot(recent_cases_count['days'],recent_cases_count['m_count'],'.-',lw=2,color=colours3[2],alpha=0.9,label='male')
+    ax2.plot(recent_cases_count['days'],recent_cases_count['m_count'],'.-',lw=2,color=MALE,alpha=0.9,label='male')
     #ax2.plot(recent_cases_count['days'],rolling,'.-',lw=2,color=colours3[0],label='rolling average')
     ax2.set_xlabel('days',color=EDGE)
     ax2.set_ylabel('count',color=EDGE)
@@ -461,7 +458,7 @@ def update_files(utc_today):
     ax3 = plt.subplot()
     ax3.set_facecolor(FACE)
     #rolling = recent_cases_count['f_count'].rolling(window=4).mean()
-    ax3.plot(recent_cases_count['days'],recent_cases_count['f_count'],'.-',lw=2,color=colours3[6],alpha=0.9,label='female')
+    ax3.plot(recent_cases_count['days'],recent_cases_count['f_count'],'.-',lw=2,color=FEMALE,alpha=0.9,label='female')
     #ax3.plot(recent_cases_count['days'],rolling,'.-',lw=2,color=colours3[0],label='rolling average')
     ax3.set_xlabel('days',color=EDGE)
     ax3.set_ylabel('count',color=EDGE)
@@ -472,7 +469,7 @@ def update_files(utc_today):
     plt.figure(figsize=(10,3), dpi=80, facecolor=FACE,edgecolor=EDGE)
     ax4 = plt.subplot()
     ax4.set_facecolor(FACE)
-    ax4.plot(recent_cases_count['days'],recent_cases_count['t_count'],'.-',lw=2,color=colours3[4],alpha=0.9,label='transgender')
+    ax4.plot(recent_cases_count['days'],recent_cases_count['t_count'],'.-',lw=2,color=TRANSGENDER,alpha=0.9,label='transgender')
     ax4.set_xlabel('days',color=EDGE)
     ax4.set_ylabel('count',color=EDGE)
     ax4  .set_title('',color=EDGE)
@@ -547,18 +544,18 @@ def update_files(utc_today):
     plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
     ax1 = plt.subplot()
     ax1.set_facecolor(FACE)
-    ax1.barh(fatal['age_group'], fatal['fatal-f'], width, color=colours3[0])
-    ax1.barh(fatal['age_group'], fatal['fatal-m'], width, left=fatal['fatal-f'], color=colours3[5])
+    ax1.barh(fatal['age_group'], fatal['fatal-f'], width, color=FEMALE)
+    ax1.barh(fatal['age_group'], fatal['fatal-m'], width, left=fatal['fatal-f'], color=MALE)
     plt.gca().invert_yaxis()
     plt.legend(['Female', 'Male'])
-    filename = f'static/images/bar/fatalities.png'
+    filename = 'static/images/bar/fatalities.png'
     plt.savefig(filename, facecolor=FACE,edgecolor=EDGE)
 
     plt.figure(figsize=(10,10), dpi=80, facecolor=FACE,edgecolor=EDGE)
     ax1 = plt.subplot()
     ax1.set_facecolor(FACE)
-    ax1.barh(recent_cases_count['actual_date'], recent_cases_count['f_count'], width, color=colours3[0])
-    ax1.barh(recent_cases_count['actual_date'], recent_cases_count['m_count'], width, left=recent_cases_count['f_count'], color=colours3[5])
+    ax1.barh(recent_cases_count['actual_date'], recent_cases_count['f_count'], width, color=FEMALE)
+    ax1.barh(recent_cases_count['actual_date'], recent_cases_count['m_count'], width, left=recent_cases_count['f_count'], color=MALE)
     plt.gca().invert_yaxis()
     plt.legend(['Female', 'Male'])
     filename = 'static/images/bar/last16day-cases.png'

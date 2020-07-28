@@ -56,10 +56,8 @@ def utc_convert_batch(string):
 
 def utc_count(dataframe):
     count_16 = dataframe['utc'].values
-    a = []
-    for date_ in dataframe['utc'].unique():
-        count = int((count_16 == date_).sum())
-        a.append([date_,count])
+    unique_dates = dataframe['utc'].unique()
+    a = [[date_,int((count_16 == date_).sum())] for date_ in unique_dates]
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
     db['days'] = (db['days'] -16)*-1
@@ -69,25 +67,19 @@ def utc_count(dataframe):
 
 def case_age_gender(age,gender,on_db):
     results = on_db[(on_db['Client_Gender'] == gender) & (on_db['Age_Group'] == age)]['Case_Reported_Date'].values
-    a = []
-    for date_ in on_db['Accurate_Episode_Date'].unique():
-        count = int((results == date_).sum())
-        a.append([date_,count])
+    unique_dates = on_db['Accurate_Episode_Date'].unique()
+    a = [[date_,int((results == date_).sum())] for date_ in unique_dates]
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
-    #db = db[db['count'] != 0]
     db = db.dropna()
     return db
 
 def all_cases_count(on_db):
     results = on_db['Accurate_Episode_Date'].values
-    a = []
-    for date_ in on_db['Accurate_Episode_Date'].unique():
-        count = int((results == date_).sum())
-        a.append([date_,count])
+    unique_dates = on_db['Accurate_Episode_Date'].unique()
+    a = [[date_,int((results == date_).sum())] for date_ in unique_dates]
     db = pd.DataFrame(a,columns=['date','count'])
     db['days'] = range(db.shape[0])
-    #db = db[db['count'] != 0]
     db = db.dropna()
     return db
 
@@ -95,12 +87,7 @@ def f(x,y,z):
     return sum([x,y,z],1)/3
 
 def find_explode(lst,data):
-    a=[]
-    for i in lst:
-        if i == data:
-            a.append(0.1)
-        else:
-            a.append(0)
+    a = [0.1 if i == data else 0 for i in lst]
     return a
 
 def get_bar(dataframe,string,total_cases,title):

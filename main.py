@@ -17,7 +17,23 @@ import re
 
 theme = 'beige'
 month, day, weekday = co_main.get_weekday()
-yesterday = str(int(day)-1)
+
+today_other = date.today()
+first = today_other.replace(day=1)
+previous_month = first - timedelta(days=1)
+
+if (day == "01") and ((month == 'January') or (month == 'March') or (month == 'May') or (month == 'July') or (month == 'October') or (month == 'December')):
+    yesterday = '30'
+    last_month = previous_month.strftime('%B')
+elif (day == "01") and ((month == 'April') or (month == 'June') or (month == 'September') or (month == 'November') or (month == 'August') or (month == 'February')):
+    yesterday = '31'
+    last_month = previous_month.strftime('%B')
+elif (day == "01") and (month == 'March'):
+    yesterday = '28'
+    last_month = previous_month.strftime('%B')
+else:
+    yesterday = str(int(day)-1)
+    last_month = month
 
 on_db = pd.read_csv('datasets/2020/conposcovidloc.csv')
 on_age = pd.read_csv('datasets/2020/age_groups_ontario.csv')
@@ -74,7 +90,7 @@ def index():
     active = round(outcomes.at[2,'pop%']*100,2)
 
     return render_template('co-index.html',
-    day = day, weekday = weekday, month = month, yesterday = yesterday,
+    day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
     infected = infected, gender_groups = gender_groups,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
     theme = theme)

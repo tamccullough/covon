@@ -46,41 +46,12 @@ covon.config.from_mapping(
         DATABASE=os.path.join(covon.instance_path, 'main.sqlite'),
     )
 
-def get_value(connect,userid,string):
-    table = string+'_t'
-    select = f'SELECT {string} FROM {table} WHERE author_id = ? ORDER BY id DESC LIMIT 1'
-    value = connect.execute(select, (userid,)).fetchone()
-    return value[0]
-
-def insert_query(connect,userid,query,column):
-    if not query:
-        pass
-    else:
-        table = column+'_t'
-        query = "INSERT INTO "+table+f" (author_id, {column}) VALUES ({userid}, '{query}')"
-        connect.execute(query)
-        connect.commit()
-
 @covon.route('/index')
 def index():
 
     today = date.today().strftime('%Y-%m-%d')
-    check = open('previous.txt','r')
-    check = re.sub('\n','',check.read())
 
     utc_today = co_main.utc_convert(today)
-
-    if today != check:
-
-        # get the current file if it hasn't been updated today
-        co_main.update_files(utc_today)
-
-        return render_template('co-update.html',
-        day = day, weekday = weekday, month = month,
-        theme = theme)
-
-    connect = db.get_db()
-    error = None
 
     gender_groups = pd.read_csv('datasets/2020/gender_infected.csv')
     infected = pd.read_csv('datasets/2020/infected.csv')
@@ -95,15 +66,6 @@ def index():
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
     theme = theme)
 
-@covon.route('/update')
-def update():
-
-    connect = db.get_db()
-    error = None
-
-    return render_template('co-update.html',
-    day = day, weekday = weekday, month = month,
-    theme = theme)
 
 db.init_app(covon)
 

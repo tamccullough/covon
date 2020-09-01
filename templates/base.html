@@ -5,25 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="static/css/w3.css">
 <link rel="stylesheet" href="static/css/themes.css">
-<link rel="stylesheet" href="static/css/w3-colors-2019.css">
-<link rel="stylesheet" href="static/css/w3-colors-vivid.css">
-<link rel="stylesheet" href="static/css/team-colours.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <!-- link rel="stylesheet" href="static/css/font-awesome.min.css" -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+
 html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
-.cpl-eclipse-l
-{color:#fff;background-color:#565177}
-.cpl-eclipse-m
-{color:#fff;background-color:#7b75a1}
+
+table {
+  border-collapse: collapse;
+  table-layout:fixed;
+  /*border: 2px solid rgb(200,200,200);*/
+  /*letter-spacing: 4px;*/
+  margin: 0px auto;
+  width:100%;
+}
+
+tr {
+  line-height: 1px;
+  white-space: nowrap;
+}
+
+td, th {
+  /*border: 1px solid rgb(190,190,190);*/
+  padding: 5px 0px;
+}
+
+td {
+  text-align: left;
+}
+
+.button {
+  border:none;
+  padding:8px 0px;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  cursor:pointer;
+}
+
+caption {
+  padding: 10px;
+}
+
 </style>
 <body class=" {{ theme }}-theme">
 
 <!-- Top container -->
 <div class="w3-container">
-  <h4 class="w3-left {{ theme }}-text-title">Ontario Covid Cases 2020 - {{ weekday }} - {{ month }} {{ day }}</h4>
+  <h4 class="w3-left {{ theme }}-text-title">ON Covid Cases 2020 - {{ weekday }} - {{ month }} {{ day }}</h4>
 </div>
 
 {% block content %}{% endblock %}

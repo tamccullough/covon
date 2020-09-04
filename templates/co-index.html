@@ -5,25 +5,24 @@
 <div class="w3-main" style="height: 90%;">
 
 <!-- Header -->
-<header class="w3-container {{ theme }}-text-title">
+<header class="w3-container {{ theme }}-text-red">
   <h5><b> {{ total_cases }} Total Cases as of - {{ last_month }} {{ yesterday }}</b></h5>
 </header>
 
 <!-- last 16 days charts and graphs -->
-    <h4 class="w3-center {{ theme }}-text-title"> Last 16 Days</h4>
     <div class="w3-container w3-center">
     <!-- pie 1 -->
     <div class="w3-third">
       <div class="w3-container {{ theme }}-theme">
         <h4 class="{{ theme }}-text-title">Cases past 16 days</h4>
-        <a class="{{ theme }}-text-title">Gender Groups Positive with Covid 19 in the last 16 days</a>
+        <a class="{{ theme }}-text-yellow">Gender Groups Positive with Covid 19 in the last 16 days</a>
         <div><img src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
       </div>
     </div>
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Total Daily Cases (Last 16 Days)</h4>
-          <a class="{{ theme }}-text-title">Past 16 days of cases total daily count</a>
+          <a class="{{ theme }}-text-yellow">Past 16 days of cases total daily count</a>
           <div><img src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
         </div>
       </div>
@@ -41,14 +40,13 @@
 
 <!-- PIE charts relating to demographics -->
 
-    <h4 class="w3-center {{ theme }}-text-title"> Pie Charts</h4>
     <!-- pie charts -->
     <div class="w3-container w3-center">
     <!-- pie 1 -->
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Ontario Demographics</h4>
-          <a class="{{ theme }}-text-title">Percentage of age groups in Ontario</a>
+          <a class="{{ theme }}-text-yellow">Percentage of age groups in Ontario</a>
           <div><img src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
         </div>
       </div>
@@ -56,14 +54,14 @@
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Total Cases by Age Group</h4>
-          <a class="{{ theme }}-text-title">Percentage of age groups infected with Covid-19 in Ontario</a>
+          <a class="{{ theme }}-text-yellow">Percentage of age groups infected with Covid-19 in Ontario</a>
           <div><img src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
         </div>
       </div>
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Cases past 16 days</h4>
-          <a class="{{ theme }}-text-title">Representation of Age Groups testing positive with Covid 19 in the last 16 days</a>
+          <a class="{{ theme }}-text-yellow">Representation of Age Groups testing positive with Covid 19 in the last 16 days</a>
           <div><img src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
         </div>
       </div>
@@ -76,7 +74,7 @@
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Top 10 Areas of Infection</h4>
-          <a class="{{ theme }}-text-title">PHUs with Largest Covid 19 Caseload</a>
+          <a class="{{ theme }}-text-yellow">PHUs with Largest Covid 19 Caseload</a>
           <div><img src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
         </div>
       </div>
@@ -84,7 +82,7 @@
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Top 10 Areas of Infection - Last 16 Days</h4>
-          <a class="{{ theme }}-text-title">PHUs with current Covid 19 spikes</a>
+          <a class="{{ theme }}-text-yellow">PHUs with current Covid 19 spikes</a>
           <div><img src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
         </div>
       </div>
@@ -94,14 +92,13 @@
       <div class="w3-third">
         <div class="w3-container {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Fatalities by Age Group & Gender</h4>
-          <a class="{{ theme }}-text-title">Fatalities broken up to gender & age categories</a>
+          <a class="{{ theme }}-text-yellow">Fatalities broken up to gender & age categories</a>
           <div><img src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
         </div>
       </div>
       </div>
 
 <!-- charts & graphs -->
-<h4 class="w3-center {{ theme }}-text-title">Overall Total, Cumulative & Gender Percentage</h4>
 <div class="w3-container w3-center">
   <div class="w3-third w3-padding {{ theme }}-theme">
     <h4 class="{{ theme }}-text-title">Total Daily Cases</h4>
@@ -114,7 +111,7 @@
   <div class="w3-third w3-padding {{ theme }}-theme">
     <div>
     <h4 class="{{ theme }}-text-title">Gender Case Percentage</h4>
-    <a class="{{ theme }}-text-title">Percentage of infected by gender</a>
+    <a class="{{ theme }}-text-yellow">Percentage of infected by gender</a>
     </div>
     <div class="w3-half">
       <br>
@@ -259,7 +256,7 @@
       <div class="w3-half">
         <div class="w3-container w3-center {{ theme }}-theme">
           <h4 class="{{ theme }}-text-title">Total Outcomes</h4>
-          <a class="{{ theme }}-text-title">{{ resolved }}% Resolved, {{ active }}% Not Resolved & {{ fatal }}% Fatal</a>
+          <a class="{{ theme }}-text-yellow">{{ resolved }}% Resolved, {{ active }}% Not Resolved & {{ fatal }}% Fatal</a>
           <div class="w3-center">
             <table>
               {%for i in range(0,infected.shape[0])%}

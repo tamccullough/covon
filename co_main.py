@@ -101,7 +101,7 @@ def get_category_count(dataframe,column,total_cases):
     a=[]
     for query in dataframe[column].unique():
         count = dataframe[dataframe[column] == query].count()[0]
-        percentage = round(count / total_cases,2)
+        percentage = round(count / total_cases,3)
         a.append([query,count,percentage])
     string = column.lower()
     string = re.sub('\d+','',string)

@@ -53,16 +53,23 @@ def index():
 
     utc_today = co_main.utc_convert(today)
 
+    on_cases = pd.read_csv('datasets/2020/on_cases.csv')
+    on_cases = on_cases.dropna()
     gender_groups = pd.read_csv('datasets/2020/gender_infected.csv')
     infected = pd.read_csv('datasets/2020/infected.csv')
     outcomes = pd.read_csv('datasets/2020/outcomes.csv')
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
+    for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-o','fatal-u','fatal-total']:
+        on_cases[col] = on_cases[col].astype('int')
+
+    for col in ['case%','f%','m%']:
+        on_cases[col] = on_cases[col].apply(lambda x: str(round(x*100,3))+'%')
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    infected = infected, gender_groups = gender_groups,
+    infected = infected, gender_groups = gender_groups, on_cases = on_cases,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
     theme = theme)
 

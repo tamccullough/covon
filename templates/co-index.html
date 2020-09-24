@@ -98,6 +98,91 @@
       </div>
       </div>
 
+      <!-- Case Table -->
+      <div class="w3-container"><h4 class="{{ theme }}-text-title"> Total Ontario Cases</h4></div>
+        <div class="w3-container">
+          <!-- table header -->
+          <div class="w3-third">
+            <div>
+              <table class="{{ theme }}-text-yellow">
+                <tr>
+                  <td style="padding: 15px 5px;"><b> age </b></td>
+                  <td style="padding: 15px 5px;"><b> female</b></td>
+                  <td style="padding: 15px 5px;"><b> male</b></td>
+                  <td style="padding: 15px 5px;"><b> transgender</b></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+            <div class="w3-third">
+              <div>
+                <table class="{{ theme }}-text-yellow">
+                  <tr>
+                    <td style="padding: 15px 5px;"><b> total</b></td>
+                    <td style="padding: 15px 5px;"><b> case%</b></td>
+                    <td style="padding: 15px 5px;"><b> f%</b></td>
+                    <td style="padding: 15px 5px;"><b> m%</b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div>
+                <table class="{{ theme }}-text-yellow">
+                  <tr>
+                    <td style="padding: 15px 5px;"><b> fatal-f</b></td>
+                    <td style="padding: 15px 5px;"><b> fatal-m</b></td>
+                    <td style="padding: 15px 5px;"><b> fatal-t</b></td>
+                    <td style="padding: 15px 5px;"><b> fatal-total</b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+        </div>
+        <div class="w3-container">
+            <!-- table -->
+            {%for i in range(0,on_cases.shape[0])%}
+              <div class="w3-third">
+                <div>
+                  <table class="{{ theme }}-m">
+                    <tr>
+                      <td style="padding: 15px 5px;"> {{ on_cases.at[i,'age_group'] }}</td>
+                      <td style="padding: 15px 5px;"> {{ on_cases.at[i,'female'] }}</td>
+                      <td style="padding: 15px 5px;"> {{ on_cases.at[i,'male'] }}</td>
+                      <td style="padding: 15px 5px;"> {{ on_cases.at[i,'transgender'] }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="w3-third">
+                <div>
+                  <table class="{{ theme }}-blue">
+                    <tr>
+                      <td class="{{ theme }}-green"> {{ on_cases.at[i,'total'] }}</td>
+                      <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
+                      <td class="{{ theme }}-red"> {{ on_cases.at[i,'f%'] }}</td>
+                      <td style="padding: 15px 5px;">{{ on_cases.at[i,'m%'] }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="w3-third">
+                <div>
+                  <table class="{{ theme }}-blue">
+                    <tr>
+                      <td class="{{ theme }}-green"> {{ on_cases.at[i,'fatal-f'] }}</td>
+                      <td class="{{ theme }}-orange"> {{ on_cases.at[i,'fatal-m'] }}</td>
+                      <td class="{{ theme }}-red"> {{ on_cases.at[i,'fatal-t'] }}</td>
+                      <td style="padding: 15px 5px;"> {{ on_cases.at[i,'fatal-total'] }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              {%endfor%}
+        </div>
+        <!-- end of table -->
+
+
 <!-- charts & graphs -->
 <div class="w3-container w3-center">
   <div class="w3-third w3-padding {{ theme }}-theme">

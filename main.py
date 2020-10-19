@@ -61,7 +61,7 @@ def index():
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
-    for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-o','fatal-u','fatal-total']:
+    for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-u','fatal-total']:
         on_cases[col] = on_cases[col].astype('int')
 
     for col in ['case%','f%','m%']:

@@ -3,70 +3,33 @@
 <title>Ontario Covid 2020</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="static/css/w3.css">
 <link rel="stylesheet" href="static/css/themes.css">
+<link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-<!-- link rel="stylesheet" href="static/css/font-awesome.min.css" -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 
-html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
-
-table {
-  border-collapse: collapse;
-  table-layout:fixed;
-  /*border: 2px solid rgb(200,200,200);*/
-  /*letter-spacing: 4px;*/
-  margin: 0px auto;
-  width:100%;
-}
-
-tr {
-  line-height: 1px;
-  white-space: nowrap;
-}
-
-td, th {
-  border: 1px solid rgb(190,190,190);
-  padding: 5px 0px;
-}
-
-td {
-  text-align: left;
-}
-
-.button {
-  border:none;
-  padding:8px 0px;
-  text-decoration:none;
-  color:inherit;
-  background-color:inherit;
-  cursor:pointer;
-}
-
-caption {
-  padding: 10px;
-}
+html,h1,h4 {font-family: 'Lato', sans-serif;}
+h2,h3 {font-family: 'Roboto', sans-serif;}
+body,h5 {font-family: 'Raleway', sans-serif;}
 
 </style>
-<body class=" {{ theme }}-theme">
 
 <!-- Top container -->
-<div class="w3-container">
-  <h4 class="w3-left {{ theme }}-text-title">ON Covid Cases 2020 - {{ weekday }} - {{ month }} {{ day }}</h4>
-</div>
-
+<div class="container {{ theme }}">
 {% block content %}{% endblock %}
 
   <!-- Footer -->
-  <footer class="w3-container {{ theme }}-text-title">
-    <div>
-      <a> Todd McCullough</a>
-      <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-twitter"></i></a>
-      <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-github"></i></a>
-      <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-linkedin"></i></a>
-    </div>
+  <footer>
+    <h4 class="{{ theme }}-t-title"><b>Powered by Fifi</b></h4>
+    <a class=" {{ theme }}-t-title"><b>Todd McCullough</b></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-twitter"></i></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-github"></i></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-linkedin"></i></a>
   </footer>
 
   <!-- End page content -->

@@ -18,18 +18,18 @@ h2,h3 {font-family: 'Roboto', sans-serif;}
 body,h5 {font-family: 'Raleway', sans-serif;}
 
 </style>
-
+<body class=" {{ theme }}-colour">
 <!-- Top container -->
-<div class="container {{ theme }}">
+<div class="container">
 {% block content %}{% endblock %}
 
   <!-- Footer -->
-  <footer>
-    <h4 class="{{ theme }}-t-title"><b>Powered by Fifi</b></h4>
-    <a class=" {{ theme }}-t-title"><b>Todd McCullough</b></a>&nbsp;
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-twitter"></i></a>&nbsp;
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-github"></i></a>&nbsp;
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-t-title fa fa-linkedin"></i></a>
+  <footer style="border-radius: 0.5rem; padding: 20px 20px;">
+    <h4><b>Powered by Fifi</b></h4>
+    <a><b>Todd McCullough</b></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-twitter" style="color: white;"></i></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-github" style="color: white;"></i></a>&nbsp;
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-linkedin" style="color: white;"></i></a>
   </footer>
 
   <!-- End page content -->

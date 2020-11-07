@@ -1,84 +1,93 @@
 {% extends 'base.html' %}
 {% block content %}
-<body class=" {{ theme }}">
 <!-- !PAGE CONTENT! -->
 <!-- Header -->
+<div style="border-radius: 0.5rem; padding: 20px 20px;">
 <h2><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h2>
-<h3 class=" {{ theme }}-t-red"><b>{{ total_cases }}</b> + Cases | Female: {{ gender_groups.at[0,'pop%']*100 }}% | Male: {{ gender_groups.at[1,'pop%']*100 }}%</h3>
+<h3 class=" {{ theme }}-t-yellow"><b>{{ total_cases }}</b> + Cases | Female: {{ gender_groups.at[0,'pop%']*100 }}% | Male: {{ gender_groups.at[1,'pop%']*100 }}%</h3>
+</div>
+
 <!-- last 16 days charts and graphs -->
+<div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
 <h3 class="{{ theme }}-t-title">Cases past 16 days</h3>
     <div class="parent">
       <!-- pie 1 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Gender Groups Positive with Covid 19</a>
-        <div><img src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
       </div>
       <div class="box">
         <a class="{{ theme }}-t-red">Past 16 days of cases total daily count</a>
-        <div><img src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
+        <div><img class="center" src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
       <div class="box">
         <a class="{{ theme }}-t-red">Past 16 days of cases total death count</a>
-        <div><img src="static/images/graph/ontario-recent_daily_deaths_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
+        <div><img class="center" src="static/images/graph/ontario-recent_daily_deaths_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
     </div>
     <div class="parent">
       <!-- pie 2 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
-        <div><img src="static/images/graph/16-days-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/graph/16-days-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
       </div>
       <div class="box">
         <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
-        <div><img src="static/images/graph/16-days-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/graph/16-days-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
         </div>
       <div class="box">
         <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
-        <div><img src="static/images/graph/16-days-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/graph/16-days-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
       </div>
     </div>
+</div>
 
 <!-- PIE charts relating to demographics -->
+<div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
 <h3 class="{{ theme }}-t-title">Ontario Demographics</h3>
     <!-- pie charts -->
     <div class="parent">
     <!-- pie 1 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Percentage of age groups in Ontario</a>
-        <div><img src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
       </div>
       <!-- pie 2 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Percentage of Age Groups testing positive in Ontario</a>
-        <div><img src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
       </div>
       <div class="box">
         <a class="{{ theme }}-t-red">Age Groups testing positive in the last 16 days</a>
-        <div><img src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
       </div>
     </div>
+</div>
 
-<!-- Areas of infection -->
+<!-- Top Areas of infection -->
+<div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
 <h3 class="{{ theme }}-t-title">Public Health Unit Data</h3>
     <!-- bar charts -->
     <div class="parent">
       <!-- chart 1 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Top 10 PHUs with Largest Covid 19 Caseload</a>
-        <div><img src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 2 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Top 10 PHUs Over Current 16 Day Period</a>
-        <div><img src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 3 -->
       <div class="box">
         <a class="{{ theme }}-t-red">Fatalities by Age Group & Gender</a>
-        <div><img src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+        <div><img class="center" src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
     </div>
-    <!-- Case Table -->
+</div>
+<!-- Case Table -->
+<div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
 <h3 class="{{ theme }}-t-title">Total Ontario Cases</h3>
     <div class="parent">
           <!-- table header -->
@@ -161,18 +170,19 @@
           </div>
         </div>
         <!-- end of table -->
-
-
-<!-- charts & graphs -->
-<div class="parent">
-  <div class="box {{ theme }}-t">
-    <h4 class="{{ theme }}-t-title">Total Daily Cases</h4>
-    <img src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%">
-  </div>
-  <div class="box {{ theme }}-t">
-    <h4 class="{{ theme }}-t-title">Cumulative Total</h4>
-    <img src="static/images/graph/ontario-daily_cases-total_count.png" alt="Ontario Age Groups" style="max-width:95%">
-  </div>
 </div>
 
+<!-- charts & graphs -->
+<div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+  <div class="parent">
+    <div class="box {{ theme }}-t">
+      <h4 class="{{ theme }}-t-title">Total Daily Cases</h4>
+      <img class="center" src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%">
+    </div>
+    <div class="box {{ theme }}-t">
+      <h4 class="{{ theme }}-t-title">Cumulative Total</h4>
+      <img class="center" src="static/images/graph/ontario-daily_cases-total_count.png" alt="Ontario Age Groups" style="max-width:95%">
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -2,9 +2,20 @@
 {% block content %}
 <!-- !PAGE CONTENT! -->
 <!-- Header -->
-<div style="border-radius: 0.5rem; padding: 20px 20px;">
+<div class="menuDrop" style="border-radius: 0.5rem; padding: 20px 20px;">
 <h2><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h2>
 <h3 class=" {{ theme }}-t-yellow"><b>{{ total_cases }}</b> + Cases | Female: {{ gender_groups.at[0,'pop%']*100 }}% | Male: {{ gender_groups.at[1,'pop%']*100 }}%</h3>
+</div>
+
+<div class="menuHoriz" style="border-radius: 0.5rem; padding: 20px 20px;line-height: 0.25em;">
+<h1><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h1>
+<table>
+  <tr>
+    <td><h2 class=" {{ theme }}-t-yellow"><b>{{ total_cases }} Total + Cases</b></h2></td>
+    <td><h2 class=" {{ theme }}-t-yellow"><b>Female Cases: {{ gender_groups.at[0,'pop%']*100 }}%</h2></td>
+    <td><h2 class=" {{ theme }}-t-yellow"><b>Male Cases: {{ gender_groups.at[1,'pop%']*100 }}%</h2></td>
+  </tr>
+</table>
 </div>
 
 <!-- last 16 days charts and graphs -->
@@ -88,99 +99,87 @@
 </div>
 <!-- Case Table -->
 <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
-<h3 class="{{ theme }}-t-title">Total Ontario Cases</h3>
+  <h3 class="{{ theme }}-t-title">Total Ontario Cases</h3>
+  <div class="parent">
+    <!-- table header -->
+    <div class="boxtable {{ theme }}-t-title">
+      <table>
+        <tr>
+          <td><b>age </b></td>
+          <td><b>female</b></td>
+          <td><b>male</b></td>
+          <td><b>transgender</b></td>
+          </tr>
+        </table>
+      </div>
+      <div class="boxtable {{ theme }}-t-title">
+        <table>
+          <tr>
+            <td><b>total</b></td>
+            <td><b>case%</b></td>
+            <td><b>f%</b></td>
+            <td><b>m%</b></td>
+          </tr>
+        </table>
+      </div>
+      <div class="boxtable {{ theme }}-t-red">
+        <table>
+          <tr>
+            <td><b>fatal-f</b></td>
+            <td><b>fatal-m</b></td>
+            <td><b>fatal-t</b></td>
+            <td><b>fatal-total</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <div class="parent">
-          <!-- table header -->
-          <div class="child">
-            <div class="boxtable">
-              <table class="{{ theme }}-t-title">
-                <tr>
-                  <td><b> age </b></td>
-                  <td><b> female</b></td>
-                  <td><b> male</b></td>
-                  <td><b> transgender</b></td>
-                </tr>
-              </table>
-            </div>
-            <div class="boxtable">
-              <table class="{{ theme }}-t-title">
-                <tr>
-                  <td><b> total</b></td>
-                  <td><b> case%</b></td>
-                  <td><b> f%</b></td>
-                  <td><b> m%</b></td>
-                </tr>
-              </table>
-            </div>
-              <div class="boxtable">
-                  <table class="{{ theme }}-t-red">
-                    <tr>
-                      <td><b> fatal-f</b></td>
-                      <td><b> fatal-m</b></td>
-                      <td><b> fatal-t</b></td>
-                      <td><b> fatal-total</b></td>
-                    </tr>
-                  </table>
-              </div>
-          </div>
+      <!-- table header -->
+      {%for i in range(0,on_cases.shape[0])%}
+      <div class="boxtable {{ theme }}-t-title">
+        <table>
+          <tr>
+            <td> {{ on_cases.at[i,'age_group'] }}</td>
+            <td> {{ on_cases.at[i,'female'] }}</td>
+            <td> {{ on_cases.at[i,'male'] }}</td>
+            <td> {{ on_cases.at[i,'transgender'] }}</td>
+            </tr>
+          </table>
         </div>
-
-        <div class="parent {{ theme }}-light">
-          <div class="child">
-          <!-- table -->
-
-            {%for i in range(0,on_cases.shape[0])%}
-              <div class="boxtable">
-                <div>
-                  <table>
-                    <tr>
-                      <td> {{ on_cases.at[i,'age_group'] }}</td>
-                      <td> {{ on_cases.at[i,'female'] }}</td>
-                      <td> {{ on_cases.at[i,'male'] }}</td>
-                      <td> {{ on_cases.at[i,'transgender'] }}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <div class="boxtable">
-                <div>
-                  <table>
-                    <tr>
-                      <td class="{{ theme }}-green"> {{ on_cases.at[i,'total'] }}</td>
-                      <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
-                      <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
-                      <td class="{{ theme }}-yellow">{{ on_cases.at[i,'m%'] }}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <div class="boxtable">
-                <div>
-                  <table>
-                    <tr>
-                      <td class="{{ theme }}-red"> {{ on_cases.at[i,'fatal-f'] }}</td>
-                      <td class="{{ theme }}-orange"> {{ on_cases.at[i,'fatal-m'] }}</td>
-                      <td class="{{ theme }}-red"> {{ on_cases.at[i,'fatal-t'] }}</td>
-                      <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-total'] }}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              {%endfor%}
-          </div>
+        <div class="boxtable {{ theme }}-t-title">
+          <table>
+            <tr>
+              <td class="{{ theme }}-green"> {{ on_cases.at[i,'total'] }}</td>
+              <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
+              <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
+              <td class="{{ theme }}-yellow">{{ on_cases.at[i,'m%'] }}</td>
+            </tr>
+          </table>
         </div>
-        <!-- end of table -->
+        <div class="boxtable {{ theme }}-t-red">
+          <table>
+            <tr>
+              <td class="{{ theme }}-red"> {{ on_cases.at[i,'fatal-f'] }}</td>
+              <td class="{{ theme }}-orange"> {{ on_cases.at[i,'fatal-m'] }}</td>
+              <td class="{{ theme }}-red"> {{ on_cases.at[i,'fatal-t'] }}</td>
+              <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-total'] }}</td>
+            </tr>
+          </table>
+        </div>
+        {%endfor%}
+      </div>
+      <!-- end of table -->
 </div>
 
 <!-- charts & graphs -->
 <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
   <div class="parent">
     <div class="box {{ theme }}-t">
-      <h4 class="{{ theme }}-t-title">Total Daily Cases</h4>
+      <h3 class="{{ theme }}-t-title">Total Daily Cases</h3>
       <img class="center" src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%">
     </div>
     <div class="box {{ theme }}-t">
-      <h4 class="{{ theme }}-t-title">Cumulative Total</h4>
+      <h3 class="{{ theme }}-t-title">Cumulative Total</h3>
       <img class="center" src="static/images/graph/ontario-daily_cases-total_count.png" alt="Ontario Age Groups" style="max-width:95%">
     </div>
   </div>

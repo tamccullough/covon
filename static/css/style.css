@@ -55,18 +55,12 @@ img {
 
 .menuDrop{
   display: none;
-  width: 20%;
-  height: 50px;
-  color: white;
-  background: black;
+  width: 100%;
 }
 
 .menuHoriz{
   display:block;
-  width: 20%;
-  height: 50px;
-  color: black;
-  background: white;
+  width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {

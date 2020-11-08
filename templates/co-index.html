@@ -3,24 +3,24 @@
 <!-- !PAGE CONTENT! -->
 <!-- Header -->
 <div class="menuDrop" style="border-radius: 0.5rem; padding: 20px 5px;">
-<h2><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h2>
-<h3 class=" {{ theme }}-t-yellow"><b>{{ total_cases }}</b> + Cases | Female: {{ gender_groups.at[0,'pop%']*100 }}% | Male: {{ gender_groups.at[1,'pop%']*100 }}%</h3>
+<h2><b>ON, CAN Covid-19</b> - As of {{ last_month[0:3] }} {{ yesterday }}</h2>
+<h3 class="{{ theme }}-t-yellow"><b class="bold">{{ total_cases }}</b> Cases | Female: <b>{{ gender_groups.at[0,'pop%'] }}%</b> | Male: <b>{{ gender_groups.at[1,'pop%'] }}%</b></h3>
 </div>
 
 <div class="menuHoriz" style="border-radius: 0.5rem; padding: 20px 20px;line-height: 0.25em;">
-<h1><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h1>
+<h1><b>ON, CAN Covid-19</b> - As of {{ last_month[0:3] }} {{ yesterday }}</h1>
 <table>
   <tr>
-    <td><h2 class=" {{ theme }}-t-yellow"><b>{{ total_cases }} Total + Cases</b></h2></td>
-    <td><h2 class=" {{ theme }}-t-yellow"><b>Female Cases: {{ gender_groups.at[0,'pop%']*100 }}%</h2></td>
-    <td><h2 class=" {{ theme }}-t-yellow"><b>Male Cases: {{ gender_groups.at[1,'pop%']*100 }}%</h2></td>
+    <td><h2 class=" {{ theme }}-t-yellow"><b>{{ total_cases }}</b> Total + Cases</h2></td>
+    <td><h2 class=" {{ theme }}-t-yellow">Female Cases: <b>{{ gender_groups.at[0,'pop%'] }}%</b></h2></td>
+    <td><h2 class=" {{ theme }}-t-yellow">Male Cases: <b>{{ gender_groups.at[1,'pop%'] }}%</b></h2></td>
   </tr>
 </table>
 </div>
 
 <!-- last 16 days charts and graphs -->
 <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-<h3 class="{{ theme }}-t-title">Cases past 16 days</h3>
+<h3 class="{{ theme }}-t-title">Cases Over the Last 16 Days</h3>
     <div class="parent">
       <!-- pie 1 -->
       <div class="box">

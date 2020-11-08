@@ -15,7 +15,7 @@ import pandas as pd
 import re
 
 
-theme = 'bland'
+theme = 'mono'
 month, day, weekday = co_main.get_weekday()
 
 today_other = date.today()

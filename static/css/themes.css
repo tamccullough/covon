@@ -170,11 +170,11 @@
 .neon-hover-t:hover {color:#fce5cd !important;}
 .neon-hover-border:hover {border-color:#fce5cd !important;}
 
-.mono {color:#f0f0f0 !important; background-color:#83809c !important;}
-.mono-light {color:#504f57 !important; background-color:#d1cfe8 !important;}
-.mono-dark {color:#ffffff !important; background-color:#767487 !important;}
+.mono {color:#f0f0f0 !important; background-color:#54545c !important;}
+.mono-light {color:#504f57 !important; background-color:#797985 !important;}
+.mono-dark {color:#ffffff !important; background-color:#414147 !important;}
 .mono-action {color:#ffffff !important; background-color:#40baed !important;}
-.mono-colour {color:#ffffff !important; background-color:#2d62b5 !important;}
+.mono-colour {color:#ffffff !important; background-color:#322f33 !important;}
 .mono-t {color:#ffffff !important;}
 .mono-t-title {color:#132a4f !important;}
 .mono-t-blue {color:#177de3 !important;}

@@ -46,7 +46,7 @@ covon.config.from_mapping(
         DATABASE=os.path.join(covon.instance_path, 'main.sqlite'),
     )
 
-@covon.route('/index')
+@covon.route('/')
 def index():
 
     today = date.today().strftime('%Y-%m-%d')

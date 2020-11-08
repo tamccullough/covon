@@ -2,7 +2,7 @@
 {% block content %}
 <!-- !PAGE CONTENT! -->
 <!-- Header -->
-<div class="menuDrop" style="border-radius: 0.5rem; padding: 20px 20px;">
+<div class="menuDrop" style="border-radius: 0.5rem; padding: 20px 5px;">
 <h2><b>ON, CAN Covid-19 - As of {{ last_month[0:3] }} {{ yesterday }}</b></h2>
 <h3 class=" {{ theme }}-t-yellow"><b>{{ total_cases }}</b> + Cases | Female: {{ gender_groups.at[0,'pop%']*100 }}% | Male: {{ gender_groups.at[1,'pop%']*100 }}%</h3>
 </div>

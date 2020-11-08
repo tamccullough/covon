@@ -24,30 +24,30 @@
     <div class="parent">
       <!-- pie 1 -->
       <div class="box">
-        <a class="{{ theme }}-t-red">Gender Groups Positive with Covid 19</a>
+        <a class="{{ theme }}-t-yellow">Gender Groups Positive with Covid 19</a>
         <div><img class="center" src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
       </div>
       <div class="box">
-        <a class="{{ theme }}-t-red">Past 16 days of cases total daily count</a>
+        <a class="{{ theme }}-t-yellow">Past 16 days of cases total daily count</a>
         <div><img class="center" src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
       <div class="box">
-        <a class="{{ theme }}-t-red">Past 16 days of cases total death count</a>
+        <a class="{{ theme }}-t-yellow">Past 16 days of cases total death count</a>
         <div><img class="center" src="static/images/graph/ontario-recent_daily_deaths_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
     </div>
     <div class="parent">
       <!-- pie 2 -->
       <div class="box">
-        <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
+        <a class="{{ theme }}-t-yellow">Daily Cases (Last 16 Days) Gender Split</a>
         <div><img class="center" src="static/images/graph/16-days-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
       </div>
       <div class="box">
-        <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
+        <a class="{{ theme }}-t-yellow">Daily Cases (Last 16 Days) Gender Split</a>
         <div><img class="center" src="static/images/graph/16-days-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
         </div>
       <div class="box">
-        <a class="{{ theme }}-t-red">Daily Cases (Last 16 Days) Gender Split</a>
+        <a class="{{ theme }}-t-yellow">Daily Cases (Last 16 Days) Gender Split</a>
         <div><img class="center" src="static/images/graph/16-days-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
       </div>
     </div>
@@ -82,17 +82,17 @@
     <div class="parent">
       <!-- chart 1 -->
       <div class="box">
-        <a class="{{ theme }}-t-red">Top 10 PHUs with Largest Covid 19 Caseload</a>
+        <a class="{{ theme }}-t-yellow">Top 10 PHUs with Largest Covid 19 Caseload</a>
         <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 2 -->
       <div class="box">
-        <a class="{{ theme }}-t-red">Top 10 PHUs Over Current 16 Day Period</a>
+        <a class="{{ theme }}-t-yellow">Top 10 PHUs Over Current 16 Day Period</a>
         <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 3 -->
       <div class="box">
-        <a class="{{ theme }}-t-red">Fatalities by Age Group & Gender</a>
+        <a class="{{ theme }}-t-yellow">Fatalities by Age Group & Gender</a>
         <div><img class="center" src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
     </div>
@@ -102,7 +102,7 @@
   <h3 class="{{ theme }}-t-title">Total Ontario Cases</h3>
   <div class="parent">
     <!-- table header -->
-    <div class="boxtable {{ theme }}-t-title">
+    <div class="boxtable {{ theme }}-t">
       <table>
         <tr>
           <td><b>age </b></td>
@@ -112,7 +112,7 @@
           </tr>
         </table>
       </div>
-      <div class="boxtable {{ theme }}-t-title">
+      <div class="boxtable {{ theme }}-t">
         <table>
           <tr>
             <td><b>total</b></td>
@@ -122,7 +122,7 @@
           </tr>
         </table>
       </div>
-      <div class="boxtable {{ theme }}-t-red">
+      <div class="boxtable {{ theme }}-t">
         <table>
           <tr>
             <td><b>fatal-f</b></td>
@@ -136,7 +136,7 @@
     <div class="parent">
       <!-- table header -->
       {%for i in range(0,on_cases.shape[0])%}
-      <div class="boxtable {{ theme }}-t-title">
+      <div class="boxtable {{ theme }}-t">
         <table>
           <tr>
             <td> {{ on_cases.at[i,'age_group'] }}</td>
@@ -146,7 +146,7 @@
             </tr>
           </table>
         </div>
-        <div class="boxtable {{ theme }}-t-title">
+        <div class="boxtable {{ theme }}-t">
           <table>
             <tr>
               <td class="{{ theme }}-green"> {{ on_cases.at[i,'total'] }}</td>

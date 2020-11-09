@@ -25,15 +25,18 @@
     <div class="parent">
       <!-- pie 1 -->
       <div class="box">
-        <a class="{{ theme }}-t-blue">Gender Groups Positive with Covid 19</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Gender Groups </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Positive with Covid 19</a>
         <div><img class="center" src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
       </div>
       <div class="box">
-        <a class="{{ theme }}-t-blue">Past 16 days of cases total daily count</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Total Daily Count </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Past 16 Days</a>
         <div><img class="center" src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
       <div class="box">
-        <a class="{{ theme }}-t-blue">Past 16 days of cases total death count</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Total Daily Deaths </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Past 16 Days</a>
         <div><img class="center" src="static/images/graph/ontario-recent_daily_deaths_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
       </div>
     </div>
@@ -83,17 +86,20 @@
     <div class="parent">
       <!-- chart 1 -->
       <div class="box">
-        <a class="{{ theme }}-t-blue">Top 10 PHUs with Largest Covid 19 Caseload</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Largest Covid 19 Caseload</a>
         <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 2 -->
       <div class="box">
-        <a class="{{ theme }}-t-blue">Top 10 PHUs Over Current 16 Day Period</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Current 16 Day Period</a>
         <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
       <!-- chart 3 -->
       <div class="box">
-        <a class="{{ theme }}-t-blue">Fatalities by Age Group & Gender</a>
+        <a class="{{ theme }}-t-blue" style="display: inline;">Fatalities  / </a>
+        <a class="{{ theme }}-t-yellow" style="display: inline;">Age Group & Gender</a>
         <div><img class="center" src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
       </div>
     </div>
@@ -173,10 +179,43 @@
 </div>
 
 <!-- charts & graphs -->
-<div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-  <div class="parent">
-      <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-      <div><img class="center" src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%"></div>
+<div class="menuHoriz">
+  <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+    <h3 class="{{ theme }}-t-blue">Total Daily Cases</h3>
+    <div class="parent">
+        <div class="center">
+          <img src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Total Daily Cases" style="max-width:95%">
+        </div>
+    </div>
+  </div>
+
+  <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+    <h3 class="{{ theme }}-t-blue">Total Daily Deaths</h3>
+    <div class="parent">
+        <div class="center">
+          <img src="static/images/graph/ontario-daily_deaths_count.png" alt="Ontario Total Daily Deaths" style="max-width:95%">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="menuDrop">
+  <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+    <h3 class="{{ theme }}-t-blue">Total Daily Cases</h3>
+    <div class="parent">
+        <div class="center">
+          <img src="static/images/graph/ontario-daily_cases_count_s.png" alt="Ontario Total Daily Cases" style="max-width:95%">
+        </div>
+    </div>
+  </div>
+
+  <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+    <h3 class="{{ theme }}-t-blue">Total Daily Deaths</h3>
+    <div class="parent">
+        <div class="center">
+          <img src="static/images/graph/ontario-daily_deaths_count_s.png" alt="Ontario Total Daily Deaths" style="max-width:95%">
+        </div>
+    </div>
   </div>
 </div>
 {% endblock %}

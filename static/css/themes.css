@@ -2,30 +2,6 @@
 .text-black {color:#000000 !important;}
 .text-white {color:#ffffff !important;}
 
-.beige {color:#ffcc9e !important; background-color:#c68642 !important;}
-.beige-light {color:#8d5524 !important; background-color:#ffe2bc !important;}
-.beige-dark {color:#ffe2bc !important; background-color: 	#9e6b34 !important;}
-.beige-action {color:#ffffff !important; background-color:#2986ff !important;}
-.beige-colour {color:#ffffff !important; background-color:#8a5476 !important;}
-.beige-t {color:#303030 !important;}
-.beige-t-title {color:#403a37 !important;}
-.beige-t-blue {color:#99c5ff !important;}
-.beige-t-green {color:#30f24a !important;}
-.beige-t-red {color:#d9043a !important;}
-.beige-t-yellow {color:#f2e013 !important;}
-.beige-blue {color:#ffe2bc !important; background-color:#006eff !important;}
-.beige-green {color:#8d5524 !important; background-color:#30f24a !important;}
-.beige-red {color:#ffe2bc !important; background-color:#d9043a !important;}
-.beige-orange {color:#ffe2bc !important; background-color:#f07924 !important;}
-.beige-yellow {color:#6d5b6e !important; background-color:#f2e013 !important;}
-.beige-button-d {color:#ffe2bc !important;}
-.beige-button-l {color:#5b3666 !important;}
-.beige-t-poster{font-size:250px!important;}
-.beige-border {border-color:#fce5cd !important;}
-.beige-hover:hover {color:#000 !important; background-color:#fce5cd !important;}
-.beige-hover-t:hover {color:#fce5cd !important;}
-.beige-hover-border:hover {border-color:#fce5cd !important;}
-
 .bland {color:#053157 !important; background-color:#e8e8e8 !important;}
 .bland-light {color:#001e4f !important; background-color:#ffffff !important;}
 .bland-dark {color:#ffffff !important; background-color:#6d98d1 !important;}
@@ -97,6 +73,30 @@
 .cappucino-hover:hover {color:#000 !important; background-color:#fce5cd !important;}
 .cappucino-hover-t:hover {color:#fce5cd !important;}
 .cappucino-hover-border:hover {border-color:#fce5cd !important;}
+
+.cupcake {color:#ffcc9e !important; background-color:#c68642 !important;}
+.cupcake-light {color:#8d5524 !important; background-color:#ffe2bc !important;}
+.cupcake-dark {color:#ffe2bc !important; background-color: 	#9e6b34 !important;}
+.cupcake-action {color:#ffffff !important; background-color:#2986ff !important;}
+.cupcake-colour {color:#ffffff !important; background-color:#8a5476 !important;}
+.cupcake-t {color:#303030 !important;}
+.cupcake-t-title {color:#403a37 !important;}
+.cupcake-t-blue {color:#99c5ff !important;}
+.cupcake-t-green {color:#30f24a !important;}
+.cupcake-t-red {color:#d9043a !important;}
+.cupcake-t-yellow {color:#f2e013 !important;}
+.cupcake-blue {color:#ffe2bc !important; background-color:#006eff !important;}
+.cupcake-green {color:#8d5524 !important; background-color:#30f24a !important;}
+.cupcake-red {color:#ffe2bc !important; background-color:#d9043a !important;}
+.cupcake-orange {color:#ffe2bc !important; background-color:#f07924 !important;}
+.cupcake-yellow {color:#6d5b6e !important; background-color:#f2e013 !important;}
+.cupcake-button-d {color:#ffe2bc !important;}
+.cupcake-button-l {color:#5b3666 !important;}
+.cupcake-t-poster{font-size:250px!important;}
+.cupcake-border {border-color:#fce5cd !important;}
+.cupcake-hover:hover {color:#000 !important; background-color:#fce5cd !important;}
+.cupcake-hover-t:hover {color:#fce5cd !important;}
+.cupcake-hover-border:hover {border-color:#fce5cd !important;}
 
 .dark {color:#a4c2db !important; background-color:#0d141a !important;}
 .dark-light {color:#70a3cc !important; background-color:#22313d !important;}

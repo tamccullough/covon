@@ -56,6 +56,7 @@ def index():
     on_cases = pd.read_csv('datasets/2020/on_cases.csv')
     on_cases = on_cases.dropna()
     gender_groups = pd.read_csv('datasets/2020/gender_infected.csv')
+    gender_groups['pop%'] = gender_groups['pop%'].apply(lambda x: round(x,4))
     infected = pd.read_csv('datasets/2020/infected.csv')
     outcomes = pd.read_csv('datasets/2020/outcomes.csv')
     resolved = round(outcomes.at[0,'pop%']*100,2)

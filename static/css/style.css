@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 table {
   border-collapse: collapse;
   table-layout:fixed;
@@ -53,6 +59,58 @@ img {
   max-height:300px;
 }
 
+.form {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  padding-top: 15px;
+}
+
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid white;
+  transform: translate(-100%);
+  transition: all 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  font-size: 0.8rem;
+  transform: translateY(-150%);
+}
+
+.form input:focus + .label-name::after,
+.form input:valid + .lable-name::after {
+  transform: translateX(0%);
+}
+
 .mobile{
   display: none;
   width: 100%;
@@ -78,18 +136,18 @@ img {
 }
 
 .page80 {
-  min-width: 400px;
-  max-width: 65%;
-  height: 95%;
+  width: 65%;
   margin: 0 auto;
 }
 
 .page60 {
-  min-width: 400px;
-  max-width: 45%;
-  height: 95%;
-  min-height: 500px;
+  width: 45%;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1325px) {
+  .page80{ width: 98%; }
+  .page60{ width: 98%; }
 }
 
 .parent {

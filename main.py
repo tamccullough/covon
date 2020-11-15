@@ -70,7 +70,7 @@ def index():
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    infected = infected, gender_groups = gender_groups, on_cases = on_cases,
+    infected = infected, outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
     theme = theme)
 

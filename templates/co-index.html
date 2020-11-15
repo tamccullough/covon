@@ -7,7 +7,16 @@
     <!-- Header -->
     <div class="mobile" style="border-radius: 0.5rem;">
       <h2 style="display: inline;"><b>ON, CAN Covid-19</b></h2><h2 class="{{ theme }}-t-red" style="display: inline;"> - As of {{ last_month[0:3] }} {{ yesterday }}</h2>
-      <h3 class="{{ theme }}-t-blue"><b class="bold">{{ total_cases }}</b> Cases | Female: <b>{{ gender_groups.at[0,'pop%'] }}%</b> | Male: <b>{{ gender_groups.at[1,'pop%'] }}%</b></h3>
+      <table>
+        <tr>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t-red" style="display: inline;"> Total Cases</h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h3></td>
+        </tr>
+        <tr>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
+        </tr>
+      </table>
     </div>
 
     <div class="desktop" style="border-radius: 0.5rem; line-height: 0.25em;">
@@ -16,8 +25,9 @@
       <table>
         <tr>
           <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h2><h2 class="{{ theme }}-t-red" style="display: inline;"> Total Cases</h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Female Cases: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ gender_groups.at[0,'pop%'] }}%</b></h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Male Cases: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ gender_groups.at[1,'pop%'] }}%</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
         </tr>
       </table>
     </div>

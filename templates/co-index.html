@@ -6,28 +6,31 @@
   <div class="spacer"></div>
     <!-- Header -->
     <div class="mobile" style="border-radius: 0.5rem;">
-      <h2 style="display: inline;"><b>ON, CAN Covid-19</b></h2><h2 class="{{ theme }}-t-red" style="display: inline;"> - As of {{ last_month[0:3] }} {{ yesterday }}</h2>
+      <h2 style="display: inline;"><b>ON,CA</b> Covid19</h2>
+      <h2 class="{{ theme }}-t-orange" style="display: inline;"> As of {{ last_month[0:3] }} {{ yesterday }}</h2>
       <table>
         <tr>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t-red" style="display: inline;"> Total Cases</h3></td>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t-orange" style="display: inline;"> Total Cases</h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h3></td>
         </tr>
         <tr>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
+          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
         </tr>
       </table>
     </div>
 
     <div class="desktop" style="border-radius: 0.5rem; line-height: 0.25em;">
-      <h1 style="display: inline;"><b>ON, CAN Covid-19</b></h1><h1 class="{{ theme }}-t-red" style="display: inline;"> - As of {{ last_month[0:3] }} {{ yesterday }}</h1>
+      <h1 class="{{ theme }}-t-orange" style="display: inline;"><b>ON, CAN</b></h1>
+      <h1 style="display: inline;"> - Covid-19 - </h1>
+      <h1 class="{{ theme }}-t-orange" style="display: inline;"> As of {{ last_month[0:3] }} {{ yesterday }}</h1>
       <div class="spacer"></div><div class="spacer"></div>
       <table>
         <tr>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h2><h2 class="{{ theme }}-t-red" style="display: inline;"> Total Cases</h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-red" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h2><h2 class="{{ theme }}-t-orange" style="display: inline;"> Total Cases</h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
         </tr>
       </table>
     </div>
@@ -81,16 +84,16 @@
         <div class="parent">
         <!-- pie 1 -->
           <div class="box">
-            <a class="{{ theme }}-t-red">Age Groups in Ontario</a>
+            <a class="{{ theme }}-t-orange">Age Groups in Ontario</a>
             <div><img class="center" src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
           </div>
           <!-- pie 2 -->
           <div class="box">
-            <a class="{{ theme }}-t-red">Percentage Positive in Ontario</a>
+            <a class="{{ theme }}-t-orange">Percentage Positive in Ontario</a>
             <div><img class="center" src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
           </div>
           <div class="box">
-            <a class="{{ theme }}-t-red">Positive in the last 16 days</a>
+            <a class="{{ theme }}-t-orange">Positive in the last 16 days</a>
             <div><img class="center" src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
           </div>
         </div>
@@ -191,7 +194,7 @@
     <!-- charts & graphs -->
     <div class="mobile">
       <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <h3 class="{{ theme }}-t-blue">Total Daily Cases</h3>
+        <h3 class="{{ theme }}-t-orange">Total Daily Cases</h3>
         <div class="parent">
             <div class="center">
               <img src="static/images/graph/ontario-daily_cases_count_s.png" alt="Ontario Total Daily Cases" style="max-width:95%">
@@ -200,7 +203,7 @@
       </div>
 
       <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <h3 class="{{ theme }}-t-blue">Total Daily Deaths</h3>
+        <h3 class="{{ theme }}-t-orange">Total Daily Deaths</h3>
         <div class="parent">
             <div class="center">
               <img src="static/images/graph/ontario-daily_deaths_count_s.png" alt="Ontario Total Daily Deaths" style="max-width:95%">
@@ -211,7 +214,7 @@
 
     <div class="desktop">
       <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <h3 class="{{ theme }}-t-blue">Total Daily Cases</h3>
+        <h3 class="{{ theme }}-t-orange">Total Daily Cases</h3>
         <div class="parent">
             <div class="center">
               <img src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Total Daily Cases" style="max-width:95%">
@@ -220,7 +223,7 @@
       </div>
 
       <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <h3 class="{{ theme }}-t-blue">Total Daily Deaths</h3>
+        <h3 class="{{ theme }}-t-orange">Total Daily Deaths</h3>
         <div class="parent">
             <div class="center">
               <img src="static/images/graph/ontario-daily_deaths_count.png" alt="Ontario Total Daily Deaths" style="max-width:95%">

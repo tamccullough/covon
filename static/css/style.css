@@ -274,6 +274,10 @@ td {
   text-align: left;
 }
 
+.tdcenter {
+  text-align: center;
+}
+
 /* nav */
 
 /*nav {

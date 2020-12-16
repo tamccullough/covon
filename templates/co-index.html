@@ -5,17 +5,25 @@
   <div class="page80">
   <div class="spacer"></div>
     <!-- Header -->
-    <div class="mobile" style="border-radius: 0.5rem;">
+    <div class="mobile textcenter" style="border-radius: 0.5rem;">
       <h2 style="display: inline;"><b>ON,CA</b> Covid19</h2>
       <h2 class="{{ theme }}-t-orange" style="display: inline;"> As of {{ last_month[0:3] }} {{ yesterday }}</h2>
       <table>
         <tr>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t-orange" style="display: inline;"> Total Cases</h3></td>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t-orange" style="display: inline;"> Total Cases</h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
         </tr>
         <tr>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
-          <td><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1].values[0][:-1] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3].values[0][:-1] }}</b></h3></td>
+        </tr>
+        <tr>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h3></td>
+        </tr>
+        <tr>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[4].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[5].values[0][:-1] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[6].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[7].values[0][:-1] }}</b></h3></td>
         </tr>
       </table>
     </div>
@@ -28,12 +36,21 @@
       <table>
         <tr>
           <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h2><h2 class="{{ theme }}-t-orange" style="display: inline;"> Total Cases</h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[0,'count'] }}</b></h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h2></td>
+        </tr>
+        <tr>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1].values[0][:-1] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3].values[0][:-1] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[4].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[5].values[0][:-1] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[6].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[7].values[0][:-1] }}</b></h2></td>
         </tr>
       </table>
     </div>
+  </div>
+  <div class="spacer">
+
   </div>
 </div>
 

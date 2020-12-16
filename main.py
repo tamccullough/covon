@@ -37,6 +37,9 @@ else:
 
 on_db = pd.read_csv('datasets/2020/conposcovidloc.csv')
 on_age = pd.read_csv('datasets/2020/age_groups_ontario.csv')
+change = pd.read_csv('datasets/2020/change.csv')
+
+change = change.astype('str')
 
 total_cases = on_db['Accurate_Episode_Date'].count()
 
@@ -71,7 +74,7 @@ def index():
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
     infected = infected, outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases,
-    resolved = resolved, fatal = fatal, active = active, total_cases = total_cases,
+    resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
     theme = theme)
 
 

@@ -39,8 +39,6 @@ on_db = pd.read_csv('datasets/2020/conposcovidloc.csv')
 on_age = pd.read_csv('datasets/2020/age_groups_ontario.csv')
 change = pd.read_csv('datasets/2020/change.csv')
 
-change = change.astype('str')
-
 total_cases = on_db['Accurate_Episode_Date'].count()
 
 covon = Flask(__name__, instance_relative_config=True)

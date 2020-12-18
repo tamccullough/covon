@@ -16,16 +16,16 @@
           <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
         </tr>
         <tr>
-          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1].values[0][:-1] }}</b></h3></td>
-          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3].values[0][:-1] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[0,'ratio'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[1,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1,'ratio'] }}</b></h3></td>
         </tr>
         <tr>
           <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
           <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h3></td>
         </tr>
         <tr>
-          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[4].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[5].values[0][:-1] }}</b></h3></td>
-          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[6].values[0][:-2] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[7].values[0][:-1] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[2,'ratio'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[3,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3,'ratio'] }}</b></h3></td>
         </tr>
       </table>
     </div>
@@ -44,10 +44,10 @@
           <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h2></td>
         </tr>
         <tr>
-          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1].values[0][:-1] }}</b></h2></td>
-          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3].values[0][:-1] }}</b></h2></td>
-          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[4].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[5].values[0][:-1] }}</b></h2></td>
-          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[6].values[0][:-2] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[7].values[0][:-1] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[0,'ratio'] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[1,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1,'ratio'] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[2,'ratio'] }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[3,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3,'ratio'] }}</b></h2></td>
         </tr>
       </table>
     </div>

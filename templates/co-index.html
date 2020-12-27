@@ -44,10 +44,26 @@
           <td><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t-orange" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h2></td>
         </tr>
         <tr>
+          {% if change.loc[0,'change'] > 0 %}
           <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[0,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[0,'ratio'] }}</b></h2></td>
+          {% else %}
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">{{ change.loc[0,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[0,'ratio'] }}</b></h2></td>
+          {% endif %}
+          {% if change.loc[1,'change'] > 0 %}
           <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[1,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1,'ratio'] }}</b></h2></td>
+          {% else %}
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">{{ change.loc[1,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[1,'ratio'] }}</b></h2></td>
+          {% endif %}
+          {% if change.loc[2,'change'] > 0 %}
           <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[2,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[2,'ratio'] }}</b></h2></td>
+          {% else %}
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">{{ change.loc[2,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[2,'ratio'] }}</b></h2></td>
+          {% endif %}
+          {% if change.loc[3,'change'] > 0 %}
           <td><h2 class="{{ theme }}-t-orange" style="display: inline;">+{{ change.loc[3,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3,'ratio'] }}</b></h2></td>
+          {% else %}
+          <td><h2 class="{{ theme }}-t-orange" style="display: inline;">{{ change.loc[3,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ change.loc[3,'ratio'] }}</b></h2></td>
+          {% endif %}
         </tr>
       </table>
     </div>

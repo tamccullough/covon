@@ -331,5 +331,5 @@ def get_cases(on_db,total_cases):
     on_cases = on_cases.sort_values(by='total',ascending=False)
     on_cases = on_cases.reset_index()
     on_cases.pop('index')
-    on_cases.to_csv('datasets/2020/on_cases.csv',index=False)
+    on_cases.to_csv(f'datasets/{year}/on_cases.csv',index=False)
     return on_cases

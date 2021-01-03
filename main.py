@@ -5,7 +5,7 @@ from flask import Flask
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-import co_main
+import co_main as com
 
 import db
 import functools
@@ -16,7 +16,9 @@ import re
 
 
 theme = 'mono'
-month, day, weekday = co_main.get_weekday()
+today = date.today().strftime('%Y-%m-%d')
+year = year = today[0:4]
+month, day, weekday = com.get_weekday()
 
 today_other = date.today()
 first = today_other.replace(day=1)
@@ -35,9 +37,9 @@ else:
     yesterday = str(int(day)-1)
     last_month = month
 
-on_db = pd.read_csv('datasets/2020/conposcovidloc.csv')
-on_age = pd.read_csv('datasets/2020/age_groups_ontario.csv')
-change = pd.read_csv('datasets/2020/change.csv')
+on_db = pd.read_csv(f'datasets/{year}/conposcovidloc.csv')
+on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
+change = pd.read_csv(f'datasets/{year}/change.csv')
 
 total_cases = on_db['Accurate_Episode_Date'].count()
 
@@ -52,14 +54,14 @@ def index():
 
     today = date.today().strftime('%Y-%m-%d')
 
-    utc_today = co_main.utc_convert(today)
+    utc_today = com.utc_convert(today)
 
-    on_cases = pd.read_csv('datasets/2020/on_cases.csv')
+    on_cases = pd.read_csv(f'datasets/{year}/on_cases.csv')#com.get_cases(on_db,total_cases)
     on_cases = on_cases.dropna()
-    gender_groups = pd.read_csv('datasets/2020/gender_infected.csv')
+    gender_groups = pd.read_csv(f'datasets/{year}/gender_infected.csv')
     gender_groups['pop%'] = gender_groups['pop%'].apply(lambda x: round(x,4))
-    infected = pd.read_csv('datasets/2020/infected.csv')
-    outcomes = pd.read_csv('datasets/2020/outcomes.csv')
+    #infected = pd.read_csv(f'datasets/{year}/infected.csv')
+    outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
@@ -71,7 +73,7 @@ def index():
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    infected = infected, outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases,
+    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
     theme = theme)
 

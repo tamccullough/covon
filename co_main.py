@@ -116,7 +116,7 @@ def all_cases_count(on_db):
     results = results.dropna()
     results = results.reset_index()
     results['utc'] = results['date'].apply(lambda x: utc_convert(x))
-    results = results[results.date.str.contains(year)]
+    #results = results[results.date.str.contains(year)]
     return results
 
 def all_deaths_count(on_db):

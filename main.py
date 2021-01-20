@@ -73,7 +73,7 @@ def index():
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases,
+    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, year = year,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
     theme = theme)
 

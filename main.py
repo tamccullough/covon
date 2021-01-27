@@ -60,13 +60,14 @@ def index():
     on_cases = pd.read_csv(f'datasets/{year}/on_cases.csv')#com.get_cases(on_db,total_cases)
     on_cases = on_cases.dropna()
     gender_groups = pd.read_csv(f'datasets/{year}/gender_infected.csv')
+    fatalities = pd.read_csv(f'datasets/{year}/fatal.csv')
     gender_groups['pop%'] = gender_groups['pop%'].apply(lambda x: round(x,4))
     #infected = pd.read_csv(f'datasets/{year}/infected.csv')
     outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
-    print('\nTESTING',recent_cases_count.loc[15,'count'],'\nDONETESTING\n')
+    print('\nTESTING',fatal,'\nDONETESTING\n')
     trend = [recent_cases_count.loc[0,'count'],recent_cases_count.loc[7,'count'],recent_cases_count.loc[15,'count']]
     for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-u','fatal-total']:
         on_cases[col] = on_cases[col].astype('int')
@@ -76,7 +77,8 @@ def index():
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, year = year, trend = trend,
+    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, fatalities = fatalities,
+    year = year, trend = trend, on_age = on_age,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
     theme = theme)
 

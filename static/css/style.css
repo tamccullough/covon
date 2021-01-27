@@ -309,7 +309,7 @@ nav select option {
 
 .button {
   font-size: 1em;
-  font-color: inherit;
+  color: inherit;
   height: 40px;
   border:none;
   text-decoration:none;

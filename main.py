@@ -40,6 +40,7 @@ else:
 on_db = pd.read_csv(f'datasets/{year}/conposcovidloc.csv')
 on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
 change = pd.read_csv(f'datasets/{year}/change.csv')
+recent_cases_count = pd.read_csv(f'datasets/{year}/recent_cases_count.csv')
 
 total_cases = on_db['Accurate_Episode_Date'].count()
 
@@ -65,6 +66,8 @@ def index():
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
+    print('\nTESTING',recent_cases_count.loc[15,'count'],'\nDONETESTING\n')
+    trend = [recent_cases_count.loc[0,'count'],recent_cases_count.loc[7,'count'],recent_cases_count.loc[15,'count']]
     for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-u','fatal-total']:
         on_cases[col] = on_cases[col].astype('int')
 
@@ -73,7 +76,7 @@ def index():
 
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
-    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, year = year,
+    outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, year = year, trend = trend,
     resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
     theme = theme)
 

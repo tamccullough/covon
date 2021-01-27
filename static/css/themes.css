@@ -31,17 +31,18 @@
 .blue-dark {color:#ffffff !important; background-color:#3141a8 !important;}
 .blue-action {color:#ffffff !important; background-color:#ed821f !important;}
 .blue-colour {color:#94b9f2 !important; background-color:#1a2b6b !important;}
-.blue-t {color:#a3d3ff !important;}
+.blue-t {color:#202a33 !important;}
 .blue-t-title {color:#ebf6ff !important;}
 .blue-t-blue {color:#0063ff !important;}
 .blue-t-green {color:#2cb035 !important;}
 .blue-t-red {color:#e8152e !important;}
-.blue-t-yellow {color:#ebd510 !important;}
+.blue-t-yellow {color:#ffbf00 !important;}
+.blue-t-orange {color:#ff7400 !important;}
 .blue-blue {color:#ffffff !important; background-color:#22356f !important;}
 .blue-green {color:#ffffff !important; background-color:#2cb035 !important;}
 .blue-red {color:#ffffff !important; background-color:#e8152e !important;}
-.blue-orange {color:#ffffff !important; background-color:#ed821f !important;}
-.blue-yellow {color:#ffffff !important; background-color:#ebd510 !important;}
+.blue-orange {color:#ffffff !important; background-color:#ff7400 !important;}
+.blue-yellow {color:#ffffff !important; background-color:#ffbf00 !important;}
 .blue-button-d {color:#54adff !important;}
 .blue-button-l {color:#ffffff !important;}
 .blue-t-poster{font-size:250px!important;}
@@ -105,7 +106,7 @@
 .dark-colour {color:#95dfe6 !important; background-color:#09051f !important;}
 .dark-t {color:#87c6ff !important;}
 .dark-t-title {color:#ac9db3 !important;}
-.dark-t-blue {color:#5c77e6 !294161;}
+.dark-t-blue {color:#5c77e6 !important;}
 .dark-t-green {color:#82ff86 !important;}
 .dark-t-red {color:#ff4242 !important;}
 .dark-t-yellow {color:#fff67a !important;}
@@ -129,7 +130,7 @@
 .demon-colour {color:#ff1c24 !important; background-color:#2e031e !important;}
 .demon-t {color:#ff8787 !important;}
 .demon-t-title {color:#ff1c24 !important;}
-.demon-t-blue {color:#2bffea !294161;}
+.demon-t-blue {color:#2bffea !important;}
 .demon-t-green {color:#39ff1f !important;}
 .demon-t-red {color:#ff1f1f !important;}
 .demon-t-yellow {color:#fffb1f !important;}

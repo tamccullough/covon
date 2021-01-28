@@ -12,9 +12,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
 
-    html,h1,h2 {font-family: 'Lato', sans-serif;font-weight: 400;}
-    body,h3,h4,h5 {font-family: 'Roboto', sans-serif;font-weight: 400;}
-    .bold {font-weight: 700;}
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: #0099ff #3c2f2f;
+    }
+
+    html,h1,h2 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+    }
+
+    body,h3,h4,h5 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    }
+
+    .bold {
+      font-weight: 700;
+    }
 
     hr {
       border: none;
@@ -39,24 +54,29 @@
   </style>
 </head>
 
-<body class=" {{ theme }}-colour">
-  <div class="spacer">
+<body class=" {{ theme }}">
+  <div class="spacer"></div>
 
-  </div>
 <!-- Top container -->
 
-{% block content %}{% endblock %}
+<button id="backToTop" class="topbutton {{ theme }}-blue textcenter">
+  <a class="button text-white" href="/">TOP</a>
+</button>
+
+{% block content %}
+{% endblock %}
 
   <!-- Footer -->
   <footer class="page80" style="border-radius: 0.5rem; padding: 20px 20px;">
-    <a><b>Todd McCullough</b></a>&nbsp;
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="text-white fa fa-twitter"></i></a>
-    <a href="https://github.com/tamccullough" target="_blank"><i class="text-white fa fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="text-white fa fa-linkedin"></i></a>
+    <a>Powered by Us</a><br>
+    <a class="bold">Todd McCullough</a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}} fa fa-twitter"></i></a>
+    <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}} fa fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}} fa fa-linkedin"></i></a>
   </footer>
 
   <!-- End page content -->
 </div>
-
+<script src="static/css/top.js"></script>
 </body>
 </html>

@@ -307,6 +307,32 @@ nav select option {
 
 /* buttons and inputs */
 
+.topbutton {
+  decoration:none;
+  border:none;
+  display: block;
+  position:fixed;
+  border-radius: 0.25rem;
+  width:65px;
+  height:75px;
+  right:75px;
+  bottom:85vh;
+}
+
+#backToTop {
+    visibility:hidden;
+    top:calc(100% / 2);
+    top:-moz-calc(100% / 2);
+    top:-o-calc(100% / 2);
+}
+
+@media only screen and (max-width: 600px) {
+  .topbutton {
+    right:-5px;
+    bottom:50vh;
+  }
+}
+
 .button {
   font-size: 1em;
   color: inherit;

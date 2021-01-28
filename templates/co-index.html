@@ -32,7 +32,7 @@
 
     <div class="desktop" style="border-radius: 0.5rem; line-height: 0.25em;">
       <h1 class="{{ theme }}-t-orange" style="display: inline;"><b>ON, CAN</b></h1>
-      <h1 style="display: inline;"> - Covid-19 - </h1>
+      <h1 class="{{ theme }}-t-yellow" style="display: inline;"> - Covid-19 - </h1>
       <h1 class="{{ theme }}-t-orange" style="display: inline;"> As of {{ last_month[0:3] }} {{ yesterday }}</h1>
       <div class="spacer"></div><div class="spacer"></div>
       <hr>
@@ -76,13 +76,13 @@
   <div class="page80">
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
       <h2>The current Pandemic Curve is {% if trend[2] > trend[1] %}growing <strong>Worse{%else%}starting to <strong>Flatten Out{% endif %}</strong>.</h2>
-      <p> Total Cases has <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ change.loc[0,'change'] }}</strong> to <strong>{{ total_cases }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
+      <p> Total Cases has <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
         <br>{% if (change.loc[0,'change'] > 0) and (change.loc[1,'change'] > 0) %}Meanwhile{%else%}However{% endif %},
         Total Resolved Cases - which currently makes up <strong>{{ ((outcomes.at[1,'count']/total_cases)*100) | round(2) }}%</strong> of Total Cases -
-        has also <em>{% if change.loc[1,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ change.loc[1,'change'] }}</strong> to a total of <strong>{{ outcomes.at[1,'count'] }}</strong>,
+        has <em>{% if change.loc[1,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[1,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</strong> -
         a change of <strong>{{ (change.loc[1,'ratio'] * 100) | round(2) }}%</strong>.
-        <br>Total Active Cases has also <em>{% if change.loc[2,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ change.loc[2,'change'] }}</strong> to a total of <strong>{{ outcomes.at[2,'count'] }}</strong>, a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
-        <br>Total Fatalities in Ontario due to Covid-19 has also <em>{% if change.loc[3,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ change.loc[3,'change'] }}</strong> to a total of <strong>{{ outcomes.at[3,'count'] }}</strong>, a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
+        <br>Total Active Cases has <em>{% if change.loc[2,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[2,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</strong> - a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
+        <br>Total Fatalities in Ontario due to Covid-19 has <em>{% if change.loc[3,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[3,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</strong> - a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
       </p>
     </div>
   </div>
@@ -96,13 +96,14 @@
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
       <h3>The <strong>Covid-19</strong> Pandemic is currently infecting more
         {% if gender_groups.loc[0,'count'] > gender_groups.loc[1,'count'] %}
-        <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <strong><em>{{ gender_groups.loc[0,'count'] }}</em></strong> cases,
-        than <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong>  at <strong><em>{{ gender_groups.loc[1,'count'] }}</em></strong> cases.
-        A difference of <strong>{{ gender_groups.loc[0,'count'] - gender_groups.loc[1,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>
+        <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <strong><em>{{ '{0:,d}'.format(gender_groups.loc[0,'count']) }}</em></strong> cases
+        than <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong>  at <strong><em>{{ '{0:,d}'.format(gender_groups.loc[1,'count']) }}</em></strong> cases.
+        <br>A difference of <strong>{{ '{0:,d}'.format(gender_groups.loc[0,'count'] - gender_groups.loc[1,'count']) }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
         {%else%}
-        <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[1,'count'] }}</em> cases, than <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases.
-        A difference of <strong>{{ gender_groups.loc[1,'count'] - gender_groups.loc[0,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>
-        {% endif %}.
+        <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[1,'count'] }}</em> cases
+         than <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases.
+        <br>A difference of <strong>{{ gender_groups.loc[1,'count'] - gender_groups.loc[0,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
+        {% endif %}
       </h3>
       <p>Over the past 16 Days, case counts have been
         {% if (trend[2] > trend[1]) and (trend[1] > trend[0]) %}
@@ -153,7 +154,7 @@
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
     <h3 class="{{ theme }}-t">Ontario Demographics</h3>
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
-      <p>The largest demographic in Ontario are the Under 20 age group at <strong>{{ on_age.loc[0,'count'] }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.<br>
+      <p>The largest demographic in Ontario are the Under 20 age group at <strong>{{ '{0:,d}'.format(on_age.loc[0,'count']) }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.<br>
         However, this age group only makes up <strong>{{ on_cases[on_cases['age_group'] == '<20']['case%'].values[0] }}</strong> of positive cases in Ontario with <strong>{{ (fatalities[fatalities['age_group'] == '<20']['fatal-total'].values[0]) | int }}</strong> fatalities.
       </p>
     </div>

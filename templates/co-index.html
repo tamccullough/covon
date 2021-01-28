@@ -96,7 +96,8 @@
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
       <h3>The <strong>Covid-19</strong> Pandemic is currently infecting more
         {% if gender_groups.loc[0,'count'] > gender_groups.loc[1,'count'] %}
-        <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases, than <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong>  at <em>{{ gender_groups.loc[1,'count'] }}</em> cases.
+        <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <strong><em>{{ gender_groups.loc[0,'count'] }}</em></strong> cases,
+        than <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong>  at <strong><em>{{ gender_groups.loc[1,'count'] }}</em></strong> cases.
         A difference of <strong>{{ gender_groups.loc[0,'count'] - gender_groups.loc[1,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>
         {%else%}
         <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[1,'count'] }}</em> cases, than <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases.
@@ -179,7 +180,7 @@
     <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
     <h3 class="{{ theme }}-t">Public Health Unit Data</h3>
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
-      <p>The hardest hit groups with the largest number of <strong>Fatalities</strong> are those in their {{ fatalities.loc[0,'age_group'] }}, {{ fatalities.loc[1,'age_group'] }} and {{ fatalities.loc[2,'age_group'] }} by total fatalities respectively.</p>
+      <p>The hardest hit groups with the largest number of <strong>Fatalities</strong> are those in their <strong><em>{{ fatalities.loc[0,'age_group'] }}</em></strong>, <strong><em>{{ fatalities.loc[1,'age_group'] }}</em></strong> and <strong><em>{{ fatalities.loc[2,'age_group'] }}</em></strong> by total fatalities respectively.</p>
     </div>
         <!-- bar charts -->
         <div class="parent">

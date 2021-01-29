@@ -75,7 +75,7 @@
 <div class="container">
   <div class="page80">
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
-      <h2>The current Pandemic Curve is {% if trend[2] > trend[1] %}growing <strong>Worse{%else%}starting to <strong>Flatten Out{% endif %}</strong>.</h2>
+      <h2>The current Pandemic Curve is {% if trend[2] > trend[1] %}growing <em>Worse{%else%}starting to <em>Flatten Out{% endif %}</em>.</h2>
       <p> Total Cases has <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
         <br>{% if (change.loc[0,'change'] > 0) and (change.loc[1,'change'] > 0) %}Meanwhile{%else%}However{% endif %},
         Total Resolved Cases - which currently makes up <strong>{{ ((outcomes.at[1,'count']/total_cases)*100) | round(2) }}%</strong> of Total Cases -
@@ -154,7 +154,7 @@
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
     <h3 class="{{ theme }}-t">Ontario Demographics</h3>
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
-      <p>The largest demographic in Ontario are the Under 20 age group at <strong>{{ '{0:,d}'.format(on_age.loc[0,'count']) }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.<br>
+      <p>The largest AGE demographic in Ontario are the <strong>Under 20</strong> age group at <strong>{{ '{0:,d}'.format(on_age.loc[0,'count']) }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.<br>
         However, this age group only makes up <strong>{{ on_cases[on_cases['age_group'] == '<20']['case%'].values[0] }}</strong> of positive cases in Ontario with <strong>{{ (fatalities[fatalities['age_group'] == '<20']['fatal-total'].values[0]) | int }}</strong> fatalities.
       </p>
     </div>
@@ -181,7 +181,8 @@
     <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
     <h3 class="{{ theme }}-t">Public Health Unit Data</h3>
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
-      <p>The hardest hit groups with the largest number of <strong>Fatalities</strong> are those in their <strong><em>{{ fatalities.loc[0,'age_group'] }}</em></strong>, <strong><em>{{ fatalities.loc[1,'age_group'] }}</em></strong> and <strong><em>{{ fatalities.loc[2,'age_group'] }}</em></strong> by total fatalities respectively.</p>
+      <p>The spread of the virus is mostly concentrated in the following 3 PHUs; <strong>Toronto</strong>, <strong>Missisauga</strong> and <strong>Newmarket</strong>.<br>
+        The hardest hit groups with the largest number of <strong>Fatalities</strong> are those in their <strong><em>{{ fatalities.loc[0,'age_group'] }}</em></strong>, <strong><em>{{ fatalities.loc[1,'age_group'] }}</em></strong> and <strong><em>{{ fatalities.loc[2,'age_group'] }}</em></strong> by total fatalities respectively.</p>
     </div>
         <!-- bar charts -->
         <div class="parent">

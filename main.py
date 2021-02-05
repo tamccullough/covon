@@ -37,12 +37,12 @@ else:
     yesterday = str(int(day)-1)
     last_month = month
 
-on_db = pd.read_csv(f'datasets/{year}/conposcovidloc.csv')
+outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
 on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
 change = pd.read_csv(f'datasets/{year}/change.csv')
 recent_cases_count = pd.read_csv(f'datasets/{year}/recent_cases_count.csv')
 
-total_cases = on_db['Accurate_Episode_Date'].count()
+total_cases = outcomes.iloc[0]['count']
 
 covon = Flask(__name__, instance_relative_config=True)
 covon.config.from_mapping(

@@ -18,4 +18,3 @@ build/
 *.egg-info/
 
 .DS_Store
-conposcovidloc.csv

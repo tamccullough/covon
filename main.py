@@ -15,7 +15,7 @@ import pandas as pd
 import re
 
 
-theme = 'cappucino'
+theme = 'clean'
 today = date.today().strftime('%Y-%m-%d')
 year = year = today[0:4]
 month, day, weekday = com.get_weekday()

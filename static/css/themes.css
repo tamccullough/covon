@@ -127,6 +127,28 @@
 .chalkboard-hover-t:hover {color:#fce5cd !important;}
 .chalkboard-hover-border:hover {border-color:#fce5cd !important;}
 
+.clean {color:#303c6c; background-color:#fbe8a6;}
+.clean-light {color:#303c6c; background-color:#f4e4c1;}
+.clean-dark {color:#303c6c; background-color:#d8c3a5;}
+.clean-action {color:#ffffff; background-color:#50d965;}
+.clean-colour {color:#ffffff; background-color:#8860d0;}
+.clean-t {color:#b23850;}
+.clean-t-title {color:#3b8beb;}
+.clean-t-blue {color:#0099ff;}
+.clean-t-green {color:#00de25;}
+.clean-t-red {color:#ff3030;}
+.clean-t-orange {color:#f07924;}
+.clean-t-yellow {color:#f2e013;}
+.clean-blue {color:#ffffff; background-color:#0099ff;}
+.clean-green {color:#ffffff; background-color:#00de25;}
+.clean-red {color:#ffffff; background-color:#ff3030;}
+.clean-orange {color:#ffffff; background-color:#f07924;}
+.clean-yellow {color:#6d5b6e; background-color:#f2e013;}
+.clean-button-d {color:#f0f0f0;}
+.clean-button-l {color:#1c3778;}
+.clean-t-poster{font-size:250px;}
+.clean-border {border-color:#fce5cd;}
+
 .cupcake {color:#ffcc9e !important; background-color:#c68642 !important;}
 .cupcake-light {color:#8d5524 !important; background-color:#ffe2bc !important;}
 .cupcake-dark {color:#ffe2bc !important; background-color: 	#9e6b34 !important;}

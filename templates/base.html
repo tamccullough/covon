@@ -59,7 +59,7 @@
 
 <!-- Top container -->
 
-<button id="backToTop" class="topbutton {{ theme }}-blue textcenter">
+<button id="backToTop" class="topbutton {{ theme }}-blue textcenter" style="z-index: 7;">
   <a class="button {{ theme }}-blue" href="/">TOP</a>
 </button>
 
@@ -78,5 +78,368 @@
   <!-- End page content -->
 </div>
 <script src="static/css/top.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawAll);
+      google.charts.setOnLoadCallback(drawAllFatal);
+      google.charts.setOnLoadCallback(drawTotal);
+      google.charts.setOnLoadCallback(drawFatal);
+      google.charts.setOnLoadCallback(drawGenderGroups);
+      google.charts.setOnLoadCallback(drawMale);
+      google.charts.setOnLoadCallback(drawFemale);
+      google.charts.setOnLoadCallback(drawTrans);
+      google.charts.setOnLoadCallback(drawAgePie);
+      google.charts.setOnLoadCallback(drawAgePositivePie);
+      google.charts.setOnLoadCallback(drawAgeCasePie);
+      google.charts.setOnLoadCallback(drawAgeGenderFatalities);
+      google.charts.setOnLoadCallback(drawTotalPHU);
+      google.charts.setOnLoadCallback(drawTopPHU);
+
+      function drawAll() {
+        var data = google.visualization.arrayToDataTable([
+          {% for i in range(0,timeline-1) %}
+          {{ all_cases_lst[i] | tojson }},
+          {% endfor %}
+          {{ all_cases_lst[-1] | tojson }}
+        ]);
+
+        var options = {
+          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          colors: ['#0099ff', '#097138'],
+          backgroundColor: '#f4e4c1',
+          trendlines: {
+          0: {type: 'exponential', color: '#b23850', opacity: 2}
+          },
+          chartArea:{left:75,width:'90%',height:'80%'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('all_cases'));
+
+        chart.draw(data, options);
+      }
+
+      function drawAllFatal() {
+        var data = google.visualization.arrayToDataTable([
+          {% for i in range(0,timeline-1) %}
+          {{ all_fatal_lst[i] | tojson }},
+          {% endfor %}
+          {{ all_fatal_lst[-1] | tojson }}
+        ]);
+
+        var options = {
+          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          colors: ['#b23850', '#0099ff'],
+          backgroundColor: '#f4e4c1',
+          trendlines: {
+          0: {type: 'exponential', color: '#0099ff', opacity: 2}
+          },
+          chartArea:{left:75,width:'90%',height:'80%'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('all_fatal'));
+
+        chart.draw(data, options);
+      }
+
+      function drawTotal() {
+        var data = google.visualization.arrayToDataTable([
+          {% for i in range(0,15) %}
+          {{ recent_cases_lst[i] | tojson }},
+          {% endfor %}
+          {{ recent_cases_lst[16] | tojson }}
+        ]);
+
+        var options = {
+          hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          colors: ['#0099ff', '#097138'],
+          backgroundColor: '#f4e4c1',
+          trendlines: {
+          0: {type: 'exponential', color: '#333', opacity: 2},
+          1: {type: 'linear', color: '#111', opacity: .3}
+          },
+          chartArea:{left:50,width:'80%',height:'80%'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('total_count'));
+
+        chart.draw(data, options);
+      }
+
+          function drawFatal() {
+            var data = google.visualization.arrayToDataTable([
+              {% for i in range(0,15) %}
+              {{ recent_fatal_lst[i] | tojson }},
+              {% endfor %}
+              {{ recent_fatal_lst[16] | tojson }}
+            ]);
+
+            var options = {
+              hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+              vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+              colors: ['#b23850', '#097138'],
+              backgroundColor: '#f4e4c1',
+              legend: 'none',
+              chartArea:{left:50,width:'80%',height:'80%'},
+              trendlines: {
+                0: {
+                  type: 'exponential',
+                  color: 'green'}
+              }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('total_fatal'));
+
+            chart.draw(data, options);
+          }
+
+              function drawGenderGroups() {
+                var data = google.visualization.arrayToDataTable([
+                  {% for i in range(0,15) %}
+                  {{ recent_gender_lst[i] | tojson }},
+                  {% endfor %}
+                  {{ recent_gender_lst[16] | tojson }}
+                ]);
+
+                var options = {
+                  isStacked: true,
+                  hAxis: {title: 'Count',
+                          titleTextStyle: {color: '#303c6c'},
+                          textStyle: {color: '#303c6c'},
+                          maxValue: 3000
+                          },
+                  colors: ['#0099ff', '#b23850','#00de25'],
+                  backgroundColor: '#f4e4c1',
+                  legend: { position: 'bottom' },
+                  chartArea:{left:75,width:'70%',height:'70%'},
+                  trendlines: {
+                    0: {
+                      type: 'exponential',
+                      color: 'green'}
+                  }
+                };
+
+                var chart = new google.visualization.BarChart(document.getElementById('gender_stacked'));
+
+                chart.draw(data, options);
+              }
+
+              function drawMale() {
+                var data = google.visualization.arrayToDataTable([
+                  {% for i in range(0,15) %}
+                  {{ recent_male_lst[i] | tojson }},
+                  {% endfor %}
+                  {{ recent_male_lst[16] | tojson }}
+                ]);
+
+                var options = {
+                  hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                  vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                  colors: ['#0099ff', '#097138'],
+                  backgroundColor: '#f4e4c1',
+                  legend: 'none',
+                  chartArea:{left:50,width:'90%',height:'90%'}
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('total_male'));
+
+                chart.draw(data, options);
+              }
+
+                  function drawFemale() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,15) %}
+                      {{ recent_female_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ recent_female_lst[16] | tojson }}
+                    ]);
+
+                    var options = {
+                      hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                      vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                      colors: ['#b23850', '#097138'],
+                      backgroundColor: '#f4e4c1',
+                      legend: 'none',
+                      chartArea:{left:50,width:'90%',height:'90%'}
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('total_female'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawTrans() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,15) %}
+                      {{ recent_trans_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ recent_trans_lst[16] | tojson }}
+                    ]);
+
+                    var options = {
+                      hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                      vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+                      colors: ['#b23850', '#097138'],
+                      backgroundColor: '#f4e4c1',
+                      legend: 'none',
+                      chartArea:{left:50,width:'90%',height:'90%'}
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('total_trans'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawAgePie() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,8) %}
+                      {{ age_pie_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ age_pie_lst[9] | tojson }}
+                    ]);
+
+                    var options = {
+                      colors: ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90'],
+                      pieSliceText: 'label',
+                      backgroundColor: '#f4e4c1',
+                      pieSliceTextStyle: {color: '#303c6c',},
+                      legend: 'none',
+                      chartArea:{width:'80%',height:'80%'}
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('age_groups'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawAgeCasePie() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,8) %}
+                      {{ age_cases_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ age_cases_lst[9] | tojson }}
+                    ]);
+
+                    var options = {
+                      colors: ['#e06666','#f6b26b','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0'],
+                      pieSliceText: 'label',
+                      backgroundColor: '#f4e4c1',
+                      pieSliceTextStyle: {color: '#303c6c',},
+                      legend: 'none',
+                      chartArea:{width:'80%',height:'80%'}
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('age_case'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawAgePositivePie() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,8) %}
+                      {{ age_groups_positive_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ age_groups_positive_lst[9] | tojson }}
+                    ]);
+
+                    var options = {
+                      colors: ['#e06666','#f6b26b','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0'],
+                      pieSliceText: 'label',
+                      backgroundColor: '#f4e4c1',
+                      pieSliceTextStyle: {color: '#303c6c',},
+                      legend: 'none',
+                      chartArea:{width:'80%',height:'80%'}
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('age_positive'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawAgeGenderFatalities() {
+                    var data = google.visualization.arrayToDataTable([
+                      {% for i in range(0,8) %}
+                      {{ fatal_lst[i] | tojson }},
+                      {% endfor %}
+                      {{ fatal_lst[9] | tojson }}
+                    ]);
+
+                    var options = {
+                      isStacked: true,
+                      hAxis: {title: 'Count',
+                              titleTextStyle: {color: '#303c6c'},
+                              textStyle: {color: '#303c6c'},
+                              maxValue: 3000
+                              },
+                      colors: ['#0099ff', '#b23850','#00de25'],
+                      backgroundColor: '#f4e4c1',
+                      legend: { position: 'bottom' },
+                      chartArea:{left:75,width:'100%',height:'70%'},
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById('fatal_stacked'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawTotalPHU() {
+                    var data = google.visualization.arrayToDataTable([
+                      ['{{ top_10_phu_lst[0][0] }}', '{{ top_10_phu_lst[0][1] }}', {role: 'style'}],
+                      {% for i in range(1,8)%}
+                      ['{{ top_10_phu_lst[i][0] }}', {{ top_10_phu_lst[i][1] }}, '{{ top_10_phu_lst[i][2] }}'],
+                      {% endfor %}
+                      ['{{ top_10_phu_lst[9][0] }}', {{ top_10_phu_lst[9][1] }}, '{{ top_10_phu_lst[9][2] }}']
+                    ]);
+
+                    var options = {
+                      hAxis: {title: 'Count',
+                              titleTextStyle: {color: '#303c6c'},
+                              textStyle: {color: '#303c6c'},
+                              maxValue: 3000
+                              },
+                      colors: ['#fa5252'],
+                      backgroundColor: '#f4e4c1',
+                      legend: { position: 'bottom' },
+                      chartArea:{left:75,width:'100%',height:'70%'},
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById('phu_total'));
+
+                    chart.draw(data, options);
+                  }
+
+                  function drawTopPHU() {
+                    var data = google.visualization.arrayToDataTable([
+                      ['{{ recent_top_10_phu_lst[0][0] }}', '{{ recent_top_10_phu_lst[0][1] }}', {role: 'style'}],
+                      {% for i in range(1,8)%}
+                      ['{{ recent_top_10_phu_lst[i][0] }}', {{ recent_top_10_phu_lst[i][1] }}, '{{ recent_top_10_phu_lst[i][2] }}'],
+                      {% endfor %}
+                      ['{{ recent_top_10_phu_lst[9][0] }}', {{ recent_top_10_phu_lst[9][1] }}, '{{ recent_top_10_phu_lst[9][2] }}']
+                    ]);
+
+                    var options = {
+                      hAxis: {title: 'Count',
+                              titleTextStyle: {color: '#303c6c'},
+                              textStyle: {color: '#303c6c'},
+                              maxValue: 3000
+                              },
+                      colors: ['#ffa64a'],
+                      backgroundColor: '#f4e4c1',
+                      legend: { position: 'bottom' },
+                      chartArea:{left:75,width:'100%',height:'70%'},
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById('top_phu'));
+
+                    chart.draw(data, options);
+                  }
+
+            </script>
 </body>
 </html>

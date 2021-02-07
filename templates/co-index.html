@@ -102,34 +102,37 @@
         <div class="parent">
           <!-- graphs 1 -->
           <div class="box">
-            <a class="{{ theme }}-t-blue" style="display: inline;">Gender Groups </a>
+            <a class="{{ theme }}-t" style="display: inline;">Gender Groups </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Positive with Covid 19</a>
-            <div><img class="center" src="static/images/bar/last16day-cases.png" alt="Cases past 16 days" style="max-width:95%"></div>
+            <div id="gender_stacked" style="width: 350px; height: 350px"></div>
           </div>
           <div class="box">
-            <a class="{{ theme }}-t-blue" style="display: inline;">Total Daily Count </a>
+            <a class="{{ theme }}-t" style="display: inline;">Total Daily Count </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
-            <div><img class="center" src="static/images/graph/ontario-recent_daily_cases_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
+            <div id="total_count" style="width: 350px; height: 350px"></div>
           </div>
           <div class="box">
-            <a class="{{ theme }}-t-blue" style="display: inline;">Total Daily Deaths </a>
+            <a class="{{ theme }}-t" style="display: inline;">Total Daily Deaths </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
-            <div><img class="center" src="static/images/graph/ontario-recent_daily_deaths_count.png" alt="Ontario Age Groups" style="max-width:95%;max-height:600px"></div>
+            <div id="total_fatal" style="width: 350px; height: 350px"></div>
           </div>
         </div>
         <div class="parent">
           <!-- graphs 2 -->
           <div class="box">
-            <a class="{{ theme }}-t-blue">Daily Cases (Last 16 Days) Gender Split</a>
-            <div><img class="center" src="static/images/graph/16-days-total_count-male.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+            <a class="{{ theme }}-t-blue" style="display: inline;"> Male</a>
+            <div id="total_male" style="width: 350px; height: 100px"></div>
           </div>
           <div class="box">
-            <a class="{{ theme }}-t-blue">Daily Cases (Last 16 Days) Gender Split</a>
-            <div><img class="center" src="static/images/graph/16-days-total_count-female.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+            <a class="{{ theme }}-t-blue" style="display: inline;"> Female</a>
+            <div id="total_female" style="width: 350px; height: 100px"></div>
             </div>
           <div class="box">
-            <a class="{{ theme }}-t-blue">Daily Cases (Last 16 Days) Gender Split</a>
-            <div><img class="center" src="static/images/graph/16-days-total_count-transgender.png" alt="Total Outcomes" style="max-width:95%"></div>
+            <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+            <a class="{{ theme }}-t-blue" style="display: inline;"> Transgender</a>
+            <div id="total_trans" style="width: 350px; height: 100px"></div>
           </div>
         </div>
     </div>
@@ -147,16 +150,16 @@
         <!-- pie 1 -->
           <div class="box">
             <a class="{{ theme }}-t">Age Groups in Ontario</a>
-            <div><img class="center" src="static/images/pie/ontario-age_groups.png" alt="Ontario Age Groups" style="max-width:95%"></div>
+            <div id="age_groups" style="width: 350px; height: 350px"></div>
           </div>
           <!-- pie 2 -->
           <div class="box">
             <a class="{{ theme }}-t">Percentage Positive in Ontario</a>
-            <div><img class="center" src="static/images/pie/all_ages-total_cases.png" alt="Age Groups Total Cases" style="max-width:95%"></div>
+            <div id="age_case" style="width: 350px; height: 350px"></div>
           </div>
           <div class="box">
             <a class="{{ theme }}-t">Positive in the last 16 days</a>
-            <div><img class="center" src="static/images/pie/cases_by_age-16-days.png" alt="Cases past 8 days" style="max-width:95%"></div>
+            <div id="age_positive" style="width: 350px; height: 350px"></div>
           </div>
         </div>
     </div>
@@ -174,19 +177,19 @@
           <div class="box">
             <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Largest Covid 19 Caseload</a>
-            <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+            <div id="phu_total" style="width: 350px; height: 350px"></div>
           </div>
           <!-- chart 2 -->
           <div class="box">
             <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Current 16 Day Period</a>
-            <div><img class="center" src="static/images/bar/ontario-reporting_phu_city-top10-recent.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+            <div id="top_phu" style="width: 350px; height: 350px"></div>
           </div>
           <!-- chart 3 -->
           <div class="box">
             <a class="{{ theme }}-t-blue" style="display: inline;">Fatalities  / </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Age Group & Gender</a>
-            <div><img class="center" src="static/images/bar/fatalities.png" alt="Top 10 Reporting PHU" style="max-width:95%"></div>
+            <div id="fatal_stacked" style="width: 350px; height: 350px"></div>
           </div>
         </div>
     </div>
@@ -225,7 +228,7 @@
                 <td><b>age </b></td>
                 <td><b>female</b></td>
                 <td><b>male</b></td>
-                <td><b>trans</b></td>
+                <td><b>transgender</b></td>
                 <td><b>total</b></td>
                 <td><b>case %</b></td>
                 <td><b>female %</b></td>
@@ -233,7 +236,7 @@
                 <td><b>fatal</b></td>
                 <td><b>female</b></td>
                 <td><b>male</b></td>
-                <td><b>trans</b></td>
+                <td><b>transgender</b></td>
               </tr>
               {%for i in range(0,on_cases.shape[0])%}
               <tr>
@@ -245,10 +248,10 @@
                 <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
                 <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
                 <td class="{{ theme }}-yellow">{{ on_cases.at[i,'m%'] }}</td>
-                <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-total'] }}</td>
-                <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-f'] }}</td>
-                <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-m'] }}</td>
-                <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-t'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-total'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-f'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-m'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-t'] }}</td>
               </tr>
               {%endfor%}
             </table>
@@ -282,20 +285,12 @@
     <div class="desktop">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-        <div class="parent">
-            <div class="center">
-              <img src="static/images/graph/ontario-daily_cases_count.png" alt="Ontario Total Daily Cases" style="max-width:95%">
-            </div>
-        </div>
+        <div class="center" id="all_cases" style="background: black; width: 75vw; height: 350px"></div>
       </div>
       <hr class="hrspace">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Deaths</h3>
-        <div class="parent">
-            <div class="center">
-              <img src="static/images/graph/ontario-daily_deaths_count.png" alt="Ontario Total Daily Deaths" style="max-width:95%">
-            </div>
-        </div>
+        <div class="center" id="all_fatal" style="background: black; width: 75vw; height: 350px"></div>
       </div>
     </div>
 

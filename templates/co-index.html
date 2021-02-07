@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- !PAGE CONTENT! -->
-<hr class="hrspace">
+<hr class="hrspace" id="top">
 <div class="container">
   <div class="page80">
   <div class="spacer"></div>
@@ -217,7 +217,7 @@
                 <td> {{ on_cases.at[i,'male'] }}</td>
                 <td> {{ on_cases.at[i,'transgender'] }}</td>
                 <td style="width: 15%"> {{ on_cases.at[i,'total'] }}</td>
-                <td style="color: white; background: black;"> {{ on_cases.at[i,'fatal-total'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-total'] }}</td>
               </tr>
               {%endfor%}
             </table>
@@ -265,32 +265,24 @@
     <div class="mobile">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-        <div class="parent">
-            <div class="center">
-              <img src="static/images/graph/ontario-daily_cases_count_s.png" alt="Ontario Total Daily Cases" style="max-width:95%">
-            </div>
-        </div>
+        <div class="center" id="all_cases_small" style="width: 350px; height: 350px"></div>
       </div>
       <hr class="hrspace">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Deaths</h3>
-        <div class="parent">
-            <div class="center">
-              <img src="static/images/graph/ontario-daily_deaths_count_s.png" alt="Ontario Total Daily Deaths" style="max-width:95%">
-            </div>
-        </div>
+        <div class="center" id="all_fatal_small" style="width: 350px; height: 350px"></div>
       </div>
     </div>
 
     <div class="desktop">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-        <div class="center" id="all_cases" style="background: black; width: 75vw; height: 350px"></div>
+        <div class="center" id="all_cases" style="width: 75vw; height: 350px"></div>
       </div>
       <hr class="hrspace">
       <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
         <h3 class="{{ theme }}-t">Total Daily Deaths</h3>
-        <div class="center" id="all_fatal" style="background: black; width: 75vw; height: 350px"></div>
+        <div class="center" id="all_fatal" style="width: 75vw; height: 350px"></div>
       </div>
     </div>
 

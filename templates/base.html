@@ -60,7 +60,7 @@
 <!-- Top container -->
 
 <button id="backToTop" class="topbutton {{ theme }}-blue textcenter" style="z-index: 7;">
-  <a class="button {{ theme }}-blue" href="/">TOP</a>
+  <a class="button {{ theme }}-blue" href="#top">TOP</a>
 </button>
 
 {% block content %}
@@ -82,7 +82,9 @@
 <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawAll);
+      google.charts.setOnLoadCallback(drawAllSmall);
       google.charts.setOnLoadCallback(drawAllFatal);
+      google.charts.setOnLoadCallback(drawAllFatalSmall);
       google.charts.setOnLoadCallback(drawTotal);
       google.charts.setOnLoadCallback(drawFatal);
       google.charts.setOnLoadCallback(drawGenderGroups);
@@ -121,6 +123,31 @@
         chart.draw(data, options);
       }
 
+      function drawAllSmall() {
+        var data = google.visualization.arrayToDataTable([
+          {% for i in range(0,timeline-1) %}
+          {{ all_cases_lst[i] | tojson }},
+          {% endfor %}
+          {{ all_cases_lst[-1] | tojson }}
+        ]);
+
+        var options = {
+          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          colors: ['#0099ff', '#097138'],
+          backgroundColor: '#f4e4c1',
+          trendlines: {
+          0: {type: 'exponential', color: '#b23850', opacity: 2}
+          },
+          chartArea:{left:50,width:'80%',height:'80%'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('all_cases_small'));
+
+        chart.draw(data, options);
+      }
+
       function drawAllFatal() {
         var data = google.visualization.arrayToDataTable([
           {% for i in range(0,timeline-1) %}
@@ -142,6 +169,31 @@
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('all_fatal'));
+
+        chart.draw(data, options);
+      }
+
+      function drawAllFatalSmall() {
+        var data = google.visualization.arrayToDataTable([
+          {% for i in range(0,timeline-1) %}
+          {{ all_fatal_lst[i] | tojson }},
+          {% endfor %}
+          {{ all_fatal_lst[-1] | tojson }}
+        ]);
+
+        var options = {
+          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
+          colors: ['#b23850', '#0099ff'],
+          backgroundColor: '#f4e4c1',
+          trendlines: {
+          0: {type: 'exponential', color: '#0099ff', opacity: 2}
+          },
+          chartArea:{left:50,width:'80%',height:'80%'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('all_fatal_small'));
 
         chart.draw(data, options);
       }

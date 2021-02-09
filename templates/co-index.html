@@ -12,16 +12,16 @@
       <hr>
       <table>
         <tr>
-          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h3><h3 class="{{ theme }}-t" style="display: inline;"> Total Cases</h3></td>
-          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ '{0:,d}'.format(total_cases) }}</b></h3><h3 class="{{ theme }}-t" style="display: inline;"> Total Cases</h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</b></h3></td>
         </tr>
         <tr>
           <td class="tdcenter"><h3 class="{{ theme }}-t" style="display: inline;">{% if change.loc[0,'change'] > 0 %}+{% endif %}{{ change.loc[0,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ (change.loc[0,'ratio'] * 100) | round(2) }}</b></h3></td>
           <td class="tdcenter"><h3 class="{{ theme }}-t" style="display: inline;">{% if change.loc[1,'change'] > 0 %}+{% endif %}{{ change.loc[1,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ (change.loc[1,'ratio'] * 100) | round(2) }}</b></h3></td>
         </tr>
         <tr>
-          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h3></td>
-          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</b></h3></td>
+          <td class="tdcenter"><h3 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h3><h3 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</b></h3></td>
         </tr>
         <tr>
           <td class="tdcenter"><h3 class="{{ theme }}-t" style="display: inline;">{% if change.loc[2,'change'] > 0 %}+{% endif %}{{ change.loc[2,'change'] }}</h3><h3 class=" {{ theme }}-t-blue" style="display: inline;"><b> | {{ (change.loc[2,'ratio'] * 100) | round(2) }}</b></h3></td>
@@ -38,16 +38,16 @@
       <hr>
       <table>
         <tr>
-          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ total_cases }}</b></h2><h2 class="{{ theme }}-t" style="display: inline;"> Total Cases</h2></td>
-          <td style="text-align: center;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[1,'count'] }}</b></h2></td>
-          <td style="text-align: center;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[2,'count'] }}</b></h2></td>
-          <td style="text-align: right;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ outcomes.at[3,'count'] }}</b></h2></td>
+          <td><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b>{{ '{0:,d}'.format(total_cases) }}</b></h2><h2 class="{{ theme }}-t" style="display: inline;"> Total Cases</h2></td>
+          <td style="text-align: center;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Resolved: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</b></h2></td>
+          <td style="text-align: center;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Sick: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</b></h2></td>
+          <td style="text-align: right;"><h2 class=" {{ theme }}-t-blue" style="display: inline;">Fatal: </h2><h2 class="{{ theme }}-t" style="display: inline;"><b>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</b></h2></td>
         </tr>
         <tr>
-          <td><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[0,'change'] > 0 %}+{% endif %}{{ change.loc[0,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[0,'ratio'] * 100) | round(2) }}</b></h2></td>
-          <td style="text-align: center;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[1,'change'] > 0 %}+{% endif %}{{ change.loc[1,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[1,'ratio'] * 100) | round(2) }}</b></h2></td>
-          <td style="text-align: center;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[2,'change'] > 0 %}+{% endif %}{{ change.loc[2,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[2,'ratio'] * 100) | round(2) }}</b></h2></td>
-          <td style="text-align: right;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[3,'change'] > 0 %}+{% endif %}{{ change.loc[3,'change'] }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[3,'ratio'] * 100) | round(2) }}</b></h2></td>
+          <td><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[0,'change'] > 0 %}+{% endif %}{{ '{0:,d}'.format(change.loc[0,'change']) }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[0,'ratio'] * 100) | round(2) }}</b></h2></td>
+          <td style="text-align: center;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[1,'change'] > 0 %}+{% endif %}{{ '{0:,d}'.format(change.loc[1,'change']) }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[1,'ratio'] * 100) | round(2) }}</b></h2></td>
+          <td style="text-align: center;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[2,'change'] > 0 %}+{% endif %}{{ '{0:,d}'.format(change.loc[2,'change']) }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[2,'ratio'] * 100) | round(2) }}</b></h2></td>
+          <td style="text-align: right;"><h2 class="{{ theme }}-t" style="display: inline;">{% if change.loc[3,'change'] > 0 %}+{% endif %}{{ '{0:,d}'.format(change.loc[3,'change']) }}</h2><h2 class=" {{ theme }}-t-blue" style="display: inline;"><b> | %{{ (change.loc[3,'ratio'] * 100) | round(2) }}</b></h2></td>
         </tr>
       </table>
     </div>
@@ -213,11 +213,11 @@
               {%for i in range(0,on_cases.shape[0])%}
               <tr>
                 <td> {{ on_cases.at[i,'age_group'][0:3] }}</td>
-                <td> {{ on_cases.at[i,'female'] }}</td>
-                <td> {{ on_cases.at[i,'male'] }}</td>
-                <td> {{ on_cases.at[i,'transgender'] }}</td>
-                <td style="width: 15%"> {{ on_cases.at[i,'total'] }}</td>
-                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-total'] }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'female']) }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'male']) }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'transgender']) }}</td>
+                <td style="width: 15%"> {{ '{0:,d}'.format(on_cases.at[i,'total']) }}</td>
+                <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
               </tr>
               {%endfor%}
             </table>
@@ -241,17 +241,17 @@
               {%for i in range(0,on_cases.shape[0])%}
               <tr>
                 <td> {{ on_cases.at[i,'age_group'] }}</td>
-                <td> {{ on_cases.at[i,'female'] }}</td>
-                <td> {{ on_cases.at[i,'male'] }}</td>
-                <td> {{ on_cases.at[i,'transgender'] }}</td>
-                <td class="{{ theme }}-green"> {{ on_cases.at[i,'total'] }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'female']) }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'male']) }}</td>
+                <td> {{ '{0:,d}'.format(on_cases.at[i,'transgender']) }}</td>
+                <td class="{{ theme }}-green"> {{ '{0:,d}'.format(on_cases.at[i,'total']) }}</td>
                 <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
                 <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
                 <td class="{{ theme }}-yellow">{{ on_cases.at[i,'m%'] }}</td>
-                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-total'] }}</td>
-                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-f'] }}</td>
-                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-m'] }}</td>
-                <td style="color: white; background: #b23850;"> {{ on_cases.at[i,'fatal-t'] }}</td>
+                <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
+                <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-f']) }}</td>
+                <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-m']) }}</td>
+                <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-t']) }}</td>
               </tr>
               {%endfor%}
             </table>

@@ -118,7 +118,7 @@
           legend: 'none'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('all_cases'));
+        var chart = new google.visualization.AreaChart(document.getElementById('all_cases'));
 
         chart.draw(data, options);
       }
@@ -143,7 +143,7 @@
           legend: 'none'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('all_cases_small'));
+        var chart = new google.visualization.AreaChart(document.getElementById('all_cases_small'));
 
         chart.draw(data, options);
       }
@@ -168,7 +168,7 @@
           legend: 'none'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('all_fatal'));
+        var chart = new google.visualization.AreaChart(document.getElementById('all_fatal'));
 
         chart.draw(data, options);
       }
@@ -193,7 +193,7 @@
           legend: 'none'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('all_fatal_small'));
+        var chart = new google.visualization.AreaChart(document.getElementById('all_fatal_small'));
 
         chart.draw(data, options);
       }
@@ -219,7 +219,7 @@
           legend: 'none'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('total_count'));
+        var chart = new google.visualization.AreaChart(document.getElementById('total_count'));
 
         chart.draw(data, options);
       }
@@ -246,7 +246,7 @@
               }
             };
 
-            var chart = new google.visualization.LineChart(document.getElementById('total_fatal'));
+            var chart = new google.visualization.AreaChart(document.getElementById('total_fatal'));
 
             chart.draw(data, options);
           }
@@ -299,7 +299,7 @@
                   chartArea:{left:50,width:'90%',height:'90%'}
                 };
 
-                var chart = new google.visualization.LineChart(document.getElementById('total_male'));
+                var chart = new google.visualization.AreaChart(document.getElementById('total_male'));
 
                 chart.draw(data, options);
               }
@@ -321,7 +321,7 @@
                       chartArea:{left:50,width:'90%',height:'90%'}
                     };
 
-                    var chart = new google.visualization.LineChart(document.getElementById('total_female'));
+                    var chart = new google.visualization.AreaChart(document.getElementById('total_female'));
 
                     chart.draw(data, options);
                   }
@@ -343,7 +343,7 @@
                       chartArea:{left:50,width:'90%',height:'90%'}
                     };
 
-                    var chart = new google.visualization.LineChart(document.getElementById('total_trans'));
+                    var chart = new google.visualization.AreaChart(document.getElementById('total_trans'));
 
                     chart.draw(data, options);
                   }

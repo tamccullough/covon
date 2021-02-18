@@ -60,13 +60,13 @@
   <div class="page80">
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
       <h2>The current Pandemic Curve is {% if trend[2] > trend[1] %}growing <em>Worse{%else%}starting to <em>Flatten Out{% endif %}</em>.</h2>
-      <p> Total Cases has <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
+      <p> Total Cases have <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
         <br>{% if (change.loc[0,'change'] > 0) and (change.loc[1,'change'] > 0) %}Meanwhile{%else%}However{% endif %},
         Total Resolved Cases - which currently makes up <strong>{{ ((outcomes.at[1,'count']/total_cases)*100) | round(2) }}%</strong> of Total Cases -
-        has <em>{% if change.loc[1,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[1,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</strong> -
+        have <em>{% if change.loc[1,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[1,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</strong> -
         a change of <strong>{{ (change.loc[1,'ratio'] * 100) | round(2) }}%</strong>.
-        <br>Total Active Cases has <em>{% if change.loc[2,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[2,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</strong> - a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
-        <br>Total Fatalities in Ontario due to Covid-19 has <em>{% if change.loc[3,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[3,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</strong> - a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
+        <br>Total Active Cases have <em>{% if change.loc[2,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[2,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</strong> - a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
+        <br>Total Fatalities in Ontario due to Covid-19 have <em>{% if change.loc[3,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[3,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</strong> - a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
       </p>
     </div>
   </div>
@@ -141,8 +141,12 @@
     <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
     <h3 class="{{ theme }}-t">Ontario Demographics</h3>
     <div style="border-radius: 0.5rem; padding: 5px 5px;">
-      <p>The largest AGE demographic in Ontario are the <strong>Under 20</strong> age group at <strong>{{ '{0:,d}'.format(on_age.loc[0,'count']) }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.<br>
-        However, this age group only makes up <strong>{{ on_cases[on_cases['age_group'] == '<20']['case%'].values[0] }}</strong> of positive cases in Ontario with <strong>{{ (fatalities[fatalities['age_group'] == '<20']['fatal-total'].values[0]) | int }}</strong> fatalities.
+      <p>
+        The largest AGE demographic in Ontario are the <strong>Under 20</strong> age group at
+        <strong>{{ '{0:,d}'.format(on_age.loc[0,'count']) }}</strong> or <strong>{{ (on_age.loc[0,'pop%']*100) | round(2) }}%</strong>.
+        <br>
+        However, this age group only makes up <strong>{{ (under_20.loc[0,'case%']*100) | round(2) }}</strong>
+        of positive cases in Ontario with <strong>{{ under_20.loc[0,'fatal-total'] | int }}</strong> fatalities.
       </p>
     </div>
         <!-- pie charts -->

@@ -61,9 +61,38 @@ def index():
 
     utc_today = com.utc_convert(today)
 
-    on_cases = pd.read_csv(f'datasets/{year}/on_cases.csv')#com.get_cases(on_db,total_cases)
+    if (day == "01") and ((month == 'January') or (month == 'March') or (month == 'May') or (month == 'July') or (month == 'October') or (month == 'December')):
+        yesterday = '30'
+        last_month = previous_month.strftime('%B')
+    elif (day == "01") and ((month == 'April') or (month == 'June') or (month == 'September') or (month == 'November') or (month == 'August') or (month == 'February')):
+        yesterday = '31'
+        last_month = previous_month.strftime('%B')
+    elif (day == "01") and (month == 'March'):
+        yesterday = '28'
+        last_month = previous_month.strftime('%B')
+    else:
+        yesterday = str(int(day)-1)
+        last_month = month
+
+    outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
+    on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
+    recent_groups = pd.read_csv(f'datasets/{year}/age_groups_recent.csv')
+    all_cases = pd.read_csv(f'datasets/{year}/all_cases.csv')
+    top_10_phu = pd.read_csv(f'datasets/{year}/top_10_phu.csv')
+    recent_top_10_phu = pd.read_csv(f'datasets/{year}/recent_top_10_phu.csv')
+    change = pd.read_csv(f'datasets/{year}/change.csv')
+    recent_cases_count = pd.read_csv(f'datasets/{year}/recent_cases_count.csv')
+
+    total_cases = outcomes.iloc[0]['count']
+
+    on_cases = pd.read_csv(f'datasets/{year}/on_cases.csv')
     on_cases = on_cases.dropna()
     on_cases_data = on_cases.copy()
+
+    under_20 = on_cases[on_cases['age_group'] == '<20']
+    under_20 = under_20.reset_index()
+    under_20.pop('index')
+
     gender_groups = pd.read_csv(f'datasets/{year}/gender_infected.csv')
     fatalities = pd.read_csv(f'datasets/{year}/fatal.csv')
     gender_groups['pop%'] = gender_groups['pop%'].apply(lambda x: round(x,4))
@@ -158,14 +187,13 @@ def index():
     return render_template('co-index.html',
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
     outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, fatalities = fatalities,
-    year = year, trend = trend, on_age = on_age, outcomes_lst = outcomes_lst, timeline = timeline,
+    trend = trend, on_age = on_age, outcomes_lst = outcomes_lst, timeline = timeline,
     recent_male_lst = recent_male_lst, recent_female_lst = recent_female_lst, recent_trans_lst = recent_trans_lst,
     age_pie_lst = age_pie_lst, age_cases_lst = age_cases_lst, age_groups_positive_lst = age_groups_positive_lst,
-    fatal_lst = fatal_lst, all_cases_lst = all_cases_lst, all_fatal_lst = all_fatal_lst,
+    fatal_lst = fatal_lst, all_cases_lst = all_cases_lst, all_fatal_lst = all_fatal_lst, under_20 = under_20,
     top_10_phu_lst = top_10_phu_lst, recent_top_10_phu_lst = recent_top_10_phu_lst,
     recent_cases_lst = recent_cases_lst, recent_fatal_lst = recent_fatal_lst, recent_gender_lst = recent_gender_lst,
-    resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change,
-    theme = theme)
+    resolved = resolved, fatal = fatal, active = active, total_cases = total_cases, change = change)
 
 
 db.init_app(covon)

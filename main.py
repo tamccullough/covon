@@ -184,7 +184,7 @@ def index():
     print(top_10_phu_lst)
     #print(recent_cases_count[['date','m_count','f_count','t_count']])
 
-    return render_template('co-index.html',
+    return render_template('co-index.html',theme = theme,
     day = day, weekday = weekday, month = month, yesterday = yesterday, last_month = last_month,
     outcomes = outcomes, gender_groups = gender_groups, on_cases = on_cases, fatalities = fatalities,
     trend = trend, on_age = on_age, outcomes_lst = outcomes_lst, timeline = timeline,

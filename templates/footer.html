@@ -1,0 +1,41 @@
+<!-- Simple pop-up dialog box containing a form -->
+{% include "form.html" %}
+{% block body %}{% endblock %}
+
+<footer id="bottom">
+  <div class="page80" style="border-radius: 0.5rem; padding: 20px 20px;">
+    <div class="parent">
+      <div class="box">
+        <h1 class="coiny">Say Hello</h1>
+        <p style="display:inline;">Contact us: <a class="button" id="sendMessage">mail@gmail.com</a></p>
+          <output aria-live="polite"></output>
+      </div>
+      <div class="boxs">
+        <h3>Site Map</h3>
+        <ul>
+          <li><a class="button" href="/projects">Projects</a></li>
+          <li><a class="button" href="/#design">Web Applications</a></li>
+          <li><a class="button" href="/#data">Data Consulting</a></li>
+          <li><a class="button" href="/#ml">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="boxs">
+        <h3>Company</h3>
+        <ul>
+          <li><a class="button" href="/about">About</a></li>
+          <li><a class="button" href="/">Contact</a></li>
+          <li><a class="button" href="/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="box {{ theme }}-t-blue">
+        <a>search</a>
+        <h4>search</h4>
+      </div>
+    </div>
+    <div class="box textright">
+      <a>Made in the <b>GTA</b></a>
+      <h4>&#169; Powered by {{company | title }} {{ year }}</h4>
+    </div>
+  </div>
+</footer>
+<output aria-live="polite"></output>

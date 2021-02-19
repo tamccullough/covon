@@ -1,0 +1,51 @@
+/*form section*/
+
+.form {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.form input {
+  width: 100%;
+  padding-top: 15px;
+}
+
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid white;
+  transform: translate(-100%);
+  transition: all 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  font-size: 0.8rem;
+  transform: translateY(-150%);
+}
+
+.form input:focus + .label-name::after,
+.form input:valid + .lable-name::after {
+  transform: translateX(0%);
+}

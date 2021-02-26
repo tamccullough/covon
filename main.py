@@ -37,17 +37,6 @@ else:
     yesterday = str(int(day)-1)
     last_month = month
 
-outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
-on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
-recent_groups = pd.read_csv(f'datasets/{year}/age_groups_recent.csv')
-all_cases = pd.read_csv(f'datasets/{year}/all_cases.csv')
-top_10_phu = pd.read_csv(f'datasets/{year}/top_10_phu.csv')
-recent_top_10_phu = pd.read_csv(f'datasets/{year}/recent_top_10_phu.csv')
-change = pd.read_csv(f'datasets/{year}/change.csv')
-recent_cases_count = pd.read_csv(f'datasets/{year}/recent_cases_count.csv')
-
-total_cases = outcomes.iloc[0]['count']
-
 covon = Flask(__name__, instance_relative_config=True)
 covon.config.from_mapping(
         SECRET_KEY='dev', # change to a random value later when deploying
@@ -57,22 +46,7 @@ covon.config.from_mapping(
 @covon.route('/')
 def index():
 
-    today = date.today().strftime('%Y-%m-%d')
-
     utc_today = com.utc_convert(today)
-
-    if (day == "01") and ((month == 'January') or (month == 'March') or (month == 'May') or (month == 'July') or (month == 'October') or (month == 'December')):
-        yesterday = '30'
-        last_month = previous_month.strftime('%B')
-    elif (day == "01") and ((month == 'April') or (month == 'June') or (month == 'September') or (month == 'November') or (month == 'August') or (month == 'February')):
-        yesterday = '31'
-        last_month = previous_month.strftime('%B')
-    elif (day == "01") and (month == 'March'):
-        yesterday = '28'
-        last_month = previous_month.strftime('%B')
-    else:
-        yesterday = str(int(day)-1)
-        last_month = month
 
     outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
     on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')

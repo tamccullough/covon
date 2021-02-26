@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{company}}!</title>
+  <title>Covon</title>
   <meta name="author" content="Todd McCullough">
   <meta name="description" content="Description.">
   <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Anarchy-symbol-red.svg/600px-Anarchy-symbol-red.svg.png">
@@ -20,10 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-
-  :root {
-    --blue: .{{ theme }}-blue;
-  }
 
   html,h1,h2 {
     font-family: 'Lato', sans-serif;
@@ -375,7 +371,7 @@
 
                   function drawAgePie() {
                     var data = google.visualization.arrayToDataTable([
-                      {% for i in range(0,8) %}
+                      {% for i in range(0,9) %}
                       {{ age_pie_lst[i] | tojson }},
                       {% endfor %}
                       {{ age_pie_lst[9] | tojson }}
@@ -397,7 +393,7 @@
 
                   function drawAgeCasePie() {
                     var data = google.visualization.arrayToDataTable([
-                      {% for i in range(0,8) %}
+                      {% for i in range(0,9) %}
                       {{ age_cases_lst[i] | tojson }},
                       {% endfor %}
                       {{ age_cases_lst[9] | tojson }}
@@ -419,7 +415,7 @@
 
                   function drawAgePositivePie() {
                     var data = google.visualization.arrayToDataTable([
-                      {% for i in range(0,8) %}
+                      {% for i in range(0,9) %}
                       {{ age_groups_positive_lst[i] | tojson }},
                       {% endfor %}
                       {{ age_groups_positive_lst[9] | tojson }}
@@ -441,7 +437,7 @@
 
                   function drawAgeGenderFatalities() {
                     var data = google.visualization.arrayToDataTable([
-                      {% for i in range(0,8) %}
+                      {% for i in range(0,9) %}
                       {{ fatal_lst[i] | tojson }},
                       {% endfor %}
                       {{ fatal_lst[9] | tojson }}

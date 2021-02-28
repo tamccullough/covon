@@ -5,7 +5,7 @@ from flask import Flask
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-import co_main as com
+import covon_functions as com
 
 import db
 import functools

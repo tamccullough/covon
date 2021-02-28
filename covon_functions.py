@@ -293,7 +293,6 @@ def get_cases(on_db,total_cases):
     on_cases['case%'] = round(on_cases['total'] / on_cases['total'].sum(),2)
     on_cases['f%'] = round(on_cases['female'] / on_cases['total'],2)
     on_cases['m%'] = round(on_cases['male'] / on_cases['total'],2)
-    #on_cases['fatal'] = round(on_cases['male'] / on_cases['total'],2)
     on_cases = on_cases.sort_values(by='age_group',ascending=False)
     on_cases = on_cases.reset_index()
     on_cases.pop('index')

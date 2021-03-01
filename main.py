@@ -24,7 +24,7 @@ today_other = date.today()
 first = today_other.replace(day=1)
 previous_month = first - timedelta(days=1)
 
-if (day == "01") and ((month == 'January') or (month == 'March') or (month == 'May') or (month == 'July') or (month == 'October') or (month == 'December')):
+if (day == "01") and ((month == 'January') or (month == 'May') or (month == 'July') or (month == 'October') or (month == 'December')):
     yesterday = '30'
     last_month = previous_month.strftime('%B')
 elif (day == "01") and ((month == 'April') or (month == 'June') or (month == 'September') or (month == 'November') or (month == 'August') or (month == 'February')):

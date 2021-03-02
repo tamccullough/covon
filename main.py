@@ -13,6 +13,7 @@ import numpy as np
 import os
 import pandas as pd
 import re
+import requests
 
 
 theme = 'clean'
@@ -48,18 +49,28 @@ def index():
 
     utc_today = com.utc_convert(today)
 
-    outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
-    on_age = pd.read_csv(f'datasets/{year}/age_groups_ontario.csv')
-    recent_groups = pd.read_csv(f'datasets/{year}/age_groups_recent.csv')
-    all_cases = pd.read_csv(f'datasets/{year}/all_cases.csv')
-    top_10_phu = pd.read_csv(f'datasets/{year}/top_10_phu.csv')
-    recent_top_10_phu = pd.read_csv(f'datasets/{year}/recent_top_10_phu.csv')
-    change = pd.read_csv(f'datasets/{year}/change.csv')
-    recent_cases_count = pd.read_csv(f'datasets/{year}/recent_cases_count.csv')
+    # connect to GOOGLE spreadsheets
+    url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ800Sn_3lHT7yioCGQSIBkw7Hde2TJ979yp_IQrsURozajU4XJORDqSVfcvg-ZHKv0gt1MiL4C2cf9/pubhtml#'
+    r = requests.get(url)
+    results = pd.read_html(r.text,header=1, index_col=0)
 
+    for i in range(len(results)):
+        results[i] = results[i].reset_index()
+        results[i].pop('1')
+
+    change = results[0]
+    on_age = results[1]
+    recent_groups = results[3]
+    all_cases = results[4]
+    fatalities = results[6]
+    gender_groups = results[7]
+    on_cases = results[8]
+    outcomes = results[9]
+    recent_cases_count = results[10]
+    recent_top_10_phu = results[11]
+    top_10_phu = results[12]
     total_cases = outcomes.iloc[0]['count']
 
-    on_cases = pd.read_csv(f'datasets/{year}/on_cases.csv')
     on_cases = on_cases.dropna()
     on_cases_data = on_cases.copy()
 
@@ -67,10 +78,7 @@ def index():
     under_20 = under_20.reset_index()
     under_20.pop('index')
 
-    gender_groups = pd.read_csv(f'datasets/{year}/gender_infected.csv')
-    fatalities = pd.read_csv(f'datasets/{year}/fatal.csv')
     gender_groups['pop%'] = gender_groups['pop%'].apply(lambda x: round(x,4))
-    outcomes = pd.read_csv(f'datasets/{year}/outcomes.csv')
     resolved = round(outcomes.at[0,'pop%']*100,2)
     fatal = round(outcomes.at[1,'pop%']*100,2)
     active = round(outcomes.at[2,'pop%']*100,2)
@@ -110,6 +118,9 @@ def index():
     all_fatal_lst = create_list(all_cases[['days','fatal']])
 
     age_pie_lst = create_list(on_age[['age_groups','pop%']])
+    print('!!!!!!!!!!!!!!!!')
+    print(age_pie_lst)
+    print('!!!!!!!!!!!!!!!!')
     age_cases_lst = create_list(on_cases_data[['age_group','case%']])
     age_groups_positive_lst = create_list(recent_groups[['age_group','pop%']])
 

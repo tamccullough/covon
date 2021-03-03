@@ -54,95 +54,98 @@
       </div>
 
     <div class="spacer"></div>
-
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
-          <h2>The current Pandemic Curve is {% if trend[2] > trend[1] %}growing <em>Worse{%else%}starting to <em>Flatten Out{% endif %}</em>.</h2>
-          <p> Total Cases have <em>{% if change.loc[0,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>, which is a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>.
-            <br>{% if (change.loc[0,'change'] > 0) and (change.loc[1,'change'] > 0) %}Meanwhile{%else%}However{% endif %},
-            Total Resolved Cases - which currently makes up <strong>{{ ((outcomes.at[1,'count']/total_cases)*100) | round(2) }}%</strong> of Total Cases -
-            has <em>{% if change.loc[1,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[1,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</strong> -
-            a change of <strong>{{ (change.loc[1,'ratio'] * 100) | round(2) }}%</strong>.
-            <br>Total Active Cases has <em>{% if change.loc[2,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[2,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</strong> - a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
-            <br>Total Fatalities in Ontario due to Covid-19 has <em>{% if change.loc[3,'change'] > 0 %}increased{%else%}decreased{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[3,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</strong> - a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
-          </p>
+    <div style="border-radius: 0.5rem; padding: 10px 10px;">
+      <div class="parent">
+        <div class="box" style="display: flex;align-items: center;">
+          <div style="padding: 10px 10px;">
+            <h2 class="{{ theme }}-t">Curve status; {% if trend[2] > trend[1] %}<em>Worsening{%else%}<em>Flattening{% endif %}</em>.</h2>
+            <br>
+            <p> Total Cases; <em>{% if change.loc[0,'change'] > 0 %}UP{%else%}DOWN{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[0,'change']) }}</strong> to <strong>{{ '{0:,d}'.format(total_cases) }}</strong>
+              - a change of <strong>{{ (change.loc[0,'ratio'] * 100) | round(2) }}%</strong>
+              <br>
+              <br>Total Resolved Cases; <strong>{{ ((outcomes.at[1,'count']/total_cases)*100) | round(2) }}%</strong> of Total Cases
+              <br><em>{% if change.loc[1,'change'] > 0 %}UP{%else%}DOWN{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[1,'change']) }}</strong>
+              to a total of <strong>{{ '{0:,d}'.format(outcomes.at[1,'count']) }}</strong>
+              a change of <strong>{{ (change.loc[1,'ratio'] * 100) | round(2) }}%</strong>.
+              <br><br>Total Active Cases <em>{% if change.loc[2,'change'] > 0 %}UP{%else%}DOWN{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[2,'change']) }}</strong>
+              <br>to a total of <strong>{{ '{0:,d}'.format(outcomes.at[2,'count']) }}</strong> - a change of <strong>{{ (change.loc[2,'ratio'] * 100) | round(2) }}%</strong>.
+              <br><br>Total Fatalities <em>{% if change.loc[3,'change'] > 0 %}UP{%else%}DOWN{% endif %}</em> by <strong>{{ '{0:,d}'.format(change.loc[3,'change']) }}</strong> to a total of <strong>{{ '{0:,d}'.format(outcomes.at[3,'count']) }}</strong>
+              <br>- a change of <strong>{{ (change.loc[3,'ratio'] * 100) | round(2) }}%</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <a class="{{ theme }}-t" style="display: inline;">Total Daily Count </a>
+          <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
+          <div id="total_count" style="width: 100%; height: 350px"></div>
+        </div>
+        <div class="box">
+            <a class="{{ theme }}-t" style="display: inline;">Total Daily Deaths </a>
+            <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
+            <div id="total_fatal" style="width: 100%; height: 350px"></div>
         </div>
       </div>
-
-      <div class="spacer"></div>
-
       <!-- last 16 days charts and graphs -->
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-          <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
-          <h3 class="{{ theme }}-t">Cases Over the Last 16 Days</h3>
-          <div style="border-radius: 0.5rem; padding: 5px 5px;">
-            <h3>The <strong>Covid-19</strong> Pandemic is currently infecting more
-              {% if gender_groups.loc[0,'count'] > gender_groups.loc[1,'count'] %}
-              <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <strong><em>{{ '{0:,d}'.format(gender_groups.loc[0,'count']) }}</em></strong> cases
-              than <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong>  at <strong><em>{{ '{0:,d}'.format(gender_groups.loc[1,'count']) }}</em></strong> cases.
-              <br>A difference of <strong>{{ '{0:,d}'.format(gender_groups.loc[0,'count'] - gender_groups.loc[1,'count']) }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
-              {%else%}
-              <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[1,'count'] }}</em> cases
-               than <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases.
-              <br>A difference of <strong>{{ gender_groups.loc[1,'count'] - gender_groups.loc[0,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
-              {% endif %}
-            </h3>
-            <p>Over the past 16 Days, case counts have been
-              {% if (trend[2] > trend[1]) and (trend[1] > trend[0]) %}
-              <strong>Rising</strong>.
-              {% elif (trend[1] > trend[0]) and (trend[1] > trend[2]) %}
-              were <strong>Rising</strong> midway, but are now beginning to <strong>Drop</strong>.
-              {% else %}
-              <strong>Dropping</strong>.
-              {% endif %}
-            </p>
-            <div class="spacer"></div>
+        <div class="parent" style="border-radius: 0.5rem; padding: 10px 10px;">
+          <div class="box" style="display: flex;align-items: center;">
+            <div style="padding: 10px 10px;">
+              <h2 class="{{ theme }}-t">Cases Over the Last 16 Days</h2>
+              <br>
+              <h3>
+                {% if gender_groups.loc[0,'count'] > gender_groups.loc[1,'count'] %}
+                <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> infected; <strong><em>{{ '{0:,d}'.format(gender_groups.loc[0,'count']) }}</em></strong>
+                <br><strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> infected; <strong><em>{{ '{0:,d}'.format(gender_groups.loc[1,'count']) }}</em></strong>
+                <br><br>A difference of <strong>{{ '{0:,d}'.format(gender_groups.loc[0,'count'] - gender_groups.loc[1,'count']) }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
+                {%else%}
+                <strong>{{ gender_groups.loc[1,'client_gender'][0:1]+gender_groups.loc[1,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[1,'count'] }}</em> cases
+                 than <strong>{{ gender_groups.loc[0,'client_gender'][0:1]+gender_groups.loc[0,'client_gender'][1:]|lower+'s' }}</strong> at <em>{{ gender_groups.loc[0,'count'] }}</em> cases.
+                <br><br>A difference of <strong>{{ gender_groups.loc[1,'count'] - gender_groups.loc[0,'count'] }}</strong> cases or <strong>{{ (gender_groups.loc[0,'count'] / gender_groups.loc[1,'count']) | round(2) }}%</strong>.
+                {% endif %}
+              </h3>
+              <br>
+              <p>Over the past 16 Days, case counts; <br>
+                {% if (trend[2] > trend[1]) and (trend[1] > trend[0]) %}
+                are <strong>Rising</strong>.
+                {% elif (trend[1] > trend[0]) and (trend[1] > trend[2]) %}
+                were <strong>Rising</strong>, but now <strong>Droppping</strong>.
+                {% else %}
+                are <strong>Dropping</strong>.
+                {% endif %}
+              </p>
+            </div>
           </div>
-              <div class="parent">
                 <!-- graphs 1 -->
                 <div class="box">
                   <a class="{{ theme }}-t" style="display: inline;">Gender Groups </a>
                   <a class="{{ theme }}-t-blue" style="display: inline;">Positive with Covid 19</a>
-                  <div id="gender_stacked" style="width: 350px; height: 350px"></div>
+                  <div id="gender_stacked" style="width: 100%; height: 350px"></div>
                 </div>
-                <div class="box">
-                  <a class="{{ theme }}-t" style="display: inline;">Total Daily Count </a>
-                  <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
-                  <div id="total_count" style="width: 350px; height: 350px"></div>
-                </div>
-                <div class="box">
-                  <a class="{{ theme }}-t" style="display: inline;">Total Daily Deaths </a>
-                  <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
-                  <div id="total_fatal" style="width: 350px; height: 350px"></div>
-                </div>
-              </div>
-              <div class="parent">
-                <!-- graphs 2 -->
-                <div class="box">
-                  <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
-                  <a class="{{ theme }}-t-blue" style="display: inline;"> Male</a>
-                  <div id="total_male" style="width: 350px; height: 100px"></div>
-                </div>
-                <div class="box">
-                  <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
-                  <a class="{{ theme }}-t-blue" style="display: inline;"> Female</a>
-                  <div id="total_female" style="width: 350px; height: 100px"></div>
+              <div class="box">
+                <div class="parent">
+                  <!-- graphs 2 -->
+                  <div class="boxm">
+                    <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+                    <a class="{{ theme }}-t-blue" style="display: inline;"> Male</a>
+                    <div id="total_male" style="width: 100%; height: 100px"></div>
                   </div>
-                <div class="box">
-                  <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
-                  <a class="{{ theme }}-t-blue" style="display: inline;"> Transgender</a>
-                  <div id="total_trans" style="width: 350px; height: 100px"></div>
+                  <div class="boxm">
+                    <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+                    <a class="{{ theme }}-t-blue" style="display: inline;"> Female</a>
+                    <div id="total_female" style="width: 100%; height: 100px"></div>
+                    </div>
+                  <div class="boxm">
+                    <a class="{{ theme }}-t" style="display: inline;">Daily Cases (Last 16 Days)</a>
+                    <a class="{{ theme }}-t-blue" style="display: inline;"> Transgender</a>
+                    <div id="total_trans" style="width: 100%; height: 100px"></div>
+                  </div>
                 </div>
               </div>
-          </div>
         </div>
         <!-- END OF last 16 days charts and graphs -->
-
-      <div class="spacer"></div>
-
+    </div>
+    <br>
       <!-- PIE charts relating to demographics -->
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
+      <div style="border-radius: 0.5rem; padding: 10px 10px;">
           <h3 class="{{ theme }}-t">Ontario Demographics</h3>
           <div style="border-radius: 0.5rem; padding: 5px 5px;">
             <p>
@@ -158,27 +161,23 @@
           <!-- pie 1 -->
             <div class="box">
               <a class="{{ theme }}-t">Age Groups in Ontario</a>
-              <div id="age_groups" style="width: 350px; height: 350px"></div>
+              <div id="age_groups" style="width: 100%; height: 350px"></div>
             </div>
             <!-- pie 2 -->
             <div class="box">
               <a class="{{ theme }}-t">Percentage Positive in Ontario</a>
-              <div id="age_case" style="width: 350px; height: 350px"></div>
+              <div id="age_case" style="width: 100%; height: 350px"></div>
             </div>
             <div class="box">
               <a class="{{ theme }}-t">Positive in the last 16 days</a>
-              <div id="age_positive" style="width: 350px; height: 350px"></div>
+              <div id="age_positive" style="width: 100%; height: 350px"></div>
             </div>
           </div>
-        </div>
       </div>
       <!-- END OF PIE charts relating to demographics -->
-
-      <div class="spacer"></div>
-
+      <br>
       <!-- Top Areas of infection -->
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
+      <div style="border-radius: 0.5rem; padding: 10px 10px;">
         <h3 class="{{ theme }}-t">Public Health Unit Data</h3>
         <div style="border-radius: 0.5rem; padding: 5px 5px;">
           <p>The spread of the virus is mostly concentrated in the following 3 PHUs; <strong>Toronto</strong>, <strong>Missisauga</strong> and <strong>Newmarket</strong>.<br>
@@ -191,22 +190,21 @@
               <div class="box">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Largest Covid 19 Caseload</a>
-                <div id="phu_total" style="width: 350px; height: 450px"></div>
+                <div id="phu_total" style="width: 100%; height: 450px"></div>
               </div>
               <!-- chart 2 -->
               <div class="box">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Current 16 Day Period</a>
-                <div id="top_phu" style="width: 350px; height: 450px"></div>
+                <div id="top_phu" style="width: 100%; height: 450px"></div>
               </div>
               <!-- chart 3 -->
               <div class="box">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Fatalities  / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Age Group & Gender</a>
-                <div id="fatal_stacked" style="width: 350px; height: 450px"></div>
+                <div id="fatal_stacked" style="width: 100%; height: 450px"></div>
               </div>
             </div>
-        </div>
       </div>
       <!-- END OF Top Areas of infection -->
 
@@ -214,8 +212,7 @@
 
 
       <!-- Case Table -->
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
-        <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
+      <div style="border-radius: 0.5rem; padding: 10px 10px;">
           <h3 class="{{ theme }}-t">Total Ontario Cases</h3>
           <div>
             <!-- table header -->
@@ -268,17 +265,16 @@
                     <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
                     <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
                     <td class="{{ theme }}-yellow">{{ on_cases.at[i,'m%'] }}</td>
-                    <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
-                    <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-f']) }}</td>
-                    <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-m']) }}</td>
-                    <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-t']) }}</td>
+                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
+                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-f']) }}</td>
+                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-m']) }}</td>
+                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-t']) }}</td>
                   </tr>
                   {%endfor%}
                 </table>
               </div>
             </div>
           </div>
-        </div>
       </div>
       <!-- END OF case table -->
 
@@ -286,29 +282,21 @@
 
 
       <!-- charts & graphs -->
-      <div class="{{ theme }}-dark" style="border-radius: 0.5rem; padding: 20px 20px;">
+      <div style="border-radius: 0.5rem; padding: 10px 10px;">
         <div class="mobile">
-          <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
             <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-            <div class="center" id="all_cases_small" style="width: 350px; height: 350px"></div>
-          </div>
+            <div class="center" id="all_cases_small" style="width: 95%; height: 350px"></div>
           <div class="spacer"></div>
-          <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
             <h3 class="{{ theme }}-t">Total Daily Deaths</h3>
-            <div class="center" id="all_fatal_small" style="width: 350px; height: 350px"></div>
-          </div>
+            <div class="center" id="all_fatal_small" style="width: 95%; height: 350px"></div>
         </div>
 
         <div class="desktop">
-          <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
             <h3 class="{{ theme }}-t">Total Daily Cases</h3>
-            <div class="center" id="all_cases" style="width: 1024px; height: 350px"></div>
-          </div>
+            <div class="center" id="all_cases" style="width: 90%; height: 350px"></div>
           <div class="spacer"></div>
-          <div class="{{ theme }}-light" style="border-radius: 0.5rem; padding: 20px 20px;">
             <h3 class="{{ theme }}-t">Total Daily Deaths</h3>
-            <div class="center" id="all_fatal" style="width: 1024px; height: 350px"></div>
-          </div>
+            <div class="center" id="all_fatal" style="width: 90%; height: 350px"></div>
         </div>
 
       </div>

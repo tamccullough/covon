@@ -20,6 +20,39 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
+  :root {
+    --white: #F6F8FF;
+    --black: #03071e;
+    --offwhite: #ede0d4;
+    --lightgrey: #f8edeb;
+    --blue: #277da1;
+    --darkblue: #003049;
+    --green: #2A9D8F;
+    --orange: #f77f00;
+    --purple: #8f2d56;
+    --red: #f94144;
+    --darkred: #6a040f;
+    --yellow: #fcbf49;
+  }
+  /*body and scrollbar*/
+
+  .black {color: var(--white);background-color: var(--black);}
+  .white {color: var(--black); background-color: var(--white);}
+
+  .text-black {color: var(--black);}
+  .text-white {color: var(--white);}
+
+  .clean {color: var(--black); background-color: var(--offwhite);}
+  .clean-t {color: var(--darkred);}
+  .clean-t-blue {color: var(--blue);}
+  .clean-t-green {color: var(--green);}
+  .clean-t-red {color: var(--red);}
+  .clean-blue {color: var(--white); background-color: var(--blue);}
+  .clean-green {color: var(--white); background-color:var(--green);}
+  .clean-red {color: var(--white);background-color: var(--red);}
+  .clean-orange {color: var(--white); background-color: var(--orange);}
+  .clean-yellow {color: var(--darkred); background-color: var(--yellow);}
+
 
   html,h1,h2 {
     font-family: 'Lato', sans-serif;
@@ -33,48 +66,29 @@
 
   * {
     scrollbar-width: auto;
-    scrollbar-color: #0099ff #fbe8a6;
+    scrollbar-color: var(--blue) var(--offwhite);
   }
 
   .bold {
+    color: var(--red);
     font-weight: 700;
   }
 
   strong {
-    color: #f07924;
+    color: var(--blue);
   }
 
   em {
-    color: #b23850;
+    color: var(--red);
   }
 
-  .coiny {
-    font-family: 'Coiny', cursive;
-    font-weight: 400;
-    font-size: 2.5em;
-    letter-spacing: -3px;
-    vertical-align: center;
-  }
+</style>
 
-  a img:hover {
-    transform: scale(1.05);
-  }
-
-  hr {
-    border: none;
-    background: #888;
-    height: 2px;
-  }
-
-  .hrspace {
-    border: none;
-    background: inherit;
-    height: 2px;
-  }
-
-  </style>
 </head>
-
+{% set clbl = '#003049' %}
+{% set bgc = '#ede0d4' %}
+{% set clc = ['#277da1', '#f94144', '#8f2d56'] %}
+{% set cfc = ["#f94144","#f3722c","#f8961e","#f9844a","#f9c74f","#90be6d","#43aa8b","#4d908e","#577590","#277da1"] %}
 <body id="top" class="{{ theme }}">
 
 <button id="backToTop" class="topbutton-wide {{ theme }}-blue textcenter">
@@ -91,9 +105,9 @@
 <!-- Footer -->
   <footer class="page-wide" style="border-radius: 0.5rem; padding: 20px 20px;">
     <a class="bold">Todd McCullough</a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}} fa fa-twitter"></i></a>
-    <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}} fa fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}} fa fa-linkedin"></i></a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-t-red fa fa-twitter"></i></a>
+    <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-t-red fa fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-t-red fa fa-linkedin"></i></a>
   </footer>
 <script src="static/css/app.js"></script>
 <script src="static/css/top.js"></script>
@@ -126,14 +140,14 @@
         ]);
 
         var options = {
-          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          colors: ['#0099ff', '#097138'],
-          backgroundColor: '#f4e4c1',
+          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          colors: ['{{ clc[0] }}', '{{ clc[1] }}'],
+          backgroundColor: '{{ bgc }}',
           trendlines: {
-          0: {type: 'exponential', color: '#b23850', opacity: 2}
+          0: {type: 'exponential', color: '{{ clc[1] }}', opacity: 2}
           },
-          chartArea:{left:75,width:'90%',height:'80%'},
+          chartArea:{left:75,width:'94%',height:'80%'},
           legend: 'none'
         };
 
@@ -151,14 +165,14 @@
         ]);
 
         var options = {
-          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          colors: ['#0099ff', '#097138'],
-          backgroundColor: '#f4e4c1',
+          hAxis: {title: 'Total Cases per Day',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          colors: ['{{ clc[0] }}', '{{ clc[1] }}'],
+          backgroundColor: '{{ bgc }}',
           trendlines: {
-          0: {type: 'exponential', color: '#b23850', opacity: 2}
+          0: {type: 'exponential', color: '{{ clc[1] }}', opacity: 2}
           },
-          chartArea:{left:50,width:'80%',height:'80%'},
+          chartArea:{left:50,width:'94%',height:'80%'},
           legend: 'none'
         };
 
@@ -176,14 +190,14 @@
         ]);
 
         var options = {
-          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          colors: ['#b23850', '#0099ff'],
-          backgroundColor: '#f4e4c1',
+          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          colors: ['{{ clc[1] }}', '{{ clc[0] }}'],
+          backgroundColor: '{{ bgc }}',
           trendlines: {
-          0: {type: 'exponential', color: '#0099ff', opacity: 2}
+          0: {type: 'exponential', color: '{{ clc[0] }}', opacity: 2}
           },
-          chartArea:{left:75,width:'90%',height:'80%'},
+          chartArea:{left:75,width:'94%',height:'80%'},
           legend: 'none'
         };
 
@@ -201,14 +215,14 @@
         ]);
 
         var options = {
-          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          colors: ['#b23850', '#0099ff'],
-          backgroundColor: '#f4e4c1',
+          hAxis: {title: 'Total Deaths per Day',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          colors: ['{{ clc[1] }}', '{{ clc[0] }}'],
+          backgroundColor: '{{ bgc }}',
           trendlines: {
-          0: {type: 'exponential', color: '#0099ff', opacity: 2}
+          0: {type: 'exponential', color: '{{ clc[0] }}', opacity: 2}
           },
-          chartArea:{left:50,width:'80%',height:'80%'},
+          chartArea:{left:50,width:'94%',height:'80%'},
           legend: 'none'
         };
 
@@ -226,10 +240,10 @@
         ]);
 
         var options = {
-          hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-          colors: ['#0099ff', '#097138'],
-          backgroundColor: '#f4e4c1',
+          hAxis: {title: 'Date',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+          colors: ['{{ clc[0] }}', '{{ clc[1] }}'],
+          backgroundColor: '{{ bgc }}',
           trendlines: {
           0: {type: 'exponential', color: '#333', opacity: 2},
           1: {type: 'linear', color: '#111', opacity: .3}
@@ -252,16 +266,16 @@
             ]);
 
             var options = {
-              hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-              vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-              colors: ['#b23850', '#097138'],
-              backgroundColor: '#f4e4c1',
+              hAxis: {title: 'Date',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+              vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+              colors: ['{{ clc[1] }}', '{{ clc[0] }}'],
+              backgroundColor: '{{ bgc }}',
               legend: 'none',
               chartArea:{left:50,width:'80%',height:'80%'},
               trendlines: {
                 0: {
                   type: 'exponential',
-                  color: 'green'}
+                  color: '{{ clc[2] }}'}
               }
             };
 
@@ -281,18 +295,18 @@
                 var options = {
                   isStacked: true,
                   hAxis: {title: 'Count',
-                          titleTextStyle: {color: '#303c6c'},
-                          textStyle: {color: '#303c6c'}
+                          titleTextStyle: {color: '{{ clc[0] }}'},
+                          textStyle: {color: '{{ clc[0] }}'}
                           },
-                  vAxis: {textStyle: {color: '#303c6c'}},
-                  colors: ['#0099ff', '#b23850','#00de25'],
-                  backgroundColor: '#f4e4c1',
+                  vAxis: {textStyle: {color: '{{ clc[0] }}'}},
+                  colors: ['{{ clc[0] }}', '{{ clc[1] }}', '{{ clc[2] }}'],
+                  backgroundColor: '{{ bgc }}',
                   legend: { position: 'bottom' },
                   chartArea:{left:75,width:'70%',height:'70%'},
                   trendlines: {
                     0: {
                       type: 'exponential',
-                      color: 'green'}
+                      color: '{{ clc[2] }}'}
                   }
                 };
 
@@ -310,10 +324,10 @@
                 ]);
 
                 var options = {
-                  hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                  vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                  colors: ['#0099ff', '#097138'],
-                  backgroundColor: '#f4e4c1',
+                  hAxis: {title: 'Date',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                  vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                  colors: ['{{ clc[0] }}', '{{ clc[1] }}'],
+                  backgroundColor: '{{ bgc }}',
                   legend: 'none',
                   chartArea:{left:50,width:'90%',height:'90%'}
                 };
@@ -332,10 +346,10 @@
                     ]);
 
                     var options = {
-                      hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                      vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                      colors: ['#b23850', '#097138'],
-                      backgroundColor: '#f4e4c1',
+                      hAxis: {title: 'Date',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                      vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                      colors: ['{{ clc[1] }}', '{{ clc[0] }}'],
+                      backgroundColor: '{{ bgc }}',
                       legend: 'none',
                       chartArea:{left:50,width:'90%',height:'90%'}
                     };
@@ -354,10 +368,10 @@
                     ]);
 
                     var options = {
-                      hAxis: {title: 'Date',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                      vAxis: {title: 'Count',titleTextStyle: {color: '#303c6c'},textStyle: {color: '#303c6c'}},
-                      colors: ['#b23850', '#097138'],
-                      backgroundColor: '#f4e4c1',
+                      hAxis: {title: 'Date',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                      vAxis: {title: 'Count',titleTextStyle: {color: '{{ clc[0] }}'},textStyle: {color: '{{ clc[0] }}'}},
+                      colors: ['{{ clc[2] }}', '{{ clc[0] }}'],
+                      backgroundColor: '{{ bgc }}',
                       legend: 'none',
                       chartArea:{left:50,width:'90%',height:'90%'}
                     };
@@ -376,10 +390,10 @@
                     ]);
 
                     var options = {
-                      colors: ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90'],
+                      colors: ['{{ cfc[0] }}','{{ cfc[1] }}','{{ cfc[2] }}','{{ cfc[3] }}','{{ cfc[4] }}','{{ cfc[5] }}','{{ cfc[6] }}','{{ cfc[7] }}','{{ cfc[8] }}','{{ cfc[9] }}'],
                       pieSliceText: 'label',
-                      backgroundColor: '#f4e4c1',
-                      pieSliceTextStyle: {color: '#303c6c',},
+                      backgroundColor: '{{ bgc }}',
+                      pieSliceTextStyle: {color: '{{ clbl }}'},
                       legend: 'none',
                       chartArea:{width:'80%',height:'80%'}
                     };
@@ -398,10 +412,10 @@
                     ]);
 
                     var options = {
-                      colors: ['#e06666','#f6b26b','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0'],
+                      colors: ['{{ cfc[0] }}','{{ cfc[1] }}','{{ cfc[2] }}','{{ cfc[3] }}','{{ cfc[4] }}','{{ cfc[5] }}','{{ cfc[6] }}','{{ cfc[7] }}','{{ cfc[8] }}','{{ cfc[9] }}'],
                       pieSliceText: 'label',
-                      backgroundColor: '#f4e4c1',
-                      pieSliceTextStyle: {color: '#303c6c',},
+                      backgroundColor: '{{ bgc }}',
+                      pieSliceTextStyle: {color: '{{ clbl }}'},
                       legend: 'none',
                       chartArea:{width:'80%',height:'80%'}
                     };
@@ -420,10 +434,10 @@
                     ]);
 
                     var options = {
-                      colors: ['#e06666','#f6b26b','#93c47d','#76a5af','#6d9eeb','#6fa8dc','#8e7cc3','#c27ba0'],
+                      colors: ['{{ cfc[0] }}','{{ cfc[1] }}','{{ cfc[2] }}','{{ cfc[3] }}','{{ cfc[4] }}','{{ cfc[5] }}','{{ cfc[6] }}','{{ cfc[7] }}','{{ cfc[8] }}','{{ cfc[9] }}'],
                       pieSliceText: 'label',
-                      backgroundColor: '#f4e4c1',
-                      pieSliceTextStyle: {color: '#303c6c',},
+                      backgroundColor: '{{ bgc }}',
+                      pieSliceTextStyle: {color: '{{ clbl }}'},
                       legend: 'none',
                       chartArea:{width:'80%',height:'80%'}
                     };
@@ -444,12 +458,12 @@
                     var options = {
                       isStacked: true,
                       hAxis: {title: 'Count',
-                              titleTextStyle: {color: '#303c6c'},
-                              textStyle: {color: '#303c6c'}
+                              titleTextStyle: {color: '{{ clc[0] }}'},
+                              textStyle: {color: '{{ clc[0] }}'}
                               },
-                      vAxis: {textStyle: {color: '#303c6c'}},
-                      colors: ['#0099ff', '#b23850','#00de25'],
-                      backgroundColor: '#f4e4c1',
+                      vAxis: {textStyle: {color: '{{ clc[0] }}'}},
+                      colors: ['{{ clc[0] }}', '{{ clc[1] }}', '{{ clc[2] }}'],
+                      backgroundColor: '{{ bgc }}',
                       legend: { position: 'bottom' },
                       chartArea:{left:75,width:'100%',height:'70%'},
                     };
@@ -470,12 +484,12 @@
 
                     var options = {
                       hAxis: {title: 'Count',
-                              titleTextStyle: {color: '#303c6c'},
-                              textStyle: {color: '#303c6c'}
+                              titleTextStyle: {color: '{{ clc[0] }}'},
+                              textStyle: {color: '{{ clc[0] }}'}
                               },
-                      vAxis: {textStyle: {color: '#303c6c'}},
+                      vAxis: {textStyle: {color: '{{ clc[0] }}'}},
                       colors: ['#fa5252'],
-                      backgroundColor: '#f4e4c1',
+                      backgroundColor: '{{ bgc }}',
                       legend: { position: 'bottom' },
                       chartArea:{left:75,width:'100%',height:'70%'},
                     };
@@ -496,12 +510,12 @@
 
                     var options = {
                       hAxis: {title: 'Count',
-                              titleTextStyle: {color: '#303c6c'},
-                              textStyle: {color: '#303c6c'}
+                              titleTextStyle: {color: '{{ clc[0] }}'},
+                              textStyle: {color: '{{ clc[0] }}'}
                               },
-                      vAxis: {textStyle: {color: '#303c6c'}},
+                      vAxis: {textStyle: {color: '{{ clc[0] }}'}},
                       colors: ['#ffa64a'],
-                      backgroundColor: '#f4e4c1',
+                      backgroundColor: '{{ bgc }}',
                       legend: { position: 'bottom' },
                       chartArea:{left:75,width:'100%',height:'70%'},
                     };

@@ -20,7 +20,9 @@ theme = 'clean'
 today = date.today().strftime('%Y-%m-%d')
 year = year = today[0:4]
 month, day, weekday = com.get_weekday()
-
+geegle = ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90','#fa5252','#ffa64a']
+cfc = ['#264653','#2a9d8f','#1f8bff','#904c77','#f05d23','#e76f51','#e9c46a','#ccc9dc','#ddd5d0','#f6f8ff']
+coolor = ["#f94144","#f3722c","#f8961e","#f9844a","#f9c74f","#90be6d","#43aa8b","#4d908e","#577590","#277da1"]#["#67ff86","#51e5ff","#c25bd7","#e63746","#ff990a","#ebeb0a","#0cd44f","#196eb3","#5f05b3","#871c38","#67ff86","#51e5ff",]
 today_other = date.today()
 first = today_other.replace(day=1)
 previous_month = first - timedelta(days=1)
@@ -131,6 +133,7 @@ def index():
 
     recent_gender_lst = create_list(recent_cases_count[['date','m_count','f_count','t_count']])
     recent_gender_lst = add_column_string(recent_gender_lst)
+    print(max(recent_gender_lst))
 
     recent_male_lst = create_list(recent_cases_count[['days','m_count']])
     recent_male_lst = add_column_string(recent_male_lst)
@@ -155,7 +158,7 @@ def index():
     recent_top_10_phu_lst = add_column_string(recent_top_10_phu_lst)
 
     def append_style(lst):
-        colors = ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90','#fa5252','#ffa64a']
+        colors = coolor
         lst[0].append('style')
         for i in range(1,len(lst)):
             lst[i][1] = int(lst[i][1])

@@ -56,7 +56,7 @@
     <div class="spacer"></div>
     <div style="border-radius: 0.5rem; padding: 10px 10px;">
       <div class="parent">
-        <div class="box" style="display: flex;align-items: center;">
+        <div class="boxm" style="display: flex;align-items: center;">
           <div style="padding: 10px 10px;">
             <h2 class="{{ theme }}-t">Curve status; {% if trend[2] > trend[1] %}<em>Worsening{%else%}<em>Flattening{% endif %}</em>.</h2>
             <br>
@@ -74,12 +74,12 @@
             </p>
           </div>
         </div>
-        <div class="box">
+        <div class="boxm">
           <a class="{{ theme }}-t" style="display: inline;">Total Daily Count </a>
           <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
           <div id="total_count" style="width: 100%; height: 350px"></div>
         </div>
-        <div class="box">
+        <div class="boxm">
             <a class="{{ theme }}-t" style="display: inline;">Total Daily Deaths </a>
             <a class="{{ theme }}-t-blue" style="display: inline;">Past 16 Days</a>
             <div id="total_fatal" style="width: 100%; height: 350px"></div>
@@ -87,7 +87,7 @@
       </div>
       <!-- last 16 days charts and graphs -->
         <div class="parent" style="border-radius: 0.5rem; padding: 10px 10px;">
-          <div class="box" style="display: flex;align-items: center;">
+          <div class="boxm" style="display: flex;align-items: center;">
             <div style="padding: 10px 10px;">
               <h2 class="{{ theme }}-t">Cases Over the Last 16 Days</h2>
               <br>
@@ -115,12 +115,12 @@
             </div>
           </div>
                 <!-- graphs 1 -->
-                <div class="box">
+                <div class="boxm">
                   <a class="{{ theme }}-t" style="display: inline;">Gender Groups </a>
                   <a class="{{ theme }}-t-blue" style="display: inline;">Positive with Covid 19</a>
                   <div id="gender_stacked" style="width: 100%; height: 350px"></div>
                 </div>
-              <div class="box">
+              <div class="boxm">
                 <div class="parent">
                   <!-- graphs 2 -->
                   <div class="boxm">
@@ -159,16 +159,16 @@
           <!-- pie charts -->
           <div class="parent">
           <!-- pie 1 -->
-            <div class="box">
+            <div class="boxm">
               <a class="{{ theme }}-t">Age Groups in Ontario</a>
               <div id="age_groups" style="width: 100%; height: 350px"></div>
             </div>
             <!-- pie 2 -->
-            <div class="box">
+            <div class="boxm">
               <a class="{{ theme }}-t">Percentage Positive in Ontario</a>
               <div id="age_case" style="width: 100%; height: 350px"></div>
             </div>
-            <div class="box">
+            <div class="boxm">
               <a class="{{ theme }}-t">Positive in the last 16 days</a>
               <div id="age_positive" style="width: 100%; height: 350px"></div>
             </div>
@@ -187,19 +187,19 @@
             <!-- bar charts -->
             <div class="parent">
               <!-- chart 1 -->
-              <div class="box">
+              <div class="boxm">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Largest Covid 19 Caseload</a>
                 <div id="phu_total" style="width: 100%; height: 450px"></div>
               </div>
               <!-- chart 2 -->
-              <div class="box">
+              <div class="boxm">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Top 10 PHUs / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Current 16 Day Period</a>
                 <div id="top_phu" style="width: 100%; height: 450px"></div>
               </div>
               <!-- chart 3 -->
-              <div class="box">
+              <div class="boxm">
                 <a class="{{ theme }}-t-blue" style="display: inline;">Fatalities  / </a>
                 <a class="{{ theme }}-t-blue" style="display: inline;">Age Group & Gender</a>
                 <div id="fatal_stacked" style="width: 100%; height: 450px"></div>
@@ -223,7 +223,7 @@
                     <td><b>age </b></td>
                     <td><b>female</b></td>
                     <td><b>male</b></td>
-                    <td><b>trans</b></td>
+                    <td><b>gen_div</b></td>
                     <td style="width: 15%"><b>total</b></td>
                     <td><b>fatal</b></td>
                   </tr>
@@ -232,7 +232,7 @@
                     <td> {{ on_cases.at[i,'age_group'][0:3] }}</td>
                     <td> {{ '{0:,d}'.format(on_cases.at[i,'female']) }}</td>
                     <td> {{ '{0:,d}'.format(on_cases.at[i,'male']) }}</td>
-                    <td> {{ '{0:,d}'.format(on_cases.at[i,'transgender']) }}</td>
+                    <td> {{ '{0:,d}'.format(on_cases.at[i,'gender diverse']) }}</td>
                     <td style="width: 15%"> {{ '{0:,d}'.format(on_cases.at[i,'total']) }}</td>
                     <td style="color: white; background: #b23850;"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
                   </tr>
@@ -245,7 +245,7 @@
                     <td><b>age </b></td>
                     <td><b>female</b></td>
                     <td><b>male</b></td>
-                    <td><b>transgender</b></td>
+                    <td><b>gen div</b></td>
                     <td><b>total</b></td>
                     <td><b>case %</b></td>
                     <td><b>female %</b></td>
@@ -253,14 +253,14 @@
                     <td><b>fatal</b></td>
                     <td><b>female</b></td>
                     <td><b>male</b></td>
-                    <td><b>transgender</b></td>
+                    <td><b>gen div</b></td>
                   </tr>
                   {%for i in range(0,on_cases.shape[0])%}
                   <tr>
                     <td> {{ on_cases.at[i,'age_group'] }}</td>
                     <td> {{ '{0:,d}'.format(on_cases.at[i,'female']) }}</td>
                     <td> {{ '{0:,d}'.format(on_cases.at[i,'male']) }}</td>
-                    <td> {{ '{0:,d}'.format(on_cases.at[i,'transgender']) }}</td>
+                    <td> {{ '{0:,d}'.format(on_cases.at[i,'gender diverse']) }}</td>
                     <td class="{{ theme }}-green"> {{ '{0:,d}'.format(on_cases.at[i,'total']) }}</td>
                     <td class="{{ theme }}-orange"> {{ on_cases.at[i,'case%'] }}</td>
                     <td class="{{ theme }}-blue"> {{ on_cases.at[i,'f%'] }}</td>
@@ -268,7 +268,7 @@
                     <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-total']) }}</td>
                     <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-f']) }}</td>
                     <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-m']) }}</td>
-                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-t']) }}</td>
+                    <td class="{{ theme }}-red"> {{ '{0:,d}'.format(on_cases.at[i,'fatal-gd']) }}</td>
                   </tr>
                   {%endfor%}
                 </table>

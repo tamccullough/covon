@@ -273,23 +273,36 @@ def graph_query_frame(x_1,y_1,x_2,y_2,x_3,y_3,query,on_cases):
 
 def get_cases(on_db,total_cases):
     on_cases = pd.DataFrame()
+    on_fatal = pd.DataFrame()
     j = 0
     for age in on_db['Age_Group'].unique():
         for gender in on_db['Client_Gender'].unique():
-            count = on_db[(on_db['Age_Group'] == age) & (on_db['Client_Gender'] == gender)].count()[0]
-            percentage = round(count / total_cases,2)
-            if gender == 'FEMALE':
-                on_cases.at[j,'age_group'] = age
+            count = int(on_db[(on_db['Age_Group'] == age) & (on_db['Client_Gender'] == gender)].count()[0])
+            fatal = int(on_db[(on_db['Age_Group'] == age) & (on_db['Client_Gender'] == gender) & (on_db['Outcome1'] == 'Fatal')].count()[0])
+            percentage_c = round(count / total_cases,2)
+            if (fatal == 0) & (count == 0):
+                percentage_f = 0.0
+            else:
+                percentage_f = round(fatal / count,2)
+            #print(f'age: {age} gender: {gender.lower()} count: {count} fatal: {fatal} fatal%: {percentage_f}')
+            on_cases.at[j,'age_group'] = age
+            on_fatal.at[j,'age_group'] = age
+            if gender.lower() == 'female':
                 on_cases.at[j,'female'] = count
-            elif gender == 'MALE':
+                on_fatal.at[j,'fatal-f'] = fatal
+            elif gender.lower() == 'male':
                 on_cases.at[j,'male'] = count
-            elif gender == 'GENDER DIVERSE':
-                on_cases.at[j,'transgender'] = count
+                on_fatal.at[j,'fatal-m'] = fatal
+            elif gender.lower() == 'gender diverse':
+                on_cases.at[j,'gender diverse'] = count
+                on_fatal.at[j,'fatal-gd'] = fatal
             else:
                 on_cases.at[j,'unspecified'] = count
+                on_fatal.at[j,'fatal-u'] = fatal
+        #print('\n')
         j = j + 1
 
-    on_cases['total'] = on_cases['female'] + on_cases['male'] + on_cases['transgender'] + on_cases['unspecified']
+    on_cases['total'] = on_cases['female'] + on_cases['male'] + on_cases['gender diverse'] + on_cases['gender diverse']
     on_cases['case%'] = round(on_cases['total'] / on_cases['total'].sum(),2)
     on_cases['f%'] = round(on_cases['female'] / on_cases['total'],2)
     on_cases['m%'] = round(on_cases['male'] / on_cases['total'],2)
@@ -297,38 +310,26 @@ def get_cases(on_db,total_cases):
     on_cases = on_cases.reset_index()
     on_cases.pop('index')
 
-    on_fatal = pd.DataFrame()
-    j = 0
-    for age in on_db['Age_Group'].unique():
-        for gender in on_db['Client_Gender'].unique():
-            fatal = on_db[(on_db['Age_Group'] == age) & (on_db['Client_Gender'] == gender) & (on_db['Outcome1'] == 'Fatal')].count()[0]
-            percentage = round(fatal / total_cases,2)
-            if gender == 'FEMALE':
-                on_fatal.at[j,'age_group'] = age
-                on_fatal.at[j,'fatal-f'] = fatal
-            elif gender == 'MALE':
-                on_fatal.at[j,'fatal-m'] = fatal
-            elif gender == 'GENDER DIVERSE':
-                on_fatal.at[j,'fatal-t'] = count
-            else:
-                on_fatal.at[j,'fatal-u'] = count
-        j = j + 1
-
-    on_fatal['total'] = on_fatal['fatal-f'] + on_fatal['fatal-m'] + on_fatal['fatal-t'] + on_fatal['fatal-u']
+    on_fatal['total'] = on_fatal['fatal-f'] + on_fatal['fatal-m'] + on_fatal['fatal-gd'] + on_fatal['fatal-u']
+    on_fatal['total'] = on_fatal['total'].astype('int')
     on_fatal['case%'] = round(on_fatal['total'] / on_fatal['total'].sum(),2)
     on_fatal['f%'] = round(on_fatal['fatal-f'] / on_fatal['total'],2)
     on_fatal['m%'] = round(on_fatal['fatal-m'] / on_fatal['total'],2)
     on_fatal = on_fatal.sort_values(by='age_group',ascending=False)
     on_fatal = on_fatal.reset_index()
     on_fatal.pop('index')
-    on_cases['fatal-f'] = on_fatal['fatal-f']
-    on_cases['fatal-m'] = on_fatal['fatal-m']
-    on_cases['fatal-u'] = on_fatal['fatal-u']
-    on_cases['fatal-t'] = on_fatal['fatal-t']
-    on_cases['fatal-total'] = on_fatal['total']
+    on_cases['female'] = on_cases['female'].astype('int')
+    on_cases['male'] = on_cases['male'].astype('int')
+    on_cases['gender diverse'] = on_cases['gender diverse'].astype('int')
+    on_cases['unspecified'] = on_cases['unspecified'].astype('int')
+    on_cases['total'] = on_cases['total'].astype('int')
+    on_cases['fatal-f'] = on_fatal['fatal-f'].astype('int')
+    on_cases['fatal-m'] = on_fatal['fatal-m'].astype('int')
+    on_cases['fatal-u'] = on_fatal['fatal-u'].astype('int')
+    on_cases['fatal-gd'] = on_fatal['fatal-gd'].astype('int')
+    on_cases['fatal-total'] = on_fatal['total'].astype('int')
     on_cases['fatal%'] = on_fatal['case%']
     on_cases = on_cases.sort_values(by='total',ascending=False)
     on_cases = on_cases.reset_index()
     on_cases.pop('index')
-    on_cases.to_csv(f'datasets/{year}/on_cases.csv',index=False)
     return on_cases

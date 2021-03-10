@@ -86,7 +86,7 @@ def index():
     active = round(outcomes.at[2,'pop%']*100,2)
 
     trend = [recent_cases_count.loc[0,'count'],recent_cases_count.loc[7,'count'],recent_cases_count.loc[15,'count']]
-    for col in ['female','male','transgender','total','fatal-f','fatal-m','fatal-t','fatal-u','fatal-total']:
+    for col in ['female','male','gender diverse','total','fatal-f','fatal-m','fatal-gd','fatal-u','fatal-total']:
         on_cases[col] = on_cases[col].astype('int')
 
     for col in ['case%','f%','m%']:
@@ -126,14 +126,13 @@ def index():
     age_cases_lst = create_list(on_cases_data[['age_group','case%']])
     age_groups_positive_lst = create_list(recent_groups[['age_group','pop%']])
 
-    fatal_lst = create_list(fatalities[['age_group','fatal-f','fatal-m','fatal-t']])
+    fatal_lst = create_list(fatalities[['age_group','fatal-f','fatal-m','fatal-gd']])
     fatal_lst = add_column_string(fatal_lst)
 
     outcomes_lst = create_list(outcomes)
 
-    recent_gender_lst = create_list(recent_cases_count[['date','m_count','f_count','t_count']])
+    recent_gender_lst = create_list(recent_cases_count[['date','m_count','f_count','gd_count']])
     recent_gender_lst = add_column_string(recent_gender_lst)
-    print(max(recent_gender_lst))
 
     recent_male_lst = create_list(recent_cases_count[['days','m_count']])
     recent_male_lst = add_column_string(recent_male_lst)
@@ -141,7 +140,7 @@ def index():
     recent_female_lst = create_list(recent_cases_count[['days','f_count']])
     recent_female_lst = add_column_string(recent_female_lst)
 
-    recent_trans_lst = create_list(recent_cases_count[['days','t_count']])
+    recent_trans_lst = create_list(recent_cases_count[['days','gd_count']])
     recent_trans_lst = add_column_string(recent_trans_lst)
 
     recent_cases_lst = create_list(recent_cases_count[['days','count']])

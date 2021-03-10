@@ -68,7 +68,7 @@ on_cases
 print('ACTUAL TOTAL CASES: ',int(on_cases['total'].sum()))
 print('ACTUAL FATALITIES: ',int(on_cases['fatal-total'].sum()))
 
-fatal = on_cases[['age_group','fatal-f','fatal-m','fatal-t','fatal-u','fatal-total','fatal%']]
+fatal = on_cases[['age_group','fatal-f','fatal-m','fatal-gd','fatal-u','fatal-total','fatal%']]
 fatal = fatal.sort_values(by='fatal-total',ascending=False)
 print(total_cases - int(on_cases['total'].sum()),'cases not assigned to any age group')
 
@@ -90,10 +90,10 @@ print(recent_cases_count)
 
 female_16 = recent_cases[recent_cases['Client_Gender'] == 'FEMALE']
 male_16 = recent_cases[recent_cases['Client_Gender'] == 'MALE']
-transgender_16 = recent_cases[recent_cases['Client_Gender'] == 'TRANSGENDER']
+genderdiv_16 = recent_cases[recent_cases['Client_Gender'] == 'GENDER DIVERSE']
 female_16_count = com.utc_count(female_16)
 male_16_count = com.utc_count(male_16)
-transgender_16_count = com.utc_count(transgender_16)
+genderdiv_16_count = com.utc_count(genderdiv_16)
 
 a,b,c,d = [],[],[],[]
 for date in recent_cases_count['utc'].unique():
@@ -107,16 +107,16 @@ for date in recent_cases_count['utc'].unique():
     except:
         f = 0
     try:
-        t = transgender_16_count[transgender_16_count['date'] == date]['count'].values[0]
+        gd = genderdiv_16_count[genderdiv_16_count['date'] == date]['count'].values[0]
     except:
-        t = 0
+        gd = 0
     a.append(m)
     b.append(f)
-    c.append(t)
+    c.append(gd)
     d.append(actual)
 recent_cases_count['m_count'] = a
 recent_cases_count['f_count'] = b
-recent_cases_count['t_count'] = c
+recent_cases_count['gd_count'] = c
 recent_cases_count['actual_date'] = d
 recent_cases_count = recent_cases_count.dropna()
 
@@ -178,8 +178,9 @@ recent_cases_count.to_csv(f'datasets/{year}/recent_cases_count.csv',index=False)
 top_10_phu.to_csv(f'datasets/{year}/top_10_phu.csv',index=False)
 recent_top_10_phu.to_csv(f'datasets/{year}/recent_top_10_phu.csv',index=False)
 recent_groups.to_csv(f'datasets/{year}/age_groups_recent.csv',index=False)
+on_cases.to_csv(f'datasets/{year}/on_cases.csv',index=False)
 
-PATH = '/home/todd/Documents/git/covid-ontario-visualization/datasets/2021/'#'/home/todd/mldl/datasets/classification/faces/'
+PATH = '/home/todd/Documents/git/covon/datasets/2021/'#'/home/todd/mldl/datasets/classification/faces/'
 
 def get_all_files(directory):
     file_list = []

@@ -12,9 +12,6 @@ import os
 import pandas as pd
 import re
 import requests
-import seaborn as sns
-import statistics
-from scipy.ndimage.filters import gaussian_filter1d
 
 import covon_functions as com
 
